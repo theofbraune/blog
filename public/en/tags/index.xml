@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Maths of Glory</title>
+    <link>https://theofbraune.github.io/en/tags/</link>
+    <description>Recent content in Tags on Maths of Glory</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 03 Jan 2022 17:10:32 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>virtual reality</title>
+      <link>https://theofbraune.github.io/en/tags/virtual-reality/</link>
+      <pubDate>Mon, 03 Jan 2022 17:10:32 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/en/tags/virtual-reality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ethics</title>
+      <link>https://theofbraune.github.io/en/tags/ethics/</link>
+      <pubDate>Tue, 21 Dec 2021 18:09:53 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/en/tags/ethics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web development</title>
+      <link>https://theofbraune.github.io/en/tags/web-development/</link>
+      <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/en/tags/web-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>https://theofbraune.github.io/en/tags/about/</link>
+      <pubDate>Wed, 08 Dec 2021 12:34:16 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/en/tags/about/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

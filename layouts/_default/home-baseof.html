@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        {{ block "main" .}}{{end}}
+    
+    </div>
+    Image by <a href="https://pixabay.com/users/fotocitizen-397314/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=569222">Jorge Guillen</a> 
+    <footer id="site-footer" class="bg-dark text-white pb-4 pt-4">
+        <div class="container">
+            <div class="copyright text-center">
+                &copy;2021{{.Site.Title}}
+            </div>
+        </div>
+        
+    </footer>
+</body>
+</html>
