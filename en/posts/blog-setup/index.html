@@ -43,8 +43,8 @@
 <time>Dec 21, 2021, 11:31AM</time>
 </span>
 <span class=post-tags>
-<a href=https://theofbraune.github.io/en/tags/virtual-reality/>virtual reality</a>
-<a href=https://theofbraune.github.io/en/tags/web-development/>web development</a>
+<a href=http://theofbraune.github.io/blog/en/tags/virtual-reality/>virtual reality</a>
+<a href=http://theofbraune.github.io/blog/en/tags/web-development/>web development</a>
 </span>
 </div>
 <div class=entry-content style=font-size:18px><p>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&rsquo;ll explain how you can easily setup your webblog with the static page generator <a href=https://gohugo.io/>hugo</a>.</p>
@@ -144,7 +144,23 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 </code></pre><p>This can be found as well in the <a href=https://gohugo.io/hosting-and-deployment/hosting-on-github/>hugo documentation</a>.
-Next of course push this folders with this file to github.</p>
+Next of course push this folders with this file to github. You need to make sure, that your access token allows you to change the workflow.</p>
+<figure><img src=/images/setup_blog/token_expiration.png width=60% height=60%>
+</figure>
+<p>Otherwise you will get an error with the push.</p>
+<p>Next, you will get to use the magic bar of buttons on github. Go on github to your repository and select the Actions button
+<figure><img src=/images/setup_blog/bar_with_buttons.png width=60% height=60%>
+</figure>
+</p>
+<p>You should now see a window, that looks more or less like that:
+<figure><img src=/images/setup_blog/workflows.png width=60% height=60%>
+</figure>
+</p>
+<p>You can click on the commit name, then click on deploy.
+<figure><img src=/images/setup_blog/board_to_deploy.png width=60% height=60%>
+</figure>
+</p>
+<p>You should now see, that you have a new branch in your repository called <code>gh-pages</code>. In the next step you neef to change the base url, where your blog should be hosted. You need to add this in your <code>config.toml</code> file. To find the base url you need to go to <code>https://github.com/&lt;YOUR USERNAME>/&lt;YOUR REPO NAME>/settings/pages</code>.</p>
 </div>
 </article>
 </div>
