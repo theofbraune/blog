@@ -1,23 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://theofbraune.github.io/de/sitemap.xml</loc>
-    
-      <lastmod>2021-12-21T11:31:19+01:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://theofbraune.github.io/en/sitemap.xml</loc>
-    
-      <lastmod>2022-01-03T17:10:32+01:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://theofbraune.github.io/fr/sitemap.xml</loc>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://theofbraune.github.io/posts/evaluation_locomotion/</loc>
+    <lastmod>2022-02-21T18:27:13+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/</loc>
+    <lastmod>2022-02-21T18:27:13+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/</loc>
+    <lastmod>2022-02-21T18:27:13+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/tags/programming/</loc>
+    <lastmod>2022-02-21T18:04:26+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/tags/</loc>
+    <lastmod>2022-02-21T18:04:26+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/unity_setup/</loc>
+    <lastmod>2022-02-21T18:04:26+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/tags/virtual-reality/</loc>
+    <lastmod>2022-02-21T18:04:26+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/roll_a_ball/</loc>
+    <lastmod>2022-02-21T18:03:18+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/implementation_locom/</loc>
+    <lastmod>2022-01-31T14:29:19+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/locomotion_in_vr/</loc>
+    <lastmod>2022-01-03T17:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/ultimate_display/</loc>
+    <lastmod>2021-12-21T18:14:13+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/tags/ethics/</loc>
+    <lastmod>2021-12-21T18:09:53+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/dystopian_mixed_reality/</loc>
+    <lastmod>2021-12-21T18:09:53+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/posts/blog-setup/</loc>
+    <lastmod>2021-12-21T11:31:19+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/tags/web-development/</loc>
+    <lastmod>2021-12-21T11:31:19+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/tags/about/</loc>
+    <lastmod>2021-12-08T12:34:16+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/about/about_me/</loc>
+    <lastmod>2021-12-08T12:34:16+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/about/</loc>
+    <lastmod>2021-12-08T12:34:16+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/categories/</loc>
+  </url>
+</urlset>

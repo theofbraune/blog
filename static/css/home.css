@@ -15,7 +15,7 @@ img {
 .page-wrapper {
     display:flex;
     min-height: 100vh;
-    background-image: url(/images/cloth-ge9014807f_1280.jpg);
+    background-image: url(../images/cloth-ge9014807f_1280.jpg);
     background-size: cover;
     justify-content: center;
     align-items: center;

@@ -2,23 +2,11 @@ baseURL = 'https://theofbraune.github.io/'
 DefaultContentLanguage = "en"
 title = 'Maths of Glory'
 defaultContentLanguageInSubdir = true
+relativeURLs = true
 
-
-paginate =4
+paginate =8
 
 [params]
 dateFormat = "Jan 2, 2006, 3:04PM"
 
-[languages]
-    [languages.en]
-        title = 'Maths of Glory'
-        contentDir = "content/en"
-        languageName= "English"
-    [languages.de]
-        title = 'Maths of Glory'
-        contentDir = "content/de"
-        languageName="German"
-    [languages.fr]
-        title = 'Maths de la Gloire'
-        contentDir = "content/fr"
-        languageName="French"
+
