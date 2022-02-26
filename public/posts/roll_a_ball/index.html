@@ -37,27 +37,26 @@
     </header>
     <main class="site-main">
         <div class="container">
+            <article class="single-post">
+                <h1 class="entry-title mt-4 mb-4">Roll a ball - Tutorial for a first game in Unity</h1>
+                <div class="post-meta mb-2">
+                    <span class="post-author">Posted by: Theo
+                    </span>
             
-<article class="single-post">
-    <h1 class="entry-title mt-4 mb-4">Roll a ball - Tutorial for a first game in Unity</h1>
-    <div class="post-meta mb-2">
-        <span class="post-author">Posted by: Theo
-        </span>
-
-        <span class="post-date">
-            <time>Feb 21, 2022, 6:03PM</time>
-        </span>
-
-        <span class="post-tags">
+                    <span class="post-date">
+                        <time>Feb 21, 2022, 6:03PM</time>
+                    </span>
             
-                <a href="https://theofbraune.github.io/tags/virtual-reality/">virtual reality</a>
-            
-                <a href="https://theofbraune.github.io/tags/programming/">programming</a>
-            
-        </span>
-    </div>
-    
-    <div class="entry-content"><p>The aim of this article is to guide you through the process of creating your first game in unity. In order to do this start by your Unity Hub, click on <em>new project</em> and select for this tutorial 3D-Core. Give the project your favorite name and location.
+                    <span class="post-tags">
+                        
+                            <a href="https://theofbraune.github.io/tags/virtual-reality/">virtual reality</a>
+                        
+                            <a href="https://theofbraune.github.io/tags/programming/">programming</a>
+                        
+                    </span>
+                </div>
+                
+                <div class="entry-content"><p>The aim of this article is to guide you through the process of creating your first game in unity. In order to do this start by your Unity Hub, click on <em>new project</em> and select for this tutorial 3D-Core. Give the project your favorite name and location.
 <figure><img src="../../images/rollaball/unity_hub_start.PNG" width="50%" height="50%"/>
 </figure>
 
@@ -235,9 +234,8 @@ Then to write text on it, we need to create a TextMeshProUGUI object and link it
 
 </code></pre><p>This directly includes a condition when to end the game. In my case, I added 15 PickUp Objects, thus if there are 15 objects collected. In order to have a message appearing, I&rsquo;ll make the counter text disappear and activate the winTextObject. This is a public object, that I declared in the head of the class. On this game object I placed a big text &ldquo;You Win! &ldquo;. By default it is disabled, but if the 15 collectibles are hit, it will appear and the game ends.</p>
 </div>
-
-</article>
-
+            
+            </article>
         </div>
         
     </main>
@@ -253,3 +251,5 @@ Then to write text on it, we need to create a TextMeshProUGUI object and link it
     <script src="../../js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
