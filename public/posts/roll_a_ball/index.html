@@ -65,21 +65,82 @@ Now you should see the unity editor. In order to get started, select <em>Assets/
 <figure><img src="../../images/rollaball/Create_scene.PNG" width="30%" height="30%"/>
 </figure>
 In the assets tab of the editor you should now see an icon <em>new scene</em>. Double click on it. In the hierarchy tab of the editor, there should be your newly created scene now that we can modify. You can rename the scene, it will be more professional and for a larger project with multiple scenes it is crucial to not lose the orientation.</p>
-<p>To fill the scene with the content we need, let&rsquo;s create a ground plate.</p>
-<p>If you want to change the position of the plane, you can either select one of the orientation checkboxes on the top (follow my arrow) and then drag the object in the scene, or you could as well change the parameters directly on the right in the object inspector of your plane. For example you can change the name parameter to <em>ground</em>.</p>
+<p>To fill the scene with the content we need, let&rsquo;s create a ground plate.
+<figure><img src="../../images/rollaball/create_plane.PNG" width="30%" height="30%"/>
+</figure>
+
+If you want to change the position of the plane, you can either select one of the orientation checkboxes on the top (follow my arrow) and then drag the object in the scene, or you could as well change the parameters directly on the right in the object inspector of your plane. For example you can change the name parameter to <em>ground</em>.
+<figure><img src="../../images/rollaball/plane-scene.png" width="80%" height="80%"/>
+</figure>
+</p>
 <p>Further if you select the check boxes on the top, you can play around with the scale or rotation parameters.</p>
-<p>A priori your plane has some arbitrary position, but as the plane will be the maon object in our game, we should place it into the origin of the world space. In order to that, click on the three dots in the Transform tab and select <em>reset</em>. If you want to modify for example your light source, make sure, that you unlock the inspector. It can be useful later to lock your object, when you click around and click on another object, that would be the one in the inspector. This can be annoying.</p>
-<p>Now in order to make our objects look different, lets create different materials, that we will assign to the different instances in our game such as the ball, the plane, the pickup elements etc. Click on the + in your project tab and select the <em>material</em>. In the asset section, there should be a new element, the material. In the asset section click on the material and then change in the inspector the properties, such as color, metallic or the smoothness. Now as we have the material we want to assign it to the ground plate. To do that click-hold in the asset section the material and drag it in the scene view onto the object you want to modify. If you want to change the material, go to the inspector of the ground plane, select <em>Mesh Renderer/Materials</em>.</p>
-<p>Now as we have the play ground, we need someone to play on it. In our case, we will take for this a sphere. So to create a player object. So again create a 3D-object, but this time take a sphere, place it at $(0,0,0)$. To do that click on the three dots next to the transform, select reset. You will realize, that your ball is located inside the plane now, so depending on the radius you wanna have, move it up by this margin in y-direction. As this sphere will be the object moved by the player, one should give it a useful name such as <em>player</em>.</p>
+<p>A priori your plane has some arbitrary position, but as the plane will be the maon object in our game, we should place it into the origin of the world space. In order to that, click on the three dots in the Transform tab and select <em>reset</em>.
+<figure><img src="../../images/rollaball/reset_plane.PNG" width="40%" height="40%"/>
+</figure>
+
+If you want to modify for example your light source, make sure, that you unlock the inspector. It can be useful later to lock your object, when you click around and click on another object, that would be the one in the inspector. This can be annoying.</p>
+<p>Now in order to make our objects look different, lets create different materials, that we will assign to the different instances in our game such as the ball, the plane, the pickup elements etc. Click on the + in your project tab and select the <em>material</em>.
+<figure><img src="../../images/rollaball/create-cs-script.PNG" width="30%" height="30%"/>
+</figure>
+
+In the asset section, there should be a new element, the material. In the asset section click on the material and then change in the inspector the properties, such as color, metallic or the smoothness.</p>
+<p>Now as we have the material we want to assign it to the ground plate.
+<figure><img src="../../images/rollaball/material_to_plane.PNG" width="50%" height="50%"/>
+</figure>
+
+To do that click-hold in the asset section the material and drag it in the scene view onto the object you want to modify. If you want to change the material, go to the inspector of the ground plane, select <em>Mesh Renderer/Materials</em>.
+<figure><img src="../../images/rollaball/change_material.PNG" width="30%" height="30%"/>
+</figure>
+</p>
+<p>Now as we have the play ground, we need someone to play on it. In our case, we will take for this a sphere. So to create a player object. So again create a 3D-object, but this time take a sphere, place it at $$(0,0,0)$$. To do that click on the three dots next to the transform, select reset.
+<figure><img src="../../images/rollaball/reset_plane.PNG" width="40%" height="40%"/>
+</figure>
+
+You will realize, that your ball is located inside the plane now, so depending on the radius you wanna have, move it up by this margin in y-direction.
+<figure><img src="../../images/rollaball/initial_sphere.PNG" width="70%" height="70%"/>
+</figure>
+
+As this sphere will be the object moved by the player, one should give it a useful name such as <em>player</em>.</p>
 <p>In order to control the components of the scene, such as the player, we can either fixed change the parameters in the insepector, but equivalently, we can also manipulate them within a C# script. A script can be considered as a component of a game object in order to control it. We will later see how one can do this in detail.
-Here in this particular game we want, that the ball rolls on the ground, can hit a wall and bounces back and does not fly into space. The ball should roll, so we want some rigid-body motion. To do that, click in the hierarchy on <em>Player</em> (or whatever name you gave to your sphere), then go to the inspector and click on <em>Add component</em></p>
+Here in this particular game we want, that the ball rolls on the ground, can hit a wall and bounces back and does not fly into space. The ball should roll, so we want some rigid-body motion. To do that, click in the hierarchy on <em>Player</em> (or whatever name you gave to your sphere), then go to the inspector and click on <em>Add component</em>
+<figure><img src="../../images/rollaball/select-rigid-body.PNG" width="50%" height="50%"/>
+</figure>
+</p>
 <p>Search for <em>rigidbody</em>, then you should see in the inspector the physical components such as angular drag, mass etc.
-We want to control the game with our keyboard, so we need to use somehow the keyboard as an input device. In other cases it could be good to use a joystick as a device or as we will later see an Oculus quest. We will need the <em>Input package</em>. To get the package go to <em>Window</em> and select the Package Manager. You might see only a few packages, to show all, select in the top left corner <em>Packages: Unity Registry</em> and search for <em>Input Systems</em>. This package will enable to use the information whether a key is pressed in our game. But if we would write this game for example for Playstation we could as well use their game pad for the input.
+We want to control the game with our keyboard, so we need to use somehow the keyboard as an input device. In other cases it could be good to use a joystick as a device or as we will later see an Oculus quest. We will need the <em>Input package</em>. To get the package go to <em>Window</em> and select the Package Manager.
+<figure><img src="../../images/rollaball/package-manager.PNG" width="70%" height="70%"/>
+</figure>
+
+You might see only a few packages, to show all, select in the top left corner <em>Packages: Unity Registry</em> and search for <em>Input Systems</em>.
+<figure><img src="../../images/rollaball/input-system.PNG" width="70%" height="70%"/>
+</figure>
+
+This package will enable to use the information whether a key is pressed in our game. But if we would write this game for example for Playstation we could as well use their game pad for the input.
 Click on install, after some time you might see a window, that asks whether you wanna use the systems backend. Select yes, after that, depending whether you have it installed already unity will restart itself.
 If you are on windows, you need to check, whether your Architecture is <code>x86_64</code>. To do that go in the top bar to <em>File/Build Settings</em> and change if necessary the architecture.</p>
-<p>Now as the input package is installed, we want to assign it only to the ball. For now, we do not want for example move around the plane. Thus we select the ball and add as a component the <em>Player Input</em>. In the inspector tab click on <em>Create Actions</em>. Now you should be directed into the asset folder. In there create a folder called input and give save the file called for example <code>InputAction</code> in this folder. Then back in Unity check, whether you find the Input action file in the <em>Asset/Input</em> folder.
-Now your ball in the scene should have a flash, indicating to you, that it is linked to an InputAction.</p>
-<p>Now, this InputActions Asset will track whether we press a key on the keyboard. In order to use this information and modify our game, we need to fetch this information in a script and use it for manipulating our players position. To directly link the script to the player action, go to the player and add in the inspector the component <code>new script</code>. Give the scipt for example the name <code>PlayerController.cs</code>. This directly created a C# script linked to your ball. If you want to change the script in your favorite editor, in my case VS code, go to the upper bar, click edit and then select preferences. Then choose your favorite editor under <em>External Script Editor</em>.</p>
+<figure><img src="../../images/rollaball/build-settings.PNG" width="40%" height="40%"/>
+</figure>
+
+<p>Now as the input package is installed, we want to assign it only to the ball. For now, we do not want for example move around the plane. Thus we select the ball and add as a component the <em>Player Input</em>. In the inspector tab click on <em>Create Actions</em>. Now you should be directed into the asset folder.
+<figure><img src="../../images/rollaball/folder-with-input-action.PNG" width="50%" height="50%"/>
+</figure>
+
+In there create a folder called input and give save the file called for example <code>InputAction</code> in this folder. Then back in Unity check, whether you find the Input action file in the <em>Asset/Input</em> folder.
+<figure><img src="../../images/rollaball/input-action.PNG" width="40%" height="40%"/>
+</figure>
+
+Now your ball in the scene should have a flash, indicating to you, that it is linked to an InputAction.
+<figure><img src="../../images/rollaball/ball-with-inputaction.PNG" width="50%" height="50%"/>
+</figure>
+
+Now, this InputActions Asset will track whether we press a key on the keyboard. In order to use this information and modify our game, we need to fetch this information in a script and use it for manipulating our players position. To directly link the script to the player action, go to the player and add in the inspector the component <code>new script</code>. Give the scipt for example the name <code>PlayerController.cs</code>.</p>
+<p><figure><img src="../../images/rollaball/player-input.PNG" width="60%" height="60%"/>
+</figure>
+
+This directly created a C# script linked to your ball. If you want to change the script in your favorite editor, in my case VS code, go to the upper bar, click edit and then select preferences. Then choose your favorite editor under <em>External Script Editor</em>.</p>
+<figure><img src="../../images/rollaball/vs-code-editor.PNG" width="40%" height="40%"/>
+</figure>
+
 <p>If you open the <code>PlayerController.cs</code>, we need to link the script to the input action. Therefore add in the Script the line</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">using UnityEngine.inputSystem;
 </code></pre><p>Now in order to move the ball, we need to add forces to the rigid body. We want to link them to the input of the keyboard. Therefore add the function <code>OnMove</code></p>
@@ -111,7 +172,22 @@ Now your ball in the scene should have a flash, indicating to you, that it is li
         transform.position = player.transform.position + offset;   
     }
 </code></pre><p>Next we need to add some walls, such that the ball has a limit and does not fall down the plane. Since the ball has an included collider, it completely sufficed to add walls to the ground, that are sufficiently high. Here you see, that it is useful to use the provided unity tools, because like that, we have directly the acceleration and bouncing off included, it will be a lot easier.</p>
-<p>To do this add walls to your scene and give them a certain height, such that you ball will not bounce. I gave them a black color, such that the set up reminds a bit of a billard table. Next you can add some pick-up objects to the play area. As I write this game in France, it is clear, that some french flavour is needed. Therefore I went to the unity Asset store, to get some Croissant. You can create your own asset prefab now. In order to do that, I added a game object, where I added three planes, gave them the french colors and placed a croissant on top. The advantage is now, that the prefab like that can be scaled as one entity. We want to move the ball around, and if the ball hits the pickup, we want that the pickup dissapears and some score increases. If all pick up objects are collected you win and the game is over. Therefore in your script <code>PlayerController.cs</code> add a variable <code>    private int countPickup;</code></p>
+<figure><img src="../../images/rollaball/custum_pickups.PNG" width="40%" height="40%"/>
+</figure>
+
+<p>To do this add walls to your scene and give them a certain height, such that you ball will not bounce. I gave them a black color, such that the set up reminds a bit of a billard table. Next you can add some pick-up objects to the play area. As I write this game in France, it is clear, that some french flavour is needed. Therefore I went to the unity Asset store, to get some Croissant.</p>
+<p><figure><img src="../../images/rollaball/croissant-asset.PNG" width="40%" height="40%"/>
+</figure>
+
+You can create your own asset prefab now. In order to do that, I added a game object, where I added three planes, gave them the french colors and placed a croissant on top.</p>
+<p><figure><img src="../../images/rollaball/modify_croissant.PNG" width="60%" height="60%"/>
+</figure>
+
+The advantage is now, that the prefab like that can be scaled as one entity.</p>
+<p><figure><img src="../../images/rollaball/add-tag.PNG" width="30%" height="30%"/>
+</figure>
+
+We want to move the ball around, and if the ball hits the pickup, we want that the pickup dissapears and some score increases. If all pick up objects are collected you win and the game is over. Therefore in your script <code>PlayerController.cs</code> add a variable <code>    private int countPickup;</code></p>
 <p>in the head of your file. Now you can check for each frame, whether your ball collides with a pick-up and in if so, increase the <code>countPickup</code>. One first idea how to do this could be to add a funcion of the form</p>
 <pre tabindex="0"><code class="language-code" data-lang="code"> private void OnTriggerEnter(Collider other)
     {
@@ -121,11 +197,30 @@ Now your ball in the scene should have a flash, indicating to you, that it is li
             SetCountText();
         
     }
-</code></pre><p>But this will create a problem, because also when the ball hits the ground or a wall, the object will disappear. To solve this issue, you can add a tag to your croissant and then check if the collision object is a croissant. In this case you will disable the croissant and increase the score.
-[INCLUDE PICTURE]</p>
-<p>Note that in order to use the unity collision detector, you need to add a rigidbody to your pickup, otherwise the collision fails. Note that you need to disable the tic use gravity. Furthermore the collider of the pickup needs to be a trigger, otherwise the ball will bounce off.</p>
-<p>Now place some pickup, but remember how many ;). [ADD PICTURE]</p>
-<p>In order to display some text on the screen use a canvas object, declare in your script a public variable of the type <code>    public TextMeshProUGUI countText;</code>
+</code></pre><p>But this will create a problem, because also when the ball hits the ground or a wall, the object will disappear. To solve this issue, you can add a tag to your croissant and then check if the collision object is a croissant. In this case you will disable the croissant and increase the score.</p>
+<p><figure><img src="../../images/rollaball/add-tag-2.PNG" width="40%" height="40%"/>
+</figure>
+
+You should see a menu like that:
+<figure><img src="../../images/rollaball/create-the-tag-pickup.PNG" width="40%" height="40%"/>
+</figure>
+
+Furthermore you need to add a collider to the prefab, but we do not want any physical interaction with the croissaint. It should not bounce off. As soon as it hits the croissant, the croissant should disappear. Therefore add the tick <em>is trigger</em>, then the collistion can be noticed and this information can be used in a script, but will not create any interaction.
+<figure><img src="../../images/rollaball/set-trigger-collider.PNG" width="40%" height="40%"/>
+</figure>
+
+Note that in order to use the unity collision detector, you need to add a rigidbody to your pickup, otherwise the collision fails. You need to disable the tic use gravity, otherwise the ball will fall through the plane. Nevertheless we want to move the ball, so we need it&rsquo;s kinematic properties, i.e use the tick <em>is kinematic</em>
+<figure><img src="../../images/rollaball/is-kinematic-prefab.PNG" width="40%" height="40%"/>
+</figure>
+</p>
+<p>Now place some pickup, but remember how many ;).
+<figure><img src="../../images/rollaball/creation-of-the-game.PNG" width="40%" height="40%"/>
+</figure>
+</p>
+<p>In order to display some text on the screen use a canvas object, declare in your script a public variable of the type <code>    public TextMeshProUGUI countText;</code></p>
+<p><figure><img src="../../images/rollaball/add_canvas.PNG" width="40%" height="40%"/>
+</figure>
+
 Then to write text on it, we need to create a TextMeshProUGUI object and link it to this public variable in your <code>PlayerController.cs</code>. Then in order to write your score there add a function in the main class of the PlayerController of the form</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">void SetCountText()
    {
@@ -150,7 +245,7 @@ Then to write text on it, we need to create a TextMeshProUGUI object and link it
     <footer id="site-footer" class="bg-dark text-white pb-4 pt-4">
         <div class="container">
             <div class="copyright text-center">
-                &copy;2021Maths of Glory
+                &copy;2022Maths of Glory
             </div>
         </div>
         

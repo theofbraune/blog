@@ -50,13 +50,13 @@ Too busy for cooking, sick of instand noodles. You mentioned your wish of what y
 
 You tried that cooking robot before, but it was a disappointment. But there is this new technology, where they put electrodes on your arms and then a computer programm can stimulate your muscles, such that you you can move your arms, hands and shoulders and you don't need to think conciously about it. With the help of your VR-Glasses the Robo-Cook will see, what he needs to do. This allows you to have cutted vegetables, heated plates. But as you are not conciously cooking, you can work with your VR-Glasses on your work in parallel too.
 
-[ADD IMAGE ]
 
 Probably one would explain you, that this could optimize your efficiency. But once you take a step back and picture yourself remotely controlled in the kitchen, while discussing in parallel focussed in a video call some stuff for your work, you should question a bit what the heck you are doing. From todays perspective, this might seem really strange, but Amazon managed to sell a listening microphone in your living room as something you really need. But probably good marketing could overcome this feeling of discomfort.
 
 But even if the discomfort is overcome, imagine this technology is being abused. You could create a remotely controlled killer for example. 
 Or in case that the automatic steering of your arms go wrong and damage is created. Who will take the legal liability? How could you prove, that the robot made a mistake and not you? Is it 100% your faut if you burn down a house, as you the arms were cooking for you.
 
-[ADD IMAGE]
 
 I think it is important to make a distingtion between the person being remotely controlled Teamviewer-Like by someone else and being completely remotely controlled by a computer, as in the cooking scenario. In this case, we can already speak of a real robot, as an artificial source. For this case, the Azimovs Laws of Robotics where introduced and are well applicable.
+
+But as I am writing this post, I find an application, that is actually not that far away from the described [scenario.](https://robbreport.com/gear/electronics/moley-robotics-robot-kitchen-uk-for-sale-1234590791/) So, we can be curious what we are going to expere in this direction in the next years. 

@@ -5,7 +5,16 @@
     <link>https://theofbraune.github.io/tags/virtual-reality/</link>
     <description>Recent content in virtual reality on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Feb 2022 18:04:26 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Feb 2022 18:27:13 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evaluation of the Ski-locomotion</title>
+      <link>https://theofbraune.github.io/posts/evaluation_locomotion/</link>
+      <pubDate>Mon, 21 Feb 2022 18:27:13 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/posts/evaluation_locomotion/</guid>
+      <description>In order to evaluate the locomotion technique, I conducted a series of tests with our course participants that were familiar with the usage of virtual reality techniques and other people, that have not used VR technology in any form before. I discovered a discrepancy in the ease of use for these two groups. The group non familiar with this technology needed more attempts to get familiar with the haptic and the general environment.</description>
+    </item>
+    
     <item>
       <title>Unity setup</title>
       <link>https://theofbraune.github.io/posts/unity_setup/</link>
@@ -32,8 +41,7 @@
       
       <guid>https://theofbraune.github.io/posts/implementation_locom/</guid>
       <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
-[INCLUDE PICTURE]
-In the first part of my implementation, I realized, that I can enter the ground. In order to prevent this, I first implemented a very simple locomotion with a joystick, where I take the x-value and associate it to the speed that the player will feel.</description>
+         Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
     </item>
     
     <item>

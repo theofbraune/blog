@@ -32,8 +32,7 @@
       
       <guid>https://theofbraune.github.io/posts/implementation_locom/</guid>
       <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
-[INCLUDE PICTURE]
-In the first part of my implementation, I realized, that I can enter the ground. In order to prevent this, I first implemented a very simple locomotion with a joystick, where I take the x-value and associate it to the speed that the player will feel.</description>
+         Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
     </item>
     
   </channel>
