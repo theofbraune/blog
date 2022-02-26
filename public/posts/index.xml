@@ -8,16 +8,16 @@
     <lastBuildDate>Mon, 21 Feb 2022 18:27:13 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evaluation of the Ski-locomotion</title>
-      <link>https://theofbraune.github.io/posts/evaluation_locomotion/index.html</link>
+      <link>https://theofbraune.github.io/posts/evaluation_locomotion/</link>
       <pubDate>Mon, 21 Feb 2022 18:27:13 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/evaluation_locomotion/index.html</guid>
+      <guid>https://theofbraune.github.io/posts/evaluation_locomotion/</guid>
       <description>In order to evaluate the locomotion technique, I conducted a series of tests with our course participants that were familiar with the usage of virtual reality techniques and other people, that have not used VR technology in any form before. I discovered a discrepancy in the ease of use for these two groups. The group non familiar with this technology needed more attempts to get familiar with the haptic and the general environment.</description>
     </item>
     
     <item>
       <title>Unity setup</title>
-      <link>https://theofbraune.github.io/posts/unity_setup/index.html</link>
+      <link>https://theofbraune.github.io/posts/unity_setup/</link>
       <pubDate>Mon, 21 Feb 2022 18:04:26 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/posts/unity_setup/</guid>
@@ -27,7 +27,7 @@
     
     <item>
       <title>Roll a ball - Tutorial for a first game in Unity</title>
-      <link>https://theofbraune.github.io/posts/roll_a_ball/index.html</link>
+      <link>https://theofbraune.github.io/posts/roll_a_ball/</link>
       <pubDate>Mon, 21 Feb 2022 18:03:18 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/posts/roll_a_ball/</guid>
@@ -36,7 +36,7 @@
     
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/posts/implementation_locom/index.html</link>
+      <link>https://theofbraune.github.io/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/posts/implementation_locom/</guid>
@@ -46,7 +46,7 @@
     
     <item>
       <title>Locomotion in virtual reality.</title>
-      <link>https://theofbraune.github.io/posts/locomotion_in_vr/index.html</link>
+      <link>https://theofbraune.github.io/posts/locomotion_in_vr/</link>
       <pubDate>Mon, 03 Jan 2022 17:10:32 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/posts/locomotion_in_vr/</guid>
@@ -57,7 +57,7 @@ The Alpine Way - Cross Country Skiing Suppose you are in the Alps and there is e
     
     <item>
       <title>Sutherlands vision of the Ultimate display and the Reality-Virtuality Continuum</title>
-      <link>https://theofbraune.github.io/posts/ultimate_display/index.html</link>
+      <link>https://theofbraune.github.io/posts/ultimate_display/</link>
       <pubDate>Tue, 21 Dec 2021 18:14:13 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/posts/ultimate_display/</guid>
@@ -67,7 +67,7 @@ In 1994 Paul Milgram published with a work, where he introduced the idea of a Re
     
     <item>
       <title>Mixed Reality and the Metaverse - A dystopian world?</title>
-      <link>https://theofbraune.github.io/posts/dystopian_mixed_reality/index.html</link>
+      <link>https://theofbraune.github.io/posts/dystopian_mixed_reality/</link>
       <pubDate>Tue, 21 Dec 2021 18:09:53 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/posts/dystopian_mixed_reality/</guid>
@@ -77,10 +77,10 @@ The &amp;ldquo;smart&amp;rdquo;-ensurance Imagine the following scenario. You ar
     
     <item>
       <title>Setting up a Webblog with Hugo</title>
-      <link>https://theofbraune.github.io/posts/blog-setup/index.html</link>
+      <link>https://theofbraune.github.io/posts/blog-setup/</link>
       <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/blog-setup/index.html</guid>
+      <guid>https://theofbraune.github.io/posts/blog-setup/</guid>
       <description>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&amp;rsquo;ll explain how you can easily setup your webblog with the static page generator hugo.To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.
  In the next step I created a new directory, where I created all the necessary files.</description>
     </item>
