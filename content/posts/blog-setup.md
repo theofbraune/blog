@@ -72,7 +72,7 @@ Lastly, we want to have a good looking landing page. All the .html files before 
 ## Deployment on Github
 
 First of all direct to the directory where your `config.toml` file is saved.
-The first thing you should do is to change the baseURL to `baseURL = 'https://<YOUR USERNAME>.github.io/'`
+The first thing you should do is to change the baseURL to `baseURL = 'https://<YOUR USERNAME>.github.io/'`. If you choose the path like this you will get good results in the localhost, but big big big frustration, when you try to host the project on github pages. You need to add the repository name to your path. Otherwise all your paths are messed up. If the github repository for your blog is called `blog`, the baseURL needs to be `baseURL = 'https://<YOUR USERNAME>.github.io/blog'`
 
 
 

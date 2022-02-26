@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>programming on Maths of Glory</title>
-    <link>https://theofbraune.github.io/tags/programming/</link>
+    <link>https://theofbraune.github.io/blog/tags/programming/</link>
     <description>Recent content in programming on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Feb 2022 18:04:26 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Feb 2022 18:04:26 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unity setup</title>
-      <link>https://theofbraune.github.io/posts/unity_setup/</link>
+      <link>https://theofbraune.github.io/blog/posts/unity_setup/</link>
       <pubDate>Mon, 21 Feb 2022 18:04:26 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/unity_setup/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/unity_setup/</guid>
       <description>First I went to the official unity page. This article assumes, that you have not installed unity yet. Thus you need to download the unity hub.
  In this article I am using Windows, but the steps for the other operating systems are not that different. Of course you need to accept the unity licence agreement. Then you will see a window for the install location of the unity hub.  As I understood it, you can consider the unity hub as something, that will load for you all the utils from the big unity machinery (like shaders, libraries&amp;hellip;) that you&amp;rsquo;ll need for a good game.</description>
     </item>
     
     <item>
       <title>Roll a ball - Tutorial for a first game in Unity</title>
-      <link>https://theofbraune.github.io/posts/roll_a_ball/</link>
+      <link>https://theofbraune.github.io/blog/posts/roll_a_ball/</link>
       <pubDate>Mon, 21 Feb 2022 18:03:18 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/roll_a_ball/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/roll_a_ball/</guid>
       <description>The aim of this article is to guide you through the process of creating your first game in unity. In order to do this start by your Unity Hub, click on new project and select for this tutorial 3D-Core. Give the project your favorite name and location.  Now you should see the unity editor. In order to get started, select Assets/Create/Scene.  In the assets tab of the editor you should now see an icon new scene.</description>
     </item>
     
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/posts/implementation_locom/</link>
+      <link>https://theofbraune.github.io/blog/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/implementation_locom/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
       <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
          Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
     </item>

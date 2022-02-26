@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>virtual reality on Maths of Glory</title>
-    <link>https://theofbraune.github.io/tags/virtual-reality/</link>
+    <link>https://theofbraune.github.io/blog/tags/virtual-reality/</link>
     <description>Recent content in virtual reality on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Feb 2022 18:27:13 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Feb 2022 18:27:13 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evaluation of the Ski-locomotion</title>
-      <link>https://theofbraune.github.io/posts/evaluation_locomotion/</link>
+      <link>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</link>
       <pubDate>Mon, 21 Feb 2022 18:27:13 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/evaluation_locomotion/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</guid>
       <description>In order to evaluate the locomotion technique, I conducted a series of tests with our course participants that were familiar with the usage of virtual reality techniques and other people, that have not used VR technology in any form before. I discovered a discrepancy in the ease of use for these two groups. The group non familiar with this technology needed more attempts to get familiar with the haptic and the general environment.</description>
     </item>
     
     <item>
       <title>Unity setup</title>
-      <link>https://theofbraune.github.io/posts/unity_setup/</link>
+      <link>https://theofbraune.github.io/blog/posts/unity_setup/</link>
       <pubDate>Mon, 21 Feb 2022 18:04:26 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/unity_setup/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/unity_setup/</guid>
       <description>First I went to the official unity page. This article assumes, that you have not installed unity yet. Thus you need to download the unity hub.
  In this article I am using Windows, but the steps for the other operating systems are not that different. Of course you need to accept the unity licence agreement. Then you will see a window for the install location of the unity hub.  As I understood it, you can consider the unity hub as something, that will load for you all the utils from the big unity machinery (like shaders, libraries&amp;hellip;) that you&amp;rsquo;ll need for a good game.</description>
     </item>
     
     <item>
       <title>Roll a ball - Tutorial for a first game in Unity</title>
-      <link>https://theofbraune.github.io/posts/roll_a_ball/</link>
+      <link>https://theofbraune.github.io/blog/posts/roll_a_ball/</link>
       <pubDate>Mon, 21 Feb 2022 18:03:18 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/roll_a_ball/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/roll_a_ball/</guid>
       <description>The aim of this article is to guide you through the process of creating your first game in unity. In order to do this start by your Unity Hub, click on new project and select for this tutorial 3D-Core. Give the project your favorite name and location.  Now you should see the unity editor. In order to get started, select Assets/Create/Scene.  In the assets tab of the editor you should now see an icon new scene.</description>
     </item>
     
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/posts/implementation_locom/</link>
+      <link>https://theofbraune.github.io/blog/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/implementation_locom/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
       <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
          Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
     </item>
     
     <item>
       <title>Locomotion in virtual reality.</title>
-      <link>https://theofbraune.github.io/posts/locomotion_in_vr/</link>
+      <link>https://theofbraune.github.io/blog/posts/locomotion_in_vr/</link>
       <pubDate>Mon, 03 Jan 2022 17:10:32 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/locomotion_in_vr/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/locomotion_in_vr/</guid>
       <description>In this post I will describe possibilities of locomotion in virtual reality.
 The Alpine Way - Cross Country Skiing Suppose you are in the Alps and there is enough snow to use your cross country skies, you can do your health a favor and do this wonderful sport.
          Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    To move forward you have two sticks whitch can help you to move forward, while skating on the snow.</description>
@@ -57,30 +57,30 @@ The Alpine Way - Cross Country Skiing Suppose you are in the Alps and there is e
     
     <item>
       <title>Sutherlands vision of the Ultimate display and the Reality-Virtuality Continuum</title>
-      <link>https://theofbraune.github.io/posts/ultimate_display/</link>
+      <link>https://theofbraune.github.io/blog/posts/ultimate_display/</link>
       <pubDate>Tue, 21 Dec 2021 18:14:13 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/ultimate_display/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/ultimate_display/</guid>
       <description>Who knows whether we are not all the time already in some kind of ultimate display&amp;hellip;.
 In 1994 Paul Milgram published with a work, where he introduced the idea of a Reality-Virtuality Continuum. You can think of it in the following way: With the rise of technology, like smartphones or in general some Silicon Valley Hardware device, the line between what is reality and what is virtual becomes more and more unclear.</description>
     </item>
     
     <item>
       <title>Mixed Reality and the Metaverse - A dystopian world?</title>
-      <link>https://theofbraune.github.io/posts/dystopian_mixed_reality/</link>
+      <link>https://theofbraune.github.io/blog/posts/dystopian_mixed_reality/</link>
       <pubDate>Tue, 21 Dec 2021 18:09:53 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/dystopian_mixed_reality/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/dystopian_mixed_reality/</guid>
       <description>In the following I&amp;rsquo;ll describe two fictional scenarios, how mixed reality technology could be abused. Some other inspiration for that can be found here
 The &amp;ldquo;smart&amp;rdquo;-ensurance Imagine the following scenario. You are trapped in a YouTube loophole. You&amp;rsquo;ve seen all the Gordon Ramsay-Best-Of videos and the ad&amp;rsquo;s you see are all the same for hours. You watch for the fifth time the spot of this weird new and fictional Silicon Valley Company &amp;ldquo;Exosmart&amp;rdquo;.</description>
     </item>
     
     <item>
       <title>Setting up a Webblog with Hugo</title>
-      <link>https://theofbraune.github.io/posts/blog-setup/</link>
+      <link>https://theofbraune.github.io/blog/posts/blog-setup/</link>
       <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/blog-setup/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/blog-setup/</guid>
       <description>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&amp;rsquo;ll explain how you can easily setup your webblog with the static page generator hugo.To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.
  In the next step I created a new directory, where I created all the necessary files.</description>
     </item>

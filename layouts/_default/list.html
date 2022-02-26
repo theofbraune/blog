@@ -42,7 +42,7 @@
                 {{ range .Paginator.Pages}}
                 <article class="single-post border-bottom pb-4">
                     <h2 class="entry-title mt-4 mb-4">
-                        <a href="{{.Permalink}}index.html">'> {{.Title }}</a>
+                        <a href="{{.Permalink}}"> {{.Title }}</a>
                     </h2>
                     <div class="post-meta mb-4">
                         <span class="post-author">Posted by: {{.Params.author}}
@@ -52,7 +52,7 @@
                         </span>
                         <span class="post-tags">
                             {{ range (.GetTerms "tags")}}
-                                <a href="{{.Permalink}}index.html">{{ .LinkTitle}}</a>
+                                <a href="{{.Permalink}}">{{ .LinkTitle}}</a>
                             {{end}}
                         </span>
                     </div>

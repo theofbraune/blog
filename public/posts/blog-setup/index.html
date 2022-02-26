@@ -49,9 +49,9 @@
             
                     <span class="post-tags">
                         
-                            <a href="https://theofbraune.github.io/tags/virtual-reality/">virtual reality</a>
+                            <a href="https://theofbraune.github.io/blog/tags/virtual-reality/">virtual reality</a>
                         
-                            <a href="https://theofbraune.github.io/tags/web-development/">web development</a>
+                            <a href="https://theofbraune.github.io/blog/tags/web-development/">web development</a>
                         
                     </span>
                 </div>
@@ -103,7 +103,7 @@ In order to put the content from each site into the website, we see in the pictu
 <p>Lastly, we want to have a good looking landing page. All the .html files before need to be saven in the folder <code>layouts/_default</code>, the landing page only needs to be saven in the folder <code>layouts</code> and needs to be called <code>index.html</code>. So, have fun to choose your favorite layout, your fancy animations with javascript to design. I decided to keep it simple and to just choose a background image for the div, that is the main container, but that could be your wonderland for your front end skills.</p>
 <h2 id="deployment-on-github">Deployment on Github</h2>
 <p>First of all direct to the directory where your <code>config.toml</code> file is saved.
-The first thing you should do is to change the baseURL to <code>baseURL = 'https://&lt;YOUR USERNAME&gt;.github.io/'</code></p>
+The first thing you should do is to change the baseURL to <code>baseURL = 'https://&lt;YOUR USERNAME&gt;.github.io/'</code>. If you choose the path like this you will get good results in the localhost, but big big big frustration, when you try to host the project on github pages. You need to add the repository name to your path. Otherwise all your paths are messed up. If the github repository for your blog is called <code>blog</code>, the baseURL needs to be <code>baseURL = 'https://&lt;YOUR USERNAME&gt;.github.io/blog'</code></p>
 <p>First of all direct to the directory where your config.toml file is saved.</p>
 <p>In this directory, what could be called blog you should call git init. You now have locally on your machine some posts, and you need to add them to your git. Therefore you need to call to check in all the files in your git repository.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">&lt;Directory-of-your-blog&gt;$ git add .

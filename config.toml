@@ -1,8 +1,9 @@
-baseURL = 'https://theofbraune.github.io/'
+baseURL = 'https://theofbraune.github.io/blog'
 DefaultContentLanguage = "en"
 title = 'Maths of Glory'
 defaultContentLanguageInSubdir = true
 relativeURLs = true
+pathPrefix = 'blog'
 
 paginate =8
 

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>projects on Maths of Glory</title>
-    <link>https://theofbraune.github.io/tags/projects/</link>
+    <link>https://theofbraune.github.io/blog/tags/projects/</link>
     <description>Recent content in projects on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 31 Jan 2022 14:29:19 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/tags/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jan 2022 14:29:19 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/posts/implementation_locom/</link>
+      <link>https://theofbraune.github.io/blog/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
       
-      <guid>https://theofbraune.github.io/posts/implementation_locom/</guid>
+      <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
       <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
          Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
     </item>
