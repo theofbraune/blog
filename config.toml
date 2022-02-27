@@ -5,7 +5,7 @@ defaultContentLanguageInSubdir = true
 relativeURLs = true
 pathPrefix = 'blog'
 
-paginate =8
+paginate =10
 
 [params]
 dateFormat = "Jan 2, 2006, 3:04PM"
