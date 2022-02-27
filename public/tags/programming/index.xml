@@ -12,8 +12,9 @@
       <pubDate>Mon, 21 Feb 2022 18:04:26 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/blog/posts/unity_setup/</guid>
-      <description>First I went to the official unity page. This article assumes, that you have not installed unity yet. Thus you need to download the unity hub.
- In this article I am using Windows, but the steps for the other operating systems are not that different. Of course you need to accept the unity licence agreement. Then you will see a window for the install location of the unity hub.  As I understood it, you can consider the unity hub as something, that will load for you all the utils from the big unity machinery (like shaders, libraries&amp;hellip;) that you&amp;rsquo;ll need for a good game.</description>
+      <description>In this post I will describe how I installed and set up the Unity Hub and editor on my machine.
+First I went to the official unity page. This article assumes, that you have not installed unity yet. Thus you need to download the unity hub.
+ In this article I am using Windows, but the steps for the other operating systems are not that different. Of course you need to accept the unity licence agreement.</description>
     </item>
     
     <item>

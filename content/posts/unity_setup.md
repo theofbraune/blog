@@ -5,6 +5,8 @@ draft= false
 author = "Theo"
 tags = ["virtual reality","programming"]
 +++
+In this post I will describe how I installed and set up the Unity Hub and editor on my machine.
+
 
 First I went to the [official unity page](https://learn.unity.com/tutorial/create-your-first-unity-project). This article assumes, that you have not installed unity yet. Thus you need to download the [unity hub](https://unity.com/download). 
 

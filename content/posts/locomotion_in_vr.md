@@ -49,6 +49,8 @@ Oculus even developed a VR-Game for a downhill Ski Race, where you can orient wi
  [{{< figure src="/images/locomotion/alpine_ski_vr.png"   align="center" width="50%" height="50%" >}}](https://www.youtube.com/watch?v=ewGFD59Azc8) 
 
 
+The slides for this pitch, how an implementation can be achieved, can be found [here](https://1drv.ms/p/s!AiOj4yVSmxYLiKtChRf5H7S0oy7e1g?e=Y7i61l).
+
 ### The US Gemini Astronaut
 
 In the 60's during the space race between the United States and the Soviet Union both nations put a lot of effort into performing so called *EVA* aka *extravehicular activity* aka space walk. We want to pay attention how they managed/manage to move in space when classic walking is not an option. 
