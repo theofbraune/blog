@@ -50,7 +50,7 @@ Accuracy   |&nbsp;&nbsp;0.37&nbsp;&nbsp; 0.2&nbsp;&nbsp; 0.77&nbsp;&nbsp; 0.72|&
 Presence   |&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7|&nbsp;&nbsp;&nbsp;		6.4
 Sickness   |&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;		1.4
 
-But even with the flashing eye, the results for the cyber-sickness score were surprisingly good, because one would expect, as this is a technique with constant accelerating and braking, that it would create a lot of cyber-sickness. There are mainly two reasons for this. One reason is, that we are moving the head slightly when moving forwards. This reduces the conflict, that we are seeing the us moving forward although it is not. Furthermore the cubes in front if the player help a lot with the reduction of cybersickness, as they provide a fixed point.
+But even with the flashing eye, the results for the cyber-sickness score were surprisingly good, even though it is a technique with constant accelerating and braking. 
 
 Participant|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Average
 ----------|-----------------|------
@@ -64,7 +64,7 @@ Fun|&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;	6&nbsp;&nbsp;&nbsp
 
 
 
-We cannot see any proportional relation between the Fun and the question whether someone is slow.... So in a way, it is perfect from Meta's point of view. It is an application 100% in line for their new [Super-Bowl commercial](https://www.youtube.com/watch?v=LcmAlpIp3oM). Even if you are slow and unsuccessful, you can still feel good and have fun in the metaverse.
+We cannot see any proportional relation between the Fun and the question whether someone is slow.... So in a way, it is perfect from Meta's point of view. It is an application 100% in line for their [Super-Bowl commercial](https://www.youtube.com/watch?v=LcmAlpIp3oM). Even if you are slow and unsuccessful, you can still feel good and have fun in the metaverse.
 
 
 

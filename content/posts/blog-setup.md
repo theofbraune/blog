@@ -170,7 +170,7 @@ mkdir .github
 cd .github
 mkdir workflows
 ```
-Inside of the directory workflows create a file called gh-pages.yml. This file will be important, because it will allow to run the hugo methods in the github pages, i.e the pagination, the tagging will work online with the help of this file. You will need to paste the following in the gh-pages.yml file
+Inside of the directory workflows create a file called `gh-pages.yml`. This file will be important, because it will allow to run the hugo methods in the github pages, i.e the pagination, the tagging will work online with the help of this file. You will need to paste the following in the `gh-pages.yml` file
 ``` name: github pages
 
 on:
@@ -205,3 +205,11 @@ jobs:
           publish_dir: ./public
 ```
 This can be found as well in the hugo documentation. Next of course push this folders with this file to github. You need to make sure, that your access token allows you to change the workflow.
+
+Now all your content should be visible on github. Go to `Actions`
+{{< figure src="/images/setup_blog/github_directory.png"   width="60%" height="60%" >}}
+
+If you named the folder `workflows` correctly, you should see a page as follows
+{{< figure src="/images/setup_blog/build_workflow.png"   width="50%" height="50%" >}}
+with an orange dot instead of the green one and your personal commit message. Once this is all posted, you will see that there is a second branch, called `gh-pages`. There all the static html sites are located, now you should be able to see your blog under the url
+`'https://<YOUR USERNAME>.github.io/<YOUR REPONAME>'`
