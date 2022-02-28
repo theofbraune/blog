@@ -7,7 +7,8 @@ tags = ["virtual reality", "programming","projects"]
 +++
 
 
-In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
+In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.  I used the environment build by Wen-Jie Tseng, that he provided for our class under this [link](https://github.com/wenjietseng/VR-locomotion-parkour). This was my starting point, to modify the position of the OVRCamera Rig with its controllers, in order to move. My process in order to get there is described in this post.
+<br>
 
 | {{< figure src="/images/locomotion/langlauf.png"   width="40%" height="40%" >}} |
 |:--:|
