@@ -5,7 +5,17 @@
     <link>https://theofbraune.github.io/blog/tags/virtual-reality/</link>
     <description>Recent content in virtual reality on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 21 Feb 2022 18:27:13 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Feb 2022 11:18:11 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflection on the locomotion technique locomotion</title>
+      <link>https://theofbraune.github.io/blog/posts/reflection_locomotion/</link>
+      <pubDate>Mon, 28 Feb 2022 11:18:11 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/blog/posts/reflection_locomotion/</guid>
+      <description>In this post I will summarize the work on the virtual reality project and reflect a bit what I
+that it would create a lot of cyber-sickness. There are mainly two reasons for this. One reason is, that we are moving the head slightly when moving forwards. This reduces the conflict, that we are seeing the us moving forward although it is not. Furthermore the cubes in front if the player help a lot with the reduction of cybersickness, as they provide a fixed point.</description>
+    </item>
+    
     <item>
       <title>Evaluation of the Ski-locomotion</title>
       <link>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</link>
@@ -74,16 +84,6 @@ In 1994 Paul Milgram published with a work, where he introduced the idea of a Re
       <guid>https://theofbraune.github.io/blog/posts/dystopian_mixed_reality/</guid>
       <description>In the following I&amp;rsquo;ll describe two fictional scenarios, how mixed reality technology could be abused. Some other inspiration for that can be found here
 The &amp;ldquo;smart&amp;rdquo;-ensurance Imagine the following scenario. You are trapped in a YouTube loophole. You&amp;rsquo;ve seen all the Gordon Ramsay-Best-Of videos and the ad&amp;rsquo;s you see are all the same for hours. You watch for the fifth time the spot of this weird new and fictional Silicon Valley Company &amp;ldquo;Exosmart&amp;rdquo;.</description>
-    </item>
-    
-    <item>
-      <title>Setting up a Webblog with Hugo</title>
-      <link>https://theofbraune.github.io/blog/posts/blog-setup/</link>
-      <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
-      
-      <guid>https://theofbraune.github.io/blog/posts/blog-setup/</guid>
-      <description>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&amp;rsquo;ll explain how you can easily setup your webblog with the static page generator hugo.To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.
- In the next step I created a new directory, where I created all the necessary files.</description>
     </item>
     
   </channel>

@@ -3,7 +3,7 @@ title= "Setting up a Webblog with Hugo"
 date= 2021-12-21T11:31:19+01:00
 draft= false
 author = "Theo"
-tags = ["virtual reality", "web development"]
+tags = ["web development"]
 +++
 
 If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I'll explain how you can easily setup your webblog with the static page generator [hugo](https://gohugo.io/).<br>
@@ -67,14 +67,81 @@ We can fetch the information about the author, the date and the summary in order
 
 Lastly, we want to have a good looking landing page. All the .html files before need to be saven in the folder `layouts/_default`, the landing page only needs to be saven in the folder `layouts` and needs to be called `index.html`. So, have fun to choose your favorite layout, your fancy animations with javascript to design. I decided to keep it simple and to just choose a background image for the div, that is the main container, but that could be your wonderland for your front end skills.
 
+There are a few thinks that should be noted on the links for the pictures and the css stylesheets. For me the following happened during the process
+![server fail](/images/setup_blog/localhost_fail.gif)
+
+Credits to this gif go to @Programming Jokes. I do not really know why this is happening, but in the localhost all the links for the images and css sheets seem to work. Nevertheless when performing the page build with the call `hugo`, the links all do not work anymore. For images, this is relatively easy to fix. You just need to add the line `relativeURLs = true` in your `config.toml` file. This will create the right relative paths in the generated html pages from the markdown content. But this does not work for the css stylesheets. The problem is, that the html file `baseof.html` is the base for each post and each the list page of all written posts. The hugo generator does not change the html files in the layout, but merges them smartly. When we precise the location of the css stylesheet, we have in the header of `baseof.html` the following line `<link rel="stylesheet" href="../css/home.css">`, or whatever name you gave to your css sheet. The issue is now, that we have the paths `public/posts/index.html` for the overview page of all posts and for a single post `public/posts/blog-setup/index.html`, so the css link for the generated `blog-setup` page does not work, as we have to go up two directories to get to the css stylesheet. There are two ways to fix this.<br>
+I made use of both. For the first I changed the the files `layout/_default/list.html` and `layout/_default/single.html`. For the `single.html`, there was before a structure as follows
+```
+
+{{ define "main"}}
+
+  <article class="single-post">
+    [..]
+  </article>
+
+{{end}}
+```
+This would fetch the `baseof.html` and put the generated html in there. Instead I neglegted the `baseof.html` a bit and changed `single.html` to the following 
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    [...]
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    [...]
+</head>
+<body>
+<header id = "site-header">...
+</header>
+<main class="site-main">
+    <div class="container">
+        <article class="single-post">
+        [...]
+        </article>
+    </div>
+</main>
+
+```
+
+Similarly I changed the `list.html` to
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    [...]
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    [...]
+</head>
+<body>
+<header id = "site-header">...
+</header>
+<main class="site-main">
+    <div class="container">
+        <article class="post-list">
+        [...]
+        </article>
+    </div>
+</main>
+```
+
+Now both have the correct links to the css stylesheets and can be displayed nicely. 
+<br>
+
+A similar problem appeared for the overview pages for the different tags. There hugo also takes the `list.html` and iterates over all posts, that have for example the tag "virtual reality". But for each tag, the path to the overview page is `public/tags/<Your favorite tag>/index.html`, but the css directory can be found under `public/css/home.css`, hence one would need to go two directories up to read the css information. Compare this to the `list.html`. In order to overcome this, I just copied the css directory into `public/tags/css/`. Then the paths to the css directory work again.
+
+
 
 
 ## Deployment on Github
 
 First of all direct to the directory where your `config.toml` file is saved.
 The first thing you should do is to change the baseURL to `baseURL = 'https://<YOUR USERNAME>.github.io/'`. If you choose the path like this you will get good results in the localhost, but big big big frustration, when you try to host the project on github pages. You need to add the repository name to your path. Otherwise all your paths are messed up. If the github repository for your blog is called `blog`, the baseURL needs to be `baseURL = 'https://<YOUR USERNAME>.github.io/blog'`
-
-
 
 First of all direct to the directory where your config.toml file is saved.
 
