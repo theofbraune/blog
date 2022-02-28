@@ -174,7 +174,7 @@ The first thing you should do is to change the baseURL to <code>baseURL = 'https
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir .github
 cd .github
 mkdir workflows
-</code></pre></div><p>Inside of the directory workflows create a file called gh-pages.yml. This file will be important, because it will allow to run the hugo methods in the github pages, i.e the pagination, the tagging will work online with the help of this file. You will need to paste the following in the gh-pages.yml file</p>
+</code></pre></div><p>Inside of the directory workflows create a file called <code>gh-pages.yml</code>. This file will be important, because it will allow to run the hugo methods in the github pages, i.e the pagination, the tagging will work online with the help of this file. You will need to paste the following in the <code>gh-pages.yml</code> file</p>
 <pre tabindex="0"><code class="language-name:" data-lang="name:">
 on:
   push:
@@ -207,6 +207,16 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 </code></pre><p>This can be found as well in the hugo documentation. Next of course push this folders with this file to github. You need to make sure, that your access token allows you to change the workflow.</p>
+<p>Now all your content should be visible on github. Go to <code>Actions</code>
+<figure><img src="../../images/setup_blog/github_directory.png" width="60%" height="60%"/>
+</figure>
+</p>
+<p>If you named the folder <code>workflows</code> correctly, you should see a page as follows
+<figure><img src="../../images/setup_blog/build_workflow.png" width="50%" height="50%"/>
+</figure>
+
+with an orange dot instead of the green one and your personal commit message. Once this is all posted, you will see that there is a second branch, called <code>gh-pages</code>. There all the static html sites are located, now you should be able to see your blog under the url
+<code>'https://&lt;YOUR USERNAME&gt;.github.io/&lt;YOUR REPONAME&gt;'</code></p>
 </div>
             </article>
         </div>

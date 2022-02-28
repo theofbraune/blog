@@ -305,7 +305,7 @@ During the implementation there was big problem, that only one eye was rendering
 
 
 The files for this project can be found under this [github link](https://github.com/theofbraune/VR-Ski-Locomotion). There you will also find the .apk file, that you can install on the Oculus Quest via Sidequest.
-Furthermore a video how it looks to play the game from the inside and the outside can be found [here](https://1drv.ms/v/s!AiOj4yVSmxYLiOIErW2k7anSBvwxHw?e=FTxUB5). The slides for the presentation can be found in the github or on this [link](https://1drv.ms/p/s!AiOj4yVSmxYLiOQTsH0_xYXo-_oPLg?e=VJJzQV)
+Furthermore a video how it looks to play the game from the inside and the outside can be found [here](https://1drv.ms/v/s!AiOj4yVSmxYLiOIErW2k7anSBvwxHw?e=FTxUB5). 
 
 
 
