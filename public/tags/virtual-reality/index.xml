@@ -51,8 +51,7 @@ First I went to the official unity page. This article assumes, that you have not
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
-      <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
-         Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
+      <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push. I used the environment build by Wen-Jie Tseng, that he provided for our class under this link. This was my starting point, to modify the position of the OVRCamera Rig with its controllers, in order to move.</description>
     </item>
     
     <item>

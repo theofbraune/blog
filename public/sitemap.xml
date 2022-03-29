@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://theofbraune.github.io/blog/tags/fabrication/</loc>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/posts/3d-printing/</loc>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
+  </url><url>
     <loc>https://theofbraune.github.io/blog/</loc>
-    <lastmod>2022-02-28T11:18:11+01:00</lastmod>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/posts/</loc>
-    <lastmod>2022-02-28T11:18:11+01:00</lastmod>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/tags/programming/</loc>
-    <lastmod>2022-02-28T11:18:11+01:00</lastmod>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/reflection_locomotion/</loc>
-    <lastmod>2022-02-28T11:18:11+01:00</lastmod>
+    <loc>https://theofbraune.github.io/blog/tags/projects/</loc>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/tags/</loc>
+    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/posts/reflection_locomotion/</loc>
     <lastmod>2022-02-28T11:18:11+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/tags/virtual-reality/</loc>
@@ -30,9 +39,6 @@
     <lastmod>2022-02-21T18:03:18+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/posts/implementation_locom/</loc>
-    <lastmod>2022-01-31T14:29:19+01:00</lastmod>
-  </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/projects/</loc>
     <lastmod>2022-01-31T14:29:19+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/posts/locomotion_in_vr/</loc>

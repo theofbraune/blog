@@ -9,5 +9,5 @@ tags = ["about"]
 
 Welcome to my webblog.<br>  My Name is Theo Braune and here I will publish blogposts related to technology and Science.
 
-Currently I am doing my Master at the Institut Polytechnique in Computer Science/Math.
+Currently I am in doing a Master at the Institut Polytechnique in Computer Science and a Master of Mathematics at the TU Berlin. I am interested in differential geometry, geometry processing and the simulation of physical systems. 
 

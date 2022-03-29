@@ -224,15 +224,14 @@ Note that in order to use the unity collision detector, you need to add a rigidb
 Then to write text on it, we need to create a TextMeshProUGUI object and link it to this public variable in your <code>PlayerController.cs</code>. Then in order to write your score there add a function in the main class of the PlayerController of the form</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">void SetCountText()
    {
-       countText.text = &quot;Count: &quot;+countPickup.ToString();
+       countText.text = &#34;Count: &#34;+countPickup.ToString();
 
        if (countPickup &gt;=15)
        {
-           countText.text = &quot; &quot;;
+           countText.text = &#34; &#34;;
            winTextObject.SetActive(true);
        }
    }
-
 </code></pre><p>This directly includes a condition when to end the game. In my case, I added 15 PickUp Objects, thus if there are 15 objects collected. In order to have a message appearing, I&rsquo;ll make the counter text disappear and activate the winTextObject. This is a public object, that I declared in the head of the class. On this game object I placed a big text &ldquo;You Win! &ldquo;. By default it is disabled, but if the 15 collectibles are hit, it will appear and the game ends.</p>
 </div>
             </article>

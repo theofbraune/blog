@@ -5,7 +5,17 @@
     <link>https://theofbraune.github.io/blog/</link>
     <description>Recent content on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 28 Feb 2022 11:18:11 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Mar 2022 18:00:10 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Make it Stand - Balancing 3D-Shapes</title>
+      <link>https://theofbraune.github.io/blog/posts/3d-printing/</link>
+      <pubDate>Tue, 22 Mar 2022 18:00:10 +0100</pubDate>
+      
+      <guid>https://theofbraune.github.io/blog/posts/3d-printing/</guid>
+      <description>Through the evolution of 3D-printers, the it has become more and more easy to produce prototypes of 3 dimensional shapes. In this project we developed our first software to produce shapes and printable objects for a 3D-printer. This project was part as a final project of the École Polytechnique course &amp;ldquo;X-INF 573 Digital Representations and Analysis of Shapes&amp;rdquo;.
+The aim of this project was to give an input shape, define an angle an orientation axis and then to carve out and deform the shape, such that the new modified shape can stand in this desired position.</description>
+    </item>
+    
     <item>
       <title>Reflection on the locomotion technique</title>
       <link>https://theofbraune.github.io/blog/posts/reflection_locomotion/</link>
@@ -51,8 +61,7 @@ First I went to the official unity page. This article assumes, that you have not
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
-      <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.
-         Image Credits - https://www.youtube.com/watch?v=WaMTbWNVRko    In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.</description>
+      <description>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push. I used the environment build by Wen-Jie Tseng, that he provided for our class under this link. This was my starting point, to modify the position of the OVRCamera Rig with its controllers, in order to move.</description>
     </item>
     
     <item>
@@ -103,7 +112,7 @@ The &amp;ldquo;smart&amp;rdquo;-ensurance Imagine the following scenario. You ar
       
       <guid>https://theofbraune.github.io/blog/about/about_me/</guid>
       <description>Welcome to my webblog.My Name is Theo Braune and here I will publish blogposts related to technology and Science.
-Currently I am doing my Master at the Institut Polytechnique in Computer Science/Math.</description>
+Currently I am in doing a Master at the Institut Polytechnique in Computer Science and a Master of Mathematics at the TU Berlin. I am interested in differential geometry, geometry processing and the simulation of physical systems.</description>
     </item>
     
   </channel>

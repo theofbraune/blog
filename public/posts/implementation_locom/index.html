@@ -59,7 +59,8 @@
                         
                     </span>
                 </div>
-                <div class="entry-content"><p>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.</p>
+                <div class="entry-content"><p>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.  I used the environment build by Wen-Jie Tseng, that he provided for our class under this <a href="https://github.com/wenjietseng/VR-locomotion-parkour">link</a>. This was my starting point, to modify the position of the OVRCamera Rig with its controllers, in order to move. My process in order to get there is described in this post.
+<!-- raw HTML omitted --></p>
 <table>
 <thead>
 <tr>
@@ -225,13 +226,13 @@ Now, we additionally need to add a box collider to the Controllers/Anchors. Make
     [...]
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(&quot;cube_left_up&quot;))
+        if (other.CompareTag(&#34;cube_left_up&#34;))
         {
             in_left_up = true;
             
 
         }
-        else if (other.CompareTag(&quot;cube_left_down&quot;))
+        else if (other.CompareTag(&#34;cube_left_down&#34;))
         {
             
             in_left_down = true;
@@ -239,12 +240,12 @@ Now, we additionally need to add a box collider to the Controllers/Anchors. Make
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(&quot;cube_left_up&quot;))
+        if (other.CompareTag(&#34;cube_left_up&#34;))
         {
             in_left_up = false;
 
         }
-        else if (other.CompareTag(&quot;cube_left_down&quot;))
+        else if (other.CompareTag(&#34;cube_left_down&#34;))
         {
             in_left_down = false;
         }
@@ -292,8 +293,6 @@ I just use the value of the right <code>PrimaryIndexTrigger</code> and add a lar
             rbdy.drag = 2 * brake;
         }
     }
-
-
 </code></pre><p>From now on, I played a bit and modified the application a bit more. I added for example 2 ski rigs to the hands.
 <figure><img src="../../images/implementation_loco/create-cylinder-children.PNG" width="30%" height="30%"/>
 </figure>
