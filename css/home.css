@@ -54,3 +54,71 @@ img {
     padding: 1rem;
     
 }
+
+.content-box{
+
+    transition: box-shadow .3s;
+    width: 100%;
+    height: 12rem;
+    background-color: rgb(243, 235, 235);
+    border-radius: 20px;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+    
+    
+
+}
+
+.content-box:hover {
+    box-shadow: 0 0 25px rgb(5, 1, 22); 
+}
+
+
+
+.picture1{
+    width:9rem; /*width of your image*/
+   height:10rem; /*height of your image*/
+   background-image:url('../images/project_teaser/vr_application.png');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+
+.picture2{
+    width:8rem; /*width of your image*/
+   height:7.5rem; /*height of your image*/
+   background-image:url('../images/project_teaser/3d_printer_working.jpg');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+.picture3{
+    width:8rem; /*width of your image*/
+   height:6rem; /*height of your image*/
+   margin-top:25px;
+   background-image:url('../images/project_teaser/heart_rate.jpg');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+.project-text{
+    padding-top: 1em;
+}
+
+.clickable{
+    height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;     
+  z-index: 1;
+}
