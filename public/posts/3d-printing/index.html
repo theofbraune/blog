@@ -7,7 +7,16 @@
     <title>Make it Stand - Balancing Shapes for 3D-printing</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/home.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+      </script>
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
 </head>
 <body>
 
@@ -30,7 +39,7 @@
                     <a class="nav-link" href="../../posts/index.html">Posts</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../tags/projects/index.html">Projects</a>
+                    <a class="nav-link" href="../../custum/projects/index.html">Projects</a>
                   </li>
                 </ul>
               </div>

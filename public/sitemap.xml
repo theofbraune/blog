@@ -2,25 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://theofbraune.github.io/blog/tags/computer-vision/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/posts/heart_rate_measurement/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/posts/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/tags/programming/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/tags/projects/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
+    <loc>https://theofbraune.github.io/blog/tags/</loc>
+    <lastmod>2022-03-30T13:15:57+02:00</lastmod>
+  </url><url>
     <loc>https://theofbraune.github.io/blog/tags/fabrication/</loc>
     <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/posts/3d-printing/</loc>
-    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
-  </url><url>
-    <loc>https://theofbraune.github.io/blog/</loc>
-    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
-  </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/</loc>
-    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
-  </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/programming/</loc>
-    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
-  </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/projects/</loc>
-    <lastmod>2022-03-22T18:00:10+01:00</lastmod>
-  </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/</loc>
     <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
     <loc>https://theofbraune.github.io/blog/posts/reflection_locomotion/</loc>
