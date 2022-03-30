@@ -1,5 +1,5 @@
 +++
-title= "Make it Stand - Balancing 3D-Shapes"
+title= "Make it Stand - Balancing Shapes for 3D-printing"
 date= 2022-03-22T18:00:10+01:00
 draft= false
 author = "Theo and Jingyi"
