@@ -1,0 +1,325 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Kumbh Sans", sans-serif;
+    
+}
+body{
+    background-color: #C0C0C0; 
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width:100vw;
+    height:100vh;
+    display:grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 80px 80px 1fr 100px;
+    gap: 15px;
+    padding: 15px;   
+}
+
+.navbar{
+    background: #131313;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position:sticky;
+    top: 0;
+    z-index: 999;
+    border-radius: 10px;
+    
+}
+
+.navbar__container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+#navbar__logo{
+    background-color: greenyellow;
+    background-size: 100%;
+    font-family: 'Roboto Mono', monospace;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2.5rem;
+}
+
+.navbar__menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+.navbar__item{
+    height: 80px;
+}
+.navbar__links{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+
+}
+.navbar__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    height: 100%;
+
+}
+
+.button_login{
+    color:beige;
+    display: flex;
+    justify-content: center;
+    text-decoration:none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    align-items: center;
+    border-radius: 5px;
+    background:#f77762;
+    color: white;
+}
+
+.button_login:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.navbar__links:hover{
+    color:#f77062;
+    transition: all 0.3s ease; 
+}
+
+.sidebar__container{
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    grid-row-start: 2;
+    grid-row-end: 4;
+
+    border: 1px solid #000000;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+.sidebar__stats{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+    text-align: center;
+    height: 100%;
+}
+.sidebar__color_select{
+    width:100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.sidebar__wrap{
+    border: 1px solid #000000;
+    border-radius: 10px;
+    display: flex;
+    align-items: space-between;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.color__selector{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    
+}
+.arrowBtn{
+    font-size: 2rem;
+}
+
+.button_type_selector{
+    display: flex;
+    justify-content: space-between;
+    text-decoration:none;
+    padding-left:10px;
+    padding-right:10px;
+    width: 50%;
+    height: 100%;
+    outline: none;
+    border: none;
+    align-items: center;
+    border-radius: 5px;
+    background:#000000;
+    color: greenyellow;
+    
+    margin-right: 10px;
+}
+.button_type_selector:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.sidebar__items_online{   
+    width:100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;   
+}
+
+.generate__link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.insert__link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__online{
+    display: flex;
+    justify-content: center;
+    text-decoration:none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 60%;
+    outline: none;
+    border: none;
+    align-items: center;
+    border-radius: 5px;
+    background:#000000;
+    color: greenyellow;
+    margin-bottom: 15px;
+}
+
+.button__online:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.field__link[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.sidebar__button{
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content:flex-end;
+    display: flex;
+    width: 100%;
+
+}
+
+.wrapper__play__button{
+    width:100%;
+}
+
+.button_start{
+    display: flex;
+    justify-content: center;
+    text-decoration:none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    align-items: center;
+    border-radius: 20px;
+    background:#f77762;
+    color: white;
+}
+
+.button_start:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.message__box{
+    border: 1px solid #000000;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game__container{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.auxillary{
+    border: 1px solid #000000;
+    width:10vw;
+    height:10vh;
+    font-size: 1rem;
+}
+
+.field__mills{
+    position: absolute;
+    background-color: #000000;
+    height: 30px;
+    width: 30px;
+    border: 0px;
+    border-radius: 50%;
+    
+}
+
+.field__mills:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
