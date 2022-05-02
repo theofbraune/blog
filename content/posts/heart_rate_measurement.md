@@ -312,7 +312,7 @@ In general one can say, that if the lightning is uniform and one is not turning 
 
 {{< figure src="/images/heart_rate/andrew_interview.png"   width="20%" height="20%" >}} 
 
-We tried to find an answer to the question what might have been the heart rate of Prince Andrew, while he explained, that it was impossible for him to sweat, and that therefore the accusitions against him must be wrong. But we found with our method, that he would have had a heart rate of 51bpm, which seems not plausible, unless he was under strong medication, which -if one looks at the rest of the interview- also is not impossible.
+We tried to find an answer to the question what might have been the heart rate of Prince Andrew, while his legendary interview. But we found with our method, that he would have had a heart rate of 51bpm, which seems a bit unlikely.
 
 On the other hand, it is also a bit relieving, that it did not work of right away perfectly. It would also be a bit scary, if one could capture these sensitive personal data without the consent of the person in question.
 
