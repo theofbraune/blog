@@ -136,7 +136,7 @@ img {
 
 @media all and (max-width: 900px) {
     .project-text{
-        padding-top: 1.05em;
+        padding-top: 2.5em;
         font-size:1.5rem;
     }
     
@@ -148,7 +148,7 @@ img {
 
 @media all and (max-width: 500px) {
     .project-text{
-        padding-top: 0.6em;
+        padding-top: 2.5em;
         font-size:1.5rem;
     }
     
