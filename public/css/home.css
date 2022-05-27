@@ -110,9 +110,6 @@ img {
    padding:0; /*if your want to padding */
    float:left;
 }
-.project-text{
-    padding-top: 1em;
-}
 
 .clickable{
     height: 100%;
@@ -121,4 +118,36 @@ img {
   top: 0;
   position: absolute;     
   z-index: 1;
+}
+
+.project-text{
+    padding-top: 1em;
+    font-size:2.05rem;
+}
+
+.project-description{
+    padding-top:1rem;
+    font-size:1.05rem;
+}
+
+@media all and (max-width: 900px) {
+    .project-text{
+        padding-top: 1.05em;
+    }
+    
+    .project-description{
+        padding-top:1rem;
+        font-size:0rem;
+    } 
+}
+
+@media all and (max-width: 500px) {
+    .project-text{
+        padding-top: 0.6em;
+    }
+    
+    .project-description{
+        padding-top:1rem;
+        font-size:0rem;
+    } 
 }
