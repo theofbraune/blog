@@ -132,7 +132,7 @@ img {
 
 @media all and (max-width: 900px) {
     .project-text{
-        padding-top: 1.05em;
+        padding-top: 0.3em;
     }
     
     .project-description{
@@ -143,7 +143,7 @@ img {
 
 @media all and (max-width: 500px) {
     .project-text{
-        padding-top: 0.6em;
+        padding-top: 0.3em;
     }
     
     .project-description{
