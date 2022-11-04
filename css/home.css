@@ -114,7 +114,6 @@ img {
     padding-top: 1em;
 }
 
-
 .clickable{
     height: 100%;
   width: 100%;
@@ -122,38 +121,4 @@ img {
   top: 0;
   position: absolute;     
   z-index: 1;
-}
-
-.project-text{
-    padding-top: 1em;
-    font-size:2.05rem;
-}
-
-.project-description{
-    padding-top:1rem;
-    font-size:1.05rem;
-}
-
-@media all and (max-width: 900px) {
-    .project-text{
-        padding-top: 1.2em;
-        font-size:1.5rem;
-    }
-    
-    .project-description{
-        padding-top:0rem;
-        font-size:0rem;
-    } 
-}
-
-@media all and (max-width: 500px) {
-    .project-text{
-        padding-top: 1.2em;
-        font-size:1.5rem;
-    }
-    
-    .project-description{
-        padding-top:0rem;
-        font-size:0rem;
-    } 
 }
