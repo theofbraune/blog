@@ -112,6 +112,12 @@ img {
 }
 .project-text{
     padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.description-text{
+    padding-top:1rem;
+    font-size:1.05rem;
 }
 
 .clickable{
@@ -121,4 +127,72 @@ img {
   top: 0;
   position: absolute;     
   z-index: 1;
+}
+
+@media all and (max-width: 1000px) and (min-width: 800px){
+    .description-text{
+        font-size: 0.8rem;
+        padding-top: 5px;
+    }
+
+    .picture1{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/vr_application.png');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    
+    .picture2{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/3d_printer_working.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    .picture3{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       margin-top:25px;
+       background-image:url('../images/project_teaser/heart_rate.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+}
+
+@media all and (max-width: 800px){
+    .description-text{
+        font-size: 0rem;
+    }
+
+    .picture1{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/vr_application.png');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    
+    .picture2{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/3d_printer_working.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    .picture3{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       margin-top:25px;
+       background-image:url('../images/project_teaser/heart_rate.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+
 }
