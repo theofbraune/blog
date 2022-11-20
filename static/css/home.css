@@ -82,6 +82,30 @@ img {
     box-shadow: 0 0 25px rgb(5, 1, 22); 
 }
 
+.landing-box{
+
+    transition: box-shadow .3s;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(243, 235, 235);
+    border-radius: 20px;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 25px rgb(5, 1, 22);
+    
+    
+
+}
+
 
 
 .picture1{
@@ -194,4 +218,88 @@ img {
        float:left;
     }
 
+}
+
+.welcome-bar{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-text{
+    margin-bottom: 50px;
+}
+.education-item{
+    font-size:1.1rem;
+}
+#myself-pic{
+    border-radius:10%;
+    width:50%;
+     
+}
+
+#my-name{
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile{
+    justify-content: center;
+    text-align: center;
+}
+
+.Email-Icon{
+    display:inline;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.Github-Icon{
+    display:inline;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.CV-Icon{
+    display:inline;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.flex-container {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: space-between; /* could also try with space-around */
+  }
+  
+  .flex-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: calc(100% - 20px); /* for demonstration purposes, subtracts top and bottom margin from height */
+    /*margin: 10px;*/ /* for demonstration purposes */
+  }
+
+@media all and (max-width: 990px){
+
+    .right-block{
+        display: none;
+        padding-left: 50px;
+        margin-right: 50px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media all and (min-width: 990px){
+    .lower-text{
+        display: none;
+    }
+}
+
+#site-footer{
+    position: fixed;
+  
 }
