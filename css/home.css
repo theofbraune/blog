@@ -218,18 +218,7 @@ img {
        float:left;
     }
 
-    #mail-icon{
-        width: 70px ;
-        height: 70px ;
-    }
-    #github-icon{
-        width: 90px ;
-        height: 90px ;
-    }
-    #cv-icon{
-        width: 60px ;
-        height: 60px ;
-    }
+    
 
 }
 
@@ -286,14 +275,14 @@ img {
     justify-content: space-between; /* could also try with space-around */
   }
   
-  .flex-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    height: calc(100% - 20px); /* for demonstration purposes, subtracts top and bottom margin from height */
-    /*margin: 10px;*/ /* for demonstration purposes */
-  }
+.flex-child {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-grow: 1;
+height: calc(100% - 20px); /* for demonstration purposes, subtracts top and bottom margin from height */
+/*margin: 10px;*/ /* for demonstration purposes */
+}
 
 @media all and (max-width: 990px){
 
@@ -304,11 +293,35 @@ img {
         justify-content: center;
         text-align: center;
     }
+    #mail-icon{
+        width: 60px ;
+        height: 60px ;
+    }
+    #github-icon{
+        width: 80px ;
+        height: 80px ;
+    }
+    #cv-icon{
+        width: 55px ;
+        height: 55px ;
+    }
 }
 
 @media all and (min-width: 990px){
     .lower-text{
         display: none;
+    }
+    #mail-icon{
+        width: 90px ;
+        height: 90px ;
+    }
+    #github-icon{
+        width: 120px ;
+        height: 120px ;
+    }
+    #cv-icon{
+        width: 80px ;
+        height: 80px ;
     }
 }
 
