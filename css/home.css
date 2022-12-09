@@ -218,6 +218,19 @@ img {
        float:left;
     }
 
+    #mail-icon{
+        width: 70px ;
+        height: 70px ;
+    }
+    #github-icon{
+        width: 90px ;
+        height: 90px ;
+    }
+    #cv-icon{
+        width: 60px ;
+        height: 60px ;
+    }
+
 }
 
 .welcome-bar{
