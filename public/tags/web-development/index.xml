@@ -12,8 +12,9 @@
       <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
       
       <guid>https://theofbraune.github.io/blog/posts/blog-setup/</guid>
-      <description>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&amp;rsquo;ll explain how you can easily setup your webblog with the static page generator hugo.To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.
- In the next step I created a new directory, where I created all the necessary files.</description>
+      <description>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&amp;rsquo;ll explain how you can easily setup your webblog with the static page generator hugo.
+To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.
+In the next step I created a new directory, where I created all the necessary files.</description>
     </item>
     
   </channel>

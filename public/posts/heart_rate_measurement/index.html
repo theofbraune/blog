@@ -36,9 +36,6 @@
                     <a class="nav-link active" aria-current="page" href="../../">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../about/about_me/index.html">About</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="../../posts/index.html">Posts</a>
                   </li>
                   <li class="nav-item">
@@ -75,7 +72,7 @@
 <p>This project was part of the evaluation of the Computer Vision introduction course at École Polytechnique and is mainly based on <a href="http://alumni.media.mit.edu/~zher/papers/Poh-etal-OptExp.pdf">this article</a></p>
 <p>The basic idea behind will be, that when our heart is pumping, our skin is changing. We will detact these changes.</p>
 <p><figure><img src="../../images/heart_rate/stressed_guy.jpg" width="20%" height="20%"/>
-</figure>
+ </figure>
 
 We all know this guy. And in his case we do not need a very sophisticated image analysis algorithm to detect, that this guy is pretty stressed. In a way we are all this guy - on some days more then on others -, so our skin changes when we are stressed and we will measure that.</p>
 <p>The first step for us was to use a face recognition system to extract the face from the video feed. For that, we used a Haar Cascade classifier in open CV to detect the face. The link for it can be found <a href="https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html">here</a>.</p>
@@ -130,7 +127,7 @@ We all know this guy. And in his case we do not need a very sophisticated image 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> coords
 </span></span></code></pre></div><p>This code mainly draws a rectangle on the frame as a face bounding box and returns the coordinates of the rectangle.
 <figure><img src="../../images/heart_rate/bounding_box.png" width="30%" height="30%"/>
-</figure>
+ </figure>
 </p>
 <p>In the first part of the implementation, in order to get a region of interest of the forehead, we just used basic face <a href="https://www.pinterest.fr/pin/485544403577439662/">proportion rules</a> that one can use to cut out a rectangular part of the forehead.
 The implementation for such a method, to cut out the forehead can be done like that</p>
@@ -150,12 +147,12 @@ The implementation for such a method, to cut out the forehead can be done like t
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> (frame,frame_mod)
 </span></span></code></pre></div><p>In the values are a bit empirical, but nevertheless they provide a region in the face, that could look like that
 <figure><img src="../../images/heart_rate/bounding_box_roi.png" width="30%" height="30%"/>
-</figure>
+ </figure>
 </p>
 <p>The function <code>forehead_detection(frame, coordinates)</code> returns the cropped region of interest, that only contains the forehead. This can then further be analyzed.</p>
 <p>If one wants to use real time analysis, it is useful to use this segmentation method, because it is extremely quick. If one is more interested in a better region of interest, it is benefitial to use another segmentation method, such as a grab cut segmentation. In this case, the face can be extracted like that</p>
 <figure><img src="../../images/heart_rate/grab_cut.png" width="30%" height="30%"/>
-</figure>
+ </figure>
 
 <p>The code, that mainly uses the openCv grab cut method, can be excecuted like that:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">face_segmentation</span>(frame, coordinates):
