@@ -1,0 +1,331 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-wrapper {
+    display:flex;
+    min-height: 100vh;
+    background-image: url(../images/cloth-ge9014807f_1280.jpg);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.page-wrapper::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+.home-container{
+    z-index: 500;
+    color:white;
+}
+.home-nav{
+    display:flex;
+    
+    justify-content: center;
+    position: relative;
+    z-index: 500;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+.home-nav li a{
+    text-decoration: none;
+    color:white;
+    font-size: 1.6rem;
+    display: inline-block;
+    padding: 1rem;
+    
+}
+
+.content-box{
+
+    transition: box-shadow .3s;
+    width: 100%;
+    height: 12rem;
+    background-color: rgb(243, 235, 235);
+    border-radius: 20px;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+    
+    
+
+}
+
+.content-box:hover {
+    box-shadow: 0 0 25px rgb(5, 1, 22); 
+}
+
+.landing-box{
+
+    transition: box-shadow .3s;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(243, 235, 235);
+    border-radius: 20px;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 25px rgb(5, 1, 22);
+    
+    
+
+}
+
+
+
+.picture1{
+    width:9rem; /*width of your image*/
+   height:10rem; /*height of your image*/
+   background-image:url('../images/project_teaser/vr_application.png');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+
+.picture2{
+    width:8rem; /*width of your image*/
+   height:7.5rem; /*height of your image*/
+   background-image:url('../images/project_teaser/3d_printer_working.jpg');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+.picture3{
+    width:8rem; /*width of your image*/
+   height:6rem; /*height of your image*/
+   margin-top:25px;
+   background-image:url('../images/project_teaser/heart_rate.jpg');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+.project-text{
+    padding-top: 1em;
+}
+
+.description-text{
+    padding-top:1rem;
+    font-size:1.05rem;
+}
+
+.clickable{
+    height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;     
+  z-index: 1;
+}
+
+@media all and (max-width: 1000px) and (min-width: 800px){
+    .description-text{
+        font-size: 0.8rem;
+        padding-top: 5px;
+    }
+
+    .picture1{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/vr_application.png');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    
+    .picture2{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/3d_printer_working.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    .picture3{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       margin-top:25px;
+       background-image:url('../images/project_teaser/heart_rate.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+}
+
+@media all and (max-width: 800px){
+    .description-text{
+        font-size: 0rem;
+    }
+
+    .picture1{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/vr_application.png');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    
+    .picture2{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       background-image:url('../images/project_teaser/3d_printer_working.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+    .picture3{
+        width:0rem; /*width of your image*/
+       height:0rem; /*height of your image*/
+       margin-top:25px;
+       background-image:url('../images/project_teaser/heart_rate.jpg');
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+       float:left;
+    }
+
+    
+
+}
+
+.welcome-bar{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-text{
+    margin-bottom: 50px;
+}
+.education-item{
+    font-size:1.1rem;
+}
+#myself-pic{
+    border-radius:10%;
+    width:50%;
+     
+}
+
+#my-name{
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile{
+    justify-content: center;
+    text-align: center;
+}
+
+.Email-Icon{
+    display:inline;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.Github-Icon{
+    display:inline;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.CV-Icon{
+    display:inline;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.flex-container {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: space-between; /* could also try with space-around */
+  }
+  
+.flex-child {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-grow: 1;
+height: calc(100% - 20px); /* for demonstration purposes, subtracts top and bottom margin from height */
+/*margin: 10px;*/ /* for demonstration purposes */
+}
+
+@media all and (max-width: 990px){
+
+    .right-block{
+        display: none;
+        padding-left: 50px;
+        margin-right: 50px;
+        justify-content: center;
+        text-align: center;
+    }
+    #mail-icon{
+        width: 60px ;
+        height: 60px ;
+    }
+    #github-icon{
+        width: 80px ;
+        height: 80px ;
+    }
+    #cv-icon{
+        width: 55px ;
+        height: 55px ;
+    }
+}
+
+@media all and (min-width: 990px){
+    .lower-text{
+        display: none;
+    }
+    #mail-icon{
+        width: 90px ;
+        height: 90px ;
+    }
+    #github-icon{
+        width: 120px ;
+        height: 120px ;
+    }
+    #cv-icon{
+        width: 80px ;
+        height: 80px ;
+    }
+}
+
+#site-footer{
+    position: fixed;
+  
+}

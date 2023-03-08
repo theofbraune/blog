@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Rate Measurement through Computer Vision</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+      </script>
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+    
+    <link rel="icon" href="../../images/integral_icon.png">
+
+</head>
+<body>
+
+    <header id = "site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="../index.html">Maths of Glory</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="../../">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../posts/index.html">Posts</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../custum/projects/index.html">Projects</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main class="site-main">
+        <div class="container">
+            <article class="single-post">
+                <h1 class="entry-title mt-4 mb-4">Heart Rate Measurement through Computer Vision</h1>
+                <div class="post-meta mb-2">
+                    <span class="post-author">Posted by: Theo and Jingyi
+                    </span>
+            
+                    <span class="post-date">
+                        <time>Mar 30, 2022, 1:15PM</time>
+                    </span>
+            
+                    <span class="post-tags">
+                        
+                            <a href="https://theofbraune.github.io/blog/tags/programming/">programming</a>
+                        
+                            <a href="https://theofbraune.github.io/blog/tags/projects/">projects</a>
+                        
+                            <a href="https://theofbraune.github.io/blog/tags/computer-vision/">Computer Vision</a>
+                        
+                    </span>
+                </div>
+                <div class="entry-content"><p>For many applications in telemedicine or in surveillance a contactless heart rate measurement can be extremely useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed.</p>
+<p>This project was part of the evaluation of the Computer Vision introduction course at École Polytechnique and is mainly based on <a href="http://alumni.media.mit.edu/~zher/papers/Poh-etal-OptExp.pdf">this article</a></p>
+<p>The basic idea behind will be, that when our heart is pumping, our skin is changing. We will detact these changes.</p>
+<p><figure><img src="../../images/heart_rate/stressed_guy.jpg" width="20%" height="20%"/>
+ </figure>
+
+We all know this guy. And in his case we do not need a very sophisticated image analysis algorithm to detect, that this guy is pretty stressed. In a way we are all this guy - on some days more then on others -, so our skin changes when we are stressed and we will measure that.</p>
+<p>The first step for us was to use a face recognition system to extract the face from the video feed. For that, we used a Haar Cascade classifier in open CV to detect the face. The link for it can be found <a href="https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html">here</a>.</p>
+<p>What we do in the code is, to take an image or a series of images, that we will then further analyze. In the code, this can be done like that</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span>  face_detection
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span>  rate_compute
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> ndimage
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(framerate <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Input: The framerate in FPS and the scale of the video window
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Output: The video feed from the webcam
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    frame_buffer_object <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#here choose the video input source</span>
+</span></span><span style="display:flex;"><span>    cap <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>VideoCapture(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#cap = cv2.VideoCapture(&#39;./video/testing.mp4&#39;)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        ret, frame <span style="color:#f92672">=</span> cap<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>        coordinates <span style="color:#f92672">=</span> face_detection<span style="color:#f92672">.</span>detact_and_draw_box(frame, <span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        [<span style="color:#f92672">...</span>]
+</span></span></code></pre></div><p>In the face detection method, we use the Haar-Cascade classifier. The code for this function is given by</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2 <span style="color:#66d9ef">as</span> cv2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> skimage <span style="color:#f92672">import</span> io
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pdb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> matplotlib <span style="color:#f92672">import</span> pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#only works well for people without masks</span>
+</span></span><span style="display:flex;"><span>face_cascade <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>CascadeClassifier(<span style="color:#e6db74">&#39;haarcascade_frontalface_default.xml&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detact_and_draw_box</span>(frame, drawing):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Input: A frame 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Output: The frame with bounding box on the face, only the largest one.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    gray <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(frame, cv2<span style="color:#f92672">.</span>COLOR_BGR2GRAY)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    faces <span style="color:#f92672">=</span> face_cascade<span style="color:#f92672">.</span>detectMultiScale(gray, <span style="color:#ae81ff">1.1</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>    max <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    coords <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (x, y, w, h) <span style="color:#f92672">in</span> faces:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#only draw the one with maximal area. the others are probably noise.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(w<span style="color:#f92672">*</span>h<span style="color:#f92672">&gt;</span>max):
+</span></span><span style="display:flex;"><span>            coords <span style="color:#f92672">=</span> (x, y, w, h)
+</span></span><span style="display:flex;"><span>            max <span style="color:#f92672">=</span> w<span style="color:#f92672">*</span>h
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    coords <span style="color:#f92672">=</span> (x, y, w, h)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> drawing<span style="color:#f92672">==</span><span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>rectangle(frame, (x, y), (x<span style="color:#f92672">+</span>w, y<span style="color:#f92672">+</span>h), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>), thickness<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> coords
+</span></span></code></pre></div><p>This code mainly draws a rectangle on the frame as a face bounding box and returns the coordinates of the rectangle.
+<figure><img src="../../images/heart_rate/bounding_box.png" width="30%" height="30%"/>
+ </figure>
+</p>
+<p>In the first part of the implementation, in order to get a region of interest of the forehead, we just used basic face <a href="https://www.pinterest.fr/pin/485544403577439662/">proportion rules</a> that one can use to cut out a rectangular part of the forehead.
+The implementation for such a method, to cut out the forehead can be done like that</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forehead_detection</span>(frame, coordinates):
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   Input: A Frame and coordinates
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   Output: A sliced frame, that only contains the forehead.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>   start_x <span style="color:#f92672">=</span> coordinates[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>coordinates[<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>   stop_x <span style="color:#f92672">=</span> coordinates[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> int(<span style="color:#ae81ff">3</span><span style="color:#f92672">/</span><span style="color:#ae81ff">4</span><span style="color:#f92672">*</span>coordinates[<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>   start_y <span style="color:#f92672">=</span> coordinates[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">20</span><span style="color:#f92672">*</span>coordinates[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>   stop_y<span style="color:#f92672">=</span> coordinates[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> int(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">6</span><span style="color:#f92672">*</span>coordinates[<span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>   cv2<span style="color:#f92672">.</span>rectangle(frame, (start_x, start_y), (stop_x, stop_y), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>), thickness<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">#cut this part out then, then return it to analyse further.</span>
+</span></span><span style="display:flex;"><span>   frame_mod <span style="color:#f92672">=</span> frame[start_y:stop_y,start_x:stop_x]
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> (frame,frame_mod)
+</span></span></code></pre></div><p>In the values are a bit empirical, but nevertheless they provide a region in the face, that could look like that
+<figure><img src="../../images/heart_rate/bounding_box_roi.png" width="30%" height="30%"/>
+ </figure>
+</p>
+<p>The function <code>forehead_detection(frame, coordinates)</code> returns the cropped region of interest, that only contains the forehead. This can then further be analyzed.</p>
+<p>If one wants to use real time analysis, it is useful to use this segmentation method, because it is extremely quick. If one is more interested in a better region of interest, it is benefitial to use another segmentation method, such as a grab cut segmentation. In this case, the face can be extracted like that</p>
+<figure><img src="../../images/heart_rate/grab_cut.png" width="30%" height="30%"/>
+ </figure>
+
+<p>The code, that mainly uses the openCv grab cut method, can be excecuted like that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">face_segmentation</span>(frame, coordinates):
+</span></span><span style="display:flex;"><span>        mask <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(frame<span style="color:#f92672">.</span>shape[:<span style="color:#ae81ff">2</span>],np<span style="color:#f92672">.</span>uint8)
+</span></span><span style="display:flex;"><span>        bgdModel <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">65</span>),np<span style="color:#f92672">.</span>float64)
+</span></span><span style="display:flex;"><span>        fgdModel <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">65</span>),np<span style="color:#f92672">.</span>float64)
+</span></span><span style="display:flex;"><span>        rect <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(coordinates)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#this is necessary to augment the size of the bounding box in order to fill in the whole face in a </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#rectangle, that we can pass to the graph cut segmentation function.</span>
+</span></span><span style="display:flex;"><span>        rect[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span>int(<span style="color:#ae81ff">0.5</span><span style="color:#f92672">*</span>rect[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>        rect[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> int(rect[<span style="color:#ae81ff">3</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">1.6</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>grabCut(frame,mask,rect,bgdModel,fgdModel,<span style="color:#ae81ff">5</span>,cv2<span style="color:#f92672">.</span>GC_INIT_WITH_RECT)
+</span></span><span style="display:flex;"><span>        mask2 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where((mask<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">|</span>(mask<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>),<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;uint8&#39;</span>)
+</span></span><span style="display:flex;"><span>        graph_face <span style="color:#f92672">=</span> frame <span style="color:#f92672">*</span> mask2[:,:,np<span style="color:#f92672">.</span>newaxis]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>(frame, graph_face)
+</span></span></code></pre></div><p>In this case the entire cutted face is returned and can be used for further investigation.
+The <code>main</code> method now has for a video with framerate of 30 fps a form like that</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>(framerate <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Input: The framerate in FPS and the scale of the video window
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Output: The video feed from the webcam
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        [ <span style="color:#f92672">...</span>]
+</span></span><span style="display:flex;"><span>            fr, forehead <span style="color:#f92672">=</span> face_detection<span style="color:#f92672">.</span>face_segmentation(frame, coordinates)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            frame_buffer_object<span style="color:#f92672">.</span>append(forehead)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(len(frame_buffer_object)<span style="color:#f92672">==</span>(framerate)<span style="color:#f92672">*</span><span style="color:#ae81ff">30</span>):
+</span></span><span style="display:flex;"><span>            frame_buffer_object<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            rate_compute<span style="color:#f92672">.</span>detect_change(frame_buffer_object, <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>framerate, counter)
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>namedWindow(<span style="color:#e6db74">&#39;Input&#39;</span>,cv2<span style="color:#f92672">.</span>WINDOW_NORMAL)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#cv2.resizeWindow(&#39;Input&#39;, 500,500)</span>
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;Input&#39;</span>, forehead)
+</span></span></code></pre></div><p>The purpose of this structure is to ensure, that at each time step we have the faces of a 30 second time window, such that we can compute the frequency spectrum in this time frame. For our purpose we assume, that the heart rate is constant in a 30 second time frame.</p>
+<p>If we have the frame buffer over a 30 second time window, we can start to analyze it and fill the function <code>rate_compute.detect_change(...)</code> with content</p>
+<h3 id="frequency-analysis">Frequency analysis</h3>
+<p>After taking a ROI for each frame, we calculate the average values for RGB color channels
+of the ROI, denoted as $$x_R(t), x_G(t), x_B(t)$$ where t is the time. Then we use independent
+component analysis (ICA) to extract the source signals from the observed mixed color signals.
+The ICA is defined as follows: The data is represented by the observed random vector
+$$x = (x_1,\ldots, x_m)^T$$ and the hidden components as the random vector $$ s = (s_1,\ldots , s_n)^T .$$  The task
+is to transform the observed data $x$ , using a linear static transformation $W$ as $s = W x$, into
+a vector of maximally independent components $s$ measured by some function $$F(s_1,\ldots , s_n)$$ of
+independence.
+We use ICA by assuming that the source color signals are potentially non-Gaussian signals
+and that they are statistically independent from each other. Although this assumption might
+not be true if we consider the changes of blood volume and light intensity, but for a time
+window less then one minute, it is a reasonable approximation. The transformation in the
+ICA is linear, so the number of source signals is no more than the number of observed signals,
+and we assume there are three source signals $s_R(t), s_G (t), s_B(t)$ contributing to the observed
+color changes in the three channels. According to the definition of ICA, we have
+$$s(t) = W^{−1} x(t)$$
+where
+$$x(t) = [x_R(t), x_G (t), x_B(t)]^T , s(t) = [s_1(t), s_2(t), s_3(t)]^T$$
+and $W$ is a 3 × 3 linear transformation (matrix).
+We used an implemented FastICA function in the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">scikit-learn library</a> to recover
+the approximate source signals $s(t)$.
+After extraction of the source signals $s(t)$, we can transform the signals on time into signals
+on temporal frequency using Fourier Transformation. The measured heart rate will be the
+frequency with highest magnitude in the range from 0.75 to 3 Hz, which corresponds to
+physiological heart rate ranges from 45 to 180 bpm.</p>
+<p>You can think of the ICA as a technique, that can seperate from a signal with several sources the individual signals. For example in <a href="https://www.hindawi.com/journals/isrn/2011/672353/fig1/">this journal</a></p>
+<figure><img src="../../images/heart_rate/ica_intuition.jpg" width="50%" height="50%"/>
+</figure>
+
+<p>they illustrate this with the example, to extract one voice in a crowded room with several voices.</p>
+<p>To implement the ideas explained above</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_change</span>(buffer_object,Ts, counter_end):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Input: buffer object, a sequence of frames, The size of the time step and the 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Output: Either a plot of the heart rate over a 5 second time window
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#print(&#34;enter detect_change&#34;)</span>
+</span></span><span style="display:flex;"><span>    min_y <span style="color:#f92672">=</span> buffer_object[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    min_x <span style="color:#f92672">=</span> buffer_object[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(len(buffer_object)):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#if the programm failed to generate a </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(buffer_object[j]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>            buffer_object[j] <span style="color:#f92672">=</span> buffer_object[j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(buffer_object[j]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">&lt;</span>min_x):
+</span></span><span style="display:flex;"><span>                min_x <span style="color:#f92672">=</span> buffer_object[j]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(buffer_object[j]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">&lt;</span>min_y):
+</span></span><span style="display:flex;"><span>                min_y <span style="color:#f92672">=</span> buffer_object[j]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> range(len(buffer_object)):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#cut the pictures in the right size</span>
+</span></span><span style="display:flex;"><span>        buffer_object[idx] <span style="color:#f92672">=</span> buffer_object[idx][:min_y,:min_x,::]
+</span></span><span style="display:flex;"><span>    buffer_np <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(buffer_object)
+</span></span><span style="display:flex;"><span>    red_channel <span style="color:#f92672">=</span> buffer_np[:,:,:,<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    green_channel <span style="color:#f92672">=</span> buffer_np[:,:,:,<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    blue_channel <span style="color:#f92672">=</span> buffer_np[:,:,:,<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
+</span></span></code></pre></div><p>We extract the channel values for the frame buffer object</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_change</span>(buffer_object,Ts, counter_end):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Input: buffer object, a sequence of frames, The size of the time step and the 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Output: Either a plot of the heart rate over a 5 second time window
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#compute the mean per image to get an array that corresponds to the </span>
+</span></span><span style="display:flex;"><span>    x_red <span style="color:#f92672">=</span> red_channel<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    x_green <span style="color:#f92672">=</span> green_channel<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    x_blue <span style="color:#f92672">=</span> blue_channel<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#normalize the signal over the entire time, i.e we will create a signal with zero mean and unit variance.</span>
+</span></span><span style="display:flex;"><span>    mean_red <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean(x_red, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    mean_green <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean(x_green, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    mean_blue <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean(x_blue, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    std_red <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>std(x_red, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    std_green <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>std(x_green, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    std_blue <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>std(x_blue, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    x_red <span style="color:#f92672">=</span>  (x_red<span style="color:#f92672">-</span>mean_red)<span style="color:#f92672">/</span>std_red
+</span></span><span style="display:flex;"><span>    x_green <span style="color:#f92672">=</span>  (x_green<span style="color:#f92672">-</span>mean_green)<span style="color:#f92672">/</span>std_green
+</span></span><span style="display:flex;"><span>    x_blue <span style="color:#f92672">=</span>  (x_blue<span style="color:#f92672">-</span>mean_blue)<span style="color:#f92672">/</span>std_blue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    X_ <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>vstack((x_red,x_green,x_blue))<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    transformer <span style="color:#f92672">=</span> FastICA(n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    S_ <span style="color:#f92672">=</span> transformer<span style="color:#f92672">.</span>fit_transform(X_)
+</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
+</span></span></code></pre></div><p>This gives us a signal, where we take at each frame the mean value of the color and extract the source of interest through the ICA. The assumption is, that when our heart is pumping, the color in the face is changing too. When we measure the frequency of this change of color, we want to deduce the heart rate from it.</p>
+<p>Now we can apply the Fourier transformation to the extracted signals.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">detect_change</span>(buffer_object,Ts, counter_end):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Input: buffer object, a sequence of frames, The size of the time step and the 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Output: Either a plot of the heart rate over a 5 second time window
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(S_<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    red_fft <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(np<span style="color:#f92672">.</span>fft<span style="color:#f92672">.</span>fft(S_[:,<span style="color:#ae81ff">0</span>]))<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    red_freq <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>fft<span style="color:#f92672">.</span>fftfreq(np<span style="color:#f92672">.</span>size(S_[:,<span style="color:#ae81ff">0</span>],<span style="color:#ae81ff">0</span>),Ts)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#extract with the mask only the values that are in the reasonable domain for the heart rate.</span>
+</span></span><span style="display:flex;"><span>    indexing <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ma<span style="color:#f92672">.</span>masked_where(np<span style="color:#f92672">.</span>abs(red_freq)<span style="color:#f92672">&lt;</span>high_freq, red_freq)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#indexing = np.ma.masked_where(True, red_freq)</span>
+</span></span><span style="display:flex;"><span>    vals_to_keep <span style="color:#f92672">=</span> indexing<span style="color:#f92672">.</span>mask
+</span></span><span style="display:flex;"><span>    red_freq <span style="color:#f92672">=</span> red_freq[vals_to_keep]
+</span></span><span style="display:flex;"><span>    red_fft <span style="color:#f92672">=</span> red_fft[vals_to_keep]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    indexing <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ma<span style="color:#f92672">.</span>masked_where(red_freq<span style="color:#f92672">&gt;</span>low_freq, red_freq)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#indexing = np.ma.masked_where(True, red_freq)</span>
+</span></span><span style="display:flex;"><span>    vals_to_keep <span style="color:#f92672">=</span> indexing<span style="color:#f92672">.</span>mask
+</span></span><span style="display:flex;"><span>    red_freq <span style="color:#f92672">=</span> red_freq[vals_to_keep]
+</span></span><span style="display:flex;"><span>    red_fft <span style="color:#f92672">=</span> red_fft[vals_to_keep]
+</span></span><span style="display:flex;"><span>    [<span style="color:#f92672">...</span>]
+</span></span></code></pre></div><p>We empirically deduce frequencies, that are too high and too low, which would be unreasonable. In this code snipped, we do this for the red values, but similarly, this can be done for the green and blue color channel. If we plot the data of the frequency spectrum in real time with the following code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#75715e">#pdb.set_trace()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> plt_all_freq:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#print(&#39;red_freq&#39;,red_freq)</span>
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>clf()
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;frequency spectrum&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;x axis frequency&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;t axis value&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>plot(red_freq, np<span style="color:#f92672">.</span>real(red_fft), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;red&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>plot(green_freq, np<span style="color:#f92672">.</span>real(green_fft), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;green&#34;</span>)
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>plot(blue_freq, np<span style="color:#f92672">.</span>real(blue_fft), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue&#34;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>draw()
+</span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>pause(<span style="color:#ae81ff">0.01</span>)
+</span></span></code></pre></div><p>we obtain the following plot
+<figure><img src="../../images/heart_rate/fourier_frequency.gif" width="50%" height="50%"/>
+</figure>
+</p>
+<p>In this plot we need to focus on the first peak of the frequency, more precisely on the position of the peak. The position corresponds to the frequency. Here we still see the noisy data, where we have not cut of all the values below 0.75Hz, which would mean to have a heart rate of 45bpm. If we focus on the peak with frequency higher then 0.75, we get the heart rate. In practise it turned out, that it can be useful to take the mean of the red, green a blue heart rate for us. In this case we achieved for a stable sitting person values that were 5-10 bpm away from the ground truth, which we measured with a real heart rate sensor.</p>
+<p>I took a video capture of myself during the 2021 Formula 1 season final, where my heart rate was of course a bit higher then normal.</p>
+<figure><img src="../../images/heart_rate/final_measurement.gif" width="70%" height="70%"/>
+</figure>
+
+<p>In this case I took the mean of the heart rates obtained from the different color channels.</p>
+<p>In general one can say, that if the lightning is uniform and one is not turning the head too much, the method yields values that are acceptable. Nevertheless, there are some severe failure cases. If a person is wearing Make-Up -for example for a TV interview- it is more difficult to detect the changes in the skin color through the heart pumping.</p>
+<figure><img src="../../images/heart_rate/andrew_interview.png" width="20%" height="20%"/>
+</figure>
+
+<p>We tried to find an answer to the question what might have been the heart rate of Prince Andrew, while his legendary interview. But we found with our method, that he would have had a heart rate of 51bpm, which seems a bit unlikely.</p>
+<p>On the other hand, it is also a bit relieving, that it did not work of right away perfectly. It would also be a bit scary, if one could capture these sensitive personal data without the consent of the person in question.</p>
+<p>The code for this project can be found under <a href="https://github.com/JeansLli/X-INF573-heart-rater">https://github.com/JeansLli/X-INF573-heart-rater.</a></p>
+</div>
+            </article>
+        </div>
+        
+    </main>
+
+    <footer id="site-footer" class="bg-dark text-white pb-4 pt-4">
+        <div class="container">
+            <div class="copyright text-center">
+                &copy;2022Maths of Glory
+            </div>
+        </div>
+        
+    </footer>
+    <script src="../../js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
