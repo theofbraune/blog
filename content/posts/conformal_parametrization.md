@@ -38,7 +38,7 @@ For a sparse, symmetric, positive definite $n\times n$ matrix $Q$ (hint: check w
 
 Then we can solve the minimization problem
 
- min $ z^t Q z + z^t B$ where $z_{\partial M} = z_{bc}$ and $A_{eq} z = B_{eq}$ with the method
+$$\text{min}\  z^t Q z + z^t B\  \text{where}\  z_{\partial M} = z_{bc}\ \text{and} \  A_{eq} z = B_{eq}$$ with the method
 
 ```cpp
 igl::min_quad_with_fixed_data<double> data;
@@ -55,7 +55,20 @@ Solve this problem without the in-build solver and code the constraint minimizat
 
 With the working Laplacian build a sparse matrix ``Area``, complete the methods ``build_area`` with the formula from the lecture and ``build_conformal_energy``.
 
+In order to do this, note that the area of a discrete mesh can be computed through
+
+$$\text{Area}(M) = \sum_{e_{ij}\in\partial M} \frac{1}{2} (u_i v_j - u_j v_i)$$
+
+{{< figure src="/images/conformal_parametrization/build_area_matrix.png"   width="50%" height="50%" >}}
+
+From this you should build a matrix $A$ such that 
+
+$$\text{Area}(M) = \begin{pmatrix} u_1,v_1,u_2,v_2,\ldots,u_{|V|},v_{|V|}\end{pmatrix}\cdot A\cdot \begin{pmatrix} u_1,v_1,u_2,v_2,\ldots,u_{|V|},v_{|V|}\end{pmatrix}^T$$
+Note: The way to arrange coordinates is not unique! In case you used a different order of coordinates to assemble the Laplacian, you need to be consistent with it.
+
 In the case of the harmonic parametrization we set a constraint on every vertex on the boundary. To complete the method ``minimize_energy`` you will fix the positions of 2 vertices on the boundary. Then modify the constraint minimization of the harmonic parametrization and compute the conformal parametrization.
+
+
 
 Experiment fixing different vertices on the boundary or to place them at different positions
 {{< figure src="/images/conformal_parametrization/new_beetle.png"   width="50%" height="50%" >}}
