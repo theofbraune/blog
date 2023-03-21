@@ -70,7 +70,7 @@
 <figure><img src="../../images/rollaball/unity_hub_start.PNG" width="50%" height="50%"/>
 </figure>
 
-Now you should see the unity editor. In order to get started, select <em>Assets/Create/Scene</em>.
+Now you should see the unity editor. In order to get started, select <em>Assets/Create/Scene</em>. 
 <figure><img src="../../images/rollaball/Create_scene.PNG" width="30%" height="30%"/>
 </figure>
 In the assets tab of the editor you should now see an icon <em>new scene</em>. Double click on it. In the hierarchy tab of the editor, there should be your newly created scene now that we can modify. You can rename the scene, it will be more professional and for a larger project with multiple scenes it is crucial to not lose the orientation.</p>
@@ -83,17 +83,17 @@ If you want to change the position of the plane, you can either select one of th
 </figure>
 </p>
 <p>Further if you select the check boxes on the top, you can play around with the scale or rotation parameters.</p>
-<p>A priori your plane has some arbitrary position, but as the plane will be the maon object in our game, we should place it into the origin of the world space. In order to that, click on the three dots in the Transform tab and select <em>reset</em>.
+<p>A priori your plane has some arbitrary position, but as the plane will be the maon object in our game, we should place it into the origin of the world space. In order to that, click on the three dots in the Transform tab and select <em>reset</em>. 
 <figure><img src="../../images/rollaball/reset_plane.PNG" width="40%" height="40%"/>
 </figure>
 
 If you want to modify for example your light source, make sure, that you unlock the inspector. It can be useful later to lock your object, when you click around and click on another object, that would be the one in the inspector. This can be annoying.</p>
-<p>Now in order to make our objects look different, lets create different materials, that we will assign to the different instances in our game such as the ball, the plane, the pickup elements etc. Click on the + in your project tab and select the <em>material</em>.
+<p>Now in order to make our objects look different, lets create different materials, that we will assign to the different instances in our game such as the ball, the plane, the pickup elements etc. Click on the + in your project tab and select the <em>material</em>. 
 <figure><img src="../../images/rollaball/create-cs-script.PNG" width="30%" height="30%"/>
 </figure>
 
 In the asset section, there should be a new element, the material. In the asset section click on the material and then change in the inspector the properties, such as color, metallic or the smoothness.</p>
-<p>Now as we have the material we want to assign it to the ground plate.
+<p>Now as we have the material we want to assign it to the ground plate. 
 <figure><img src="../../images/rollaball/material_to_plane.PNG" width="50%" height="50%"/>
 </figure>
 
@@ -105,7 +105,7 @@ To do that click-hold in the asset section the material and drag it in the scene
 <figure><img src="../../images/rollaball/reset_plane.PNG" width="40%" height="40%"/>
 </figure>
 
-You will realize, that your ball is located inside the plane now, so depending on the radius you wanna have, move it up by this margin in y-direction.
+You will realize, that your ball is located inside the plane now, so depending on the radius you wanna have, move it up by this margin in y-direction. 
 <figure><img src="../../images/rollaball/initial_sphere.PNG" width="70%" height="70%"/>
 </figure>
 
@@ -115,12 +115,12 @@ Here in this particular game we want, that the ball rolls on the ground, can hit
 <figure><img src="../../images/rollaball/select-rigid-body.PNG" width="50%" height="50%"/>
 </figure>
 </p>
-<p>Search for <em>rigidbody</em>, then you should see in the inspector the physical components such as angular drag, mass etc.
-We want to control the game with our keyboard, so we need to use somehow the keyboard as an input device. In other cases it could be good to use a joystick as a device or as we will later see an Oculus quest. We will need the <em>Input package</em>. To get the package go to <em>Window</em> and select the Package Manager.
+<p>Search for <em>rigidbody</em>, then you should see in the inspector the physical components such as angular drag, mass etc. 
+We want to control the game with our keyboard, so we need to use somehow the keyboard as an input device. In other cases it could be good to use a joystick as a device or as we will later see an Oculus quest. We will need the <em>Input package</em>. To get the package go to <em>Window</em> and select the Package Manager. 
 <figure><img src="../../images/rollaball/package-manager.PNG" width="70%" height="70%"/>
 </figure>
 
-You might see only a few packages, to show all, select in the top left corner <em>Packages: Unity Registry</em> and search for <em>Input Systems</em>.
+You might see only a few packages, to show all, select in the top left corner <em>Packages: Unity Registry</em> and search for <em>Input Systems</em>. 
 <figure><img src="../../images/rollaball/input-system.PNG" width="70%" height="70%"/>
 </figure>
 
@@ -130,15 +130,15 @@ If you are on windows, you need to check, whether your Architecture is <code>x86
 <figure><img src="../../images/rollaball/build-settings.PNG" width="40%" height="40%"/>
 </figure>
 
-<p>Now as the input package is installed, we want to assign it only to the ball. For now, we do not want for example move around the plane. Thus we select the ball and add as a component the <em>Player Input</em>. In the inspector tab click on <em>Create Actions</em>. Now you should be directed into the asset folder.
+<p>Now as the input package is installed, we want to assign it only to the ball. For now, we do not want for example move around the plane. Thus we select the ball and add as a component the <em>Player Input</em>. In the inspector tab click on <em>Create Actions</em>. Now you should be directed into the asset folder. 
 <figure><img src="../../images/rollaball/folder-with-input-action.PNG" width="50%" height="50%"/>
 </figure>
 
-In there create a folder called input and give save the file called for example <code>InputAction</code> in this folder. Then back in Unity check, whether you find the Input action file in the <em>Asset/Input</em> folder.
+In there create a folder called input and give save the file called for example <code>InputAction</code> in this folder. Then back in Unity check, whether you find the Input action file in the <em>Asset/Input</em> folder. 
 <figure><img src="../../images/rollaball/input-action.PNG" width="40%" height="40%"/>
 </figure>
 
-Now your ball in the scene should have a flash, indicating to you, that it is linked to an InputAction.
+Now your ball in the scene should have a flash, indicating to you, that it is linked to an InputAction. 
 <figure><img src="../../images/rollaball/ball-with-inputaction.PNG" width="50%" height="50%"/>
 </figure>
 

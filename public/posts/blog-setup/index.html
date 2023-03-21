@@ -92,12 +92,12 @@ It is useful to add tags, because later on you can show all posts, that share a 
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ hugo server
 </span></span></code></pre></div><p>and launch your localhost, you&rsquo;ll realize, that you have no styling at all and that it looks really boring. Now you have two options (or certainly there are more and I just don&rsquo;t know about them). You can either choose a <a href="https://themes.gohugo.io/">theme on the official hugo website</a> and unpack this in the themes folder of your hugo project. You will find a lot of sample themes and I&rsquo;m sure you will find one that you like. In this case you do not need to touch any css or javascript at all.</p>
 <p>Nevertheless I decided to design and play with <a href="https://getbootstrap.com/">bootstrap</a>, css, javascript and html on my own.
-In this blog with hugo I want to create content in the form of markdown files, which will then be in a nice looking websetup. In order to have for example the same header with navbar for all blog posts, we need to define a base website and then use some hugo code. The code shown below is an example of how this could be achieved. There is some base html with bootstrap. In order to convert the content in markdown into renderable html we make use of the hugo scipting language
+In this blog with hugo I want to create content in the form of markdown files, which will then be in a nice looking websetup. In order to have for example the same header with navbar for all blog posts, we need to define a base website and then use some hugo code. The code shown below is an example of how this could be achieved. There is some base html with bootstrap. In order to convert the content in markdown into renderable html we make use of the hugo scipting language 
 <figure><img src="../../images/setup_blog/base_html.png" width="80%" height="80%"/>
 </figure>
 </p>
-<p>Here we fetch the title of the site and put it in the header of the website. Note that the name of the website is strict. This side, that builds the skeleton for the content, must be named <code>baseof.html</code>.
-The hierarchy of the sites is strict! The rules of how to name the sites can be found <a href="https://gohugo.io/templates/base/">here</a>.
+<p>Here we fetch the title of the site and put it in the header of the website. Note that the name of the website is strict. This side, that builds the skeleton for the content, must be named <code>baseof.html</code>. 
+The hierarchy of the sites is strict! The rules of how to name the sites can be found <a href="https://gohugo.io/templates/base/">here</a>. 
 In order to put the content from each site into the website, we see in the picture above <code>{{ block &quot;main&quot; .}}{{end}} </code>; we need to define the <code>&quot;main&quot;</code> in a file called <code>single.html</code>.</p>
 <figure><img src="../../images/setup_blog/single_post.png" width="50%" height="50%"/>
 </figure>
@@ -161,7 +161,7 @@ I made use of both. For the first I changed the the files <code>layout/_default/
         &lt;/article&gt;
     &lt;/div&gt;
 &lt;/main&gt;
-</code></pre><p>Now both have the correct links to the css stylesheets and can be displayed nicely.
+</code></pre><p>Now both have the correct links to the css stylesheets and can be displayed nicely. 
 <!-- raw HTML omitted --></p>
 <p>A similar problem appeared for the overview pages for the different tags. There hugo also takes the <code>list.html</code> and iterates over all posts, that have for example the tag &ldquo;virtual reality&rdquo;. But for each tag, the path to the overview page is <code>public/tags/&lt;Your favorite tag&gt;/index.html</code>, but the css directory can be found under <code>public/css/home.css</code>, hence one would need to go two directories up to read the css information. Compare this to the <code>list.html</code>. In order to overcome this, I just copied the css directory into <code>public/tags/css/</code>. Then the paths to the css directory work again.</p>
 <h2 id="deployment-on-github">Deployment on Github</h2>
