@@ -1,10 +1,9 @@
 /* Center the image on the page */
 img {
-	display: block;
-	margin: auto;
-	max-width: 100%;
-	height: auto;
-  }
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
   
   /* Style the waiting screen */
   #waiting-screen {
