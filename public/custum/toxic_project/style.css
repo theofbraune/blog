@@ -45,6 +45,8 @@ img {
 	transform: translate(-50%, -50%);
 	background-color: rgba(255, 255, 255, 0.8);
 	color: #000000;
+	width: 50%;
+  	height: 30%;
 	padding: 30px;
 	text-align: center;
 	font-family: Arial, sans-serif;
@@ -53,4 +55,19 @@ img {
 	border-radius: 10px;
 	z-index: 2;
   }
+
+  /*.error-box {
+  width: 80%;
+  height: 150px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}*/
   
