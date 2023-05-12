@@ -78,14 +78,14 @@ Pressing the trigger button is a bit unrealistic. For future work, one could try
 <figure><img src="../../images/reflection_locomotion/going_uphill.png" width="50%" height="50%"/>
 </figure>
 
-Then it would be also more realistic, because we could directly use the collision framework of unity. 
-Furthermore I realized that I could strenghen my developer skills, when one needs to find solutions for silly problems like <em>how do I find the best parameter interval</em>, the next time I need to do this, it will be a lot quicker. 
+Then it would be also more realistic, because we could directly use the collision framework of unity.
+Furthermore I realized that I could strenghen my developer skills, when one needs to find solutions for silly problems like <em>how do I find the best parameter interval</em>, the next time I need to do this, it will be a lot quicker.
 <!-- raw HTML omitted -->
 My initial idea to use boxes in order to determine, whether the arms are moving up and down in order to execute a push for the player can be tricked, when smartly moving the wrist only. Therefore it could make sense to use the absolute y and z-coordinate of the controllers in order to determine whether a push needs to be performed.
 <figure><img src="../../images/reflection_locomotion/cubes_final.PNG" width="50%" height="50%"/>
 </figure>
 
-One could for instance press the trigger button during a arm movement, and when releasing the trigger button, one takes the position again. From the difference one can then determine the power of the puch. Such a change could create more realism, but it turned out that this visual aid with the cubes, where the main intention was, to give an orientation for the arm movement, also helps to reduce cyber sickness. The cubes provide a static horizon and reduce the feeling, that the virtual world around is moving, but oneself is standing still. 
+One could for instance press the trigger button during a arm movement, and when releasing the trigger button, one takes the position again. From the difference one can then determine the power of the puch. Such a change could create more realism, but it turned out that this visual aid with the cubes, where the main intention was, to give an orientation for the arm movement, also helps to reduce cyber sickness. The cubes provide a static horizon and reduce the feeling, that the virtual world around is moving, but oneself is standing still.
 <!-- raw HTML omitted -->
 What I painfully had to learn too in the implementation process is, that it is necessary to test early the version, as I had this stange issue, that there is only one eye rendering. I don&rsquo;t know what caused this, but I assume, that there had been some incompatibility between the version of the Oculus Plugin and the used unity version. I could not fix this, except rebuilding the entire application again in another unity version.
 <!-- raw HTML omitted -->

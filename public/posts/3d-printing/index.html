@@ -70,7 +70,7 @@
                 </div>
                 <div class="entry-content"><p>Through the evolution of 3D-printers, the it has become more and more easy to produce prototypes of 3 dimensional shapes. In this project we developed our first software to produce shapes and printable objects for a 3D-printer.
 This project was part as a final project of the École Polytechnique course &ldquo;X-INF 573 Digital Representations and Analysis of Shapes&rdquo;.</p>
-<p>The aim of this project was to give an input shape, define an angle an orientation axis and then to carve out and deform the shape, such that the new modified shape can stand in this desired position. </p>
+<p>The aim of this project was to give an input shape, define an angle an orientation axis and then to carve out and deform the shape, such that the new modified shape can stand in this desired position.</p>
 <table>
 <thead>
 <tr>
@@ -168,11 +168,11 @@ This can be done for example with Houdini SideFx Software, later we will discuss
 In order to create an <code>.obj</code> file of a shape, that is tilted, we first start to import an <code>.obj</code> of the shape with a file node in Houdini and remesh it.</p>
 <p><figure><img src="../../images/3dprinting/remeshing_in_houdini.png" width="50%" height="50%"/>
 </figure>
- 
+
 In the next step we use a deform handle to bring the bunny in the desired tilted position.
 <figure><img src="../../images/3dprinting/deform_the_shape.png" width="50%" height="50%"/>
 </figure>
- 
+
 In order to tilt and move the shape with the mouse, one needs to click on the geometry handle in the left bar. Next, to create the support base where the shape should stand on, we will delete all nodes that have a y-component below zero and fill them. In order to do this, we create a boolean attribute with the information, whether a node is to delete.</p>
 <figure><img src="../../images/3dprinting/coloring_pts_to_delete.png" width="50%" height="50%"/>
 </figure>
@@ -398,7 +398,7 @@ Lastly, to finalize the file <code>voxelizer.py</code>, we need to add the lines
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> carved_voxel_inside
-</span></span></code></pre></div><p>If the algorithm does not terminate, carving is not sufficient! In this case one either needs to add mass and repeat the carving process. 
+</span></span></code></pre></div><p>If the algorithm does not terminate, carving is not sufficient! In this case one either needs to add mass and repeat the carving process.
 The other option is to deform the shape. In the original paper, they deformed the carved shape. In our attempt, we had some struggle to retransform the carved boolean shape in an inner and outer mesh in an <code>.obj</code> format. Our solution is therefore a semi automatic approach. We print out the values of the current carving plane and the center of mass. If the carving fails, one can deduce where we need to add more mass and how we need to deform them. Prevost et al used an energy from the bounded biharmonic weights with deformation handles in order to achieve the deformation. In our approach we use a cage based deformation in Houdini to deform the shapes. It should be noted, that this needs to be done before the carving process, we were not able yet to implement an alternating carving and deforming.</p>
 <h3 id="deformation-with-houdini">Deformation with Houdini</h3>
 <p>In order to implement a cage based deformation in Houdini, we need to define a bounding box first

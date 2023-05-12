@@ -70,24 +70,10 @@
                 </div>
                 <div class="entry-content"><p>In my locomotion project I went for an approach to imitate cross-country-skiing in VR. The overall idea will be, that you have to move your arms from top to down, and this then gives you a push.  I used the environment build by Wen-Jie Tseng, that he provided for our class under this <a href="https://github.com/wenjietseng/VR-locomotion-parkour">link</a>. This was my starting point, to modify the position of the OVRCamera Rig with its controllers, in order to move. My process in order to get there is described in this post.
 <!-- raw HTML omitted --></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"><figure><img src="../../images/locomotion/langlauf.png" width="40%" height="40%"/>
-</figure>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><!-- raw HTML omitted -->Image Credits - <a href="https://www.youtube.com/watch?v=WaMTbWNVRko">https://www.youtube.com/watch?v=WaMTbWNVRko</a><!-- raw HTML omitted --></td>
-</tr>
-</tbody>
-</table>
 <p>In the first part of my implementation, when playing with the given locomotion technique, I realized, that I can enter the ground.
 <figure><img src="../../images/implementation_loco/hitting-the-street.PNG" width="30%" height="30%"/>
 </figure>
- 
+
 As I want to move forward on the ground, one needs to avoid this. In order to understand how one could prevent this and how the VR-Steering in general works, I first implemented a very simple locomotion with a joystick, where I take the x-value and associate it to the speed that the player will feel. Then I took the normalized forward vector of the head mounted display to move forward. As I want to stay on the ground and do not want to move in the air, I took the projection onto the x-z-plane with the <code>hmd.forward</code>.</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">void FixedUpdate()
     {
@@ -106,17 +92,17 @@ In order to access the rigidbody in my script, I declared a public variable <cod
     public Rigidbody rbdy;
     [...]
 }
-</code></pre><p>To link them, I just dragged in the unity editor the rigidbody component into the public variable of the script. 
+</code></pre><p>To link them, I just dragged in the unity editor the rigidbody component into the public variable of the script.
 <figure><img src="../../images/implementation_loco/define-rigidbody-for-script.PNG" width="40%" height="40%"/>
 </figure>
- 
-Make sure that you untick the <code>isKinematic</code> in the rigidbody. 
+
+Make sure that you untick the <code>isKinematic</code> in the rigidbody.
 <figure><img src="../../images/implementation_loco/untick-kinematic.PNG" width="30%" height="30%"/>
 </figure>
- 
+
 In order to solve this issue of entering the street, my first idea was to use a second collider, but there seemed to be a problem, because if the new collider is not a trigger, we will bounce of the coins and cannot collect them. Thus I tried to activate and deactivate the trigger of the collider in the script in such a way, that if I hit the street, the trigger is false. I used the call
-<code>this.GetComponent&lt;Collider&gt;().isTrigger = false</code> 
-If the collider detected, that the collision object is a banner or a coin, I reset the trigger to true. But there was still an issue, because this action is not fast enough. That means, that we hit a coin, collide hard, and then the coin can be collected. To overcome this issue, I used a little dirty hack, in such a way, that I manually defined the y-position. I placed 8 cubes in the area of the bridge and manually checked their positions. 
+<code>this.GetComponent&lt;Collider&gt;().isTrigger = false</code>
+If the collider detected, that the collision object is a banner or a coin, I reset the trigger to true. But there was still an issue, because this action is not fast enough. That means, that we hit a coin, collide hard, and then the coin can be collected. To overcome this issue, I used a little dirty hack, in such a way, that I manually defined the y-position. I placed 8 cubes in the area of the bridge and manually checked their positions.
 <figure><img src="../../images/implementation_loco/bridge-parcours-with-cubes.PNG" width="60%" height="60%"/>
 </figure>
 
@@ -198,7 +184,7 @@ In order to do this, I attached a game object to the <code>CenterEyeAnchor</code
 <figure><img src="../../images/implementation_loco/set_trigger_collider.PNG" width="30%" height="30%"/>
 </figure>
 
-I experimented a bit with positions until I was happy with the size and positions of the cubes. I made the lower cubes a bit larger, cause if they are too small it might be, that a stroke does not trigger a push. 
+I experimented a bit with positions until I was happy with the size and positions of the cubes. I made the lower cubes a bit larger, cause if they are too small it might be, that a stroke does not trigger a push.
 <figure><img src="../../images/implementation_loco/cubes_final.PNG" width="30%" height="30%"/>
 </figure>
 </p>
@@ -207,7 +193,7 @@ I experimented a bit with positions until I was happy with the size and position
 </figure>
 
 <p>Next in order to check if the <code>LeftHandAnchor</code> is inside the box or not, I attached a new script to the left (and then right) hand anchor. In the project window, drag them over to the <code>Scripts</code> folder.
-Now, we additionally need to add a box collider to the Controllers/Anchors. Make sure to tick the <code>isTrigger</code> again. There one needs to be careful, because by default the collider of the Anchors has not the same size as the collider of the boxes. 
+Now, we additionally need to add a box collider to the Controllers/Anchors. Make sure to tick the <code>isTrigger</code> again. There one needs to be careful, because by default the collider of the Anchors has not the same size as the collider of the boxes.
 <figure><img src="../../images/implementation_loco/anchor_box_collider_too_big.PNG" width="30%" height="30%"/>
 </figure>
 </p>
@@ -287,10 +273,10 @@ I measure the time it takes, and the faster it is, the bigger the push is going 
     }
 </code></pre><p>Of course, you need to add the same call for the right handle.
 Now you should be able to move by going up and down with the controllers from the boxes. I experimented a little bit how to set the natural drag, to slow down again and the force from the push. It turned out, that for the plane a drag value of 0.4 seems quite fun.
-When going downhill, I add a drag of -0.1, so that you accelerate when decending. But in order to get into the next corner, we need to brake down. 
+When going downhill, I add a drag of -0.1, so that you accelerate when decending. But in order to get into the next corner, we need to brake down.
 <figure><img src="../../images/implementation_loco/corner-downhill.PNG" width="50%" height="50%"/>
 </figure>
- 
+
 If you do not brake, you will just fly off the corner.
 I just use the value of the right <code>PrimaryIndexTrigger</code> and add a large drag according to this value. Before the push, I add a condition of the form</p>
 <pre tabindex="0"><code class="language-code" data-lang="code">private void FixedUpdate()

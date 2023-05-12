@@ -85,7 +85,7 @@ You will now need to build the cotangent Laplacian. To do this complete the meth
 </figure>
 
 <h5 id="minimization-of-quadratic-energies-in-libigl">Minimization of quadratic energies in Libigl</h5>
-<p>To solve this Poisson problem we need to minimize the Dirichlet energy with the fixed boundary. Libigl has an in-build method to solve these kind of quadratic minimization problems. 
+<p>To solve this Poisson problem we need to minimize the Dirichlet energy with the fixed boundary. Libigl has an in-build method to solve these kind of quadratic minimization problems.
 For a sparse, symmetric, positive definite $n\times n$ matrix $Q$ (hint: check whether your matrix is really positive definite&hellip;) and a vector $B$, let $\mid \partial M \mid$ be the number of points with constraint. Let $z_{\partial M}$ be a vector of shape $\mid \partial M \mid\times 1$ (not $\mid \partial M \mid\times 2$ !!) that indicate the point numbers with constraint. Let $z_{bc}$ be a vector of shape $\mid \partial M \mid\times 1$ with the constraints for the chosen points. In our cases for this task we can set $A_{eq} = 0$, an empty sparse matrix and $B, B_{eq}$ as zero vectors.</p>
 <p>Then we can solve the minimization problem</p>
 <p>$$\text{min}\  z^t Q z + z^t B\  \text{where}\  z_{\partial M} = z_{bc}\ \text{and} \  A_{eq} z = B_{eq}$$ with the method</p>

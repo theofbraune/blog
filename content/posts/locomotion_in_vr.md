@@ -1,7 +1,7 @@
 +++
 title= "Locomotion in virtual reality."
 date= 2022-01-03T17:10:32+01:00
-draft= false
+draft= true
 author = "Theo"
 tags = ["virtual reality"]
 +++
