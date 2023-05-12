@@ -47,6 +47,9 @@ img {
 	color: #000000;
 	width: 50%;
   	height: 30%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 	padding: 30px;
 	text-align: center;
 	font-family: Arial, sans-serif;
