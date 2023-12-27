@@ -1,0 +1,109 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Setting up a Webblog with Hugo</title>
+<link rel=stylesheet href=../../css/bootstrap.min.css><link rel=stylesheet href=../../css/home.css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js></script><link rel=icon href=../../images/integral_icon.png></head><body><header id=site-header><nav class="navbar navbar-expand-lg navbar-dark bg-primary"><div class=container-fluid><a class=navbar-brand href=../index.html>Maths of Glory</a>
+<button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link active" aria-current=page href=../../../>Home</a></li><li class=nav-item><a class=nav-link href=../../../posts/index.html>Posts</a></li><li class=nav-item><a class=nav-link href=../../../custum/projects/index.html>Projects</a></li></ul></div></div></nav></header><main class=site-main><div class=container><article class=single-post><h1 class="entry-title mt-4 mb-4">Setting up a Webblog with Hugo</h1><div class="post-meta mb-2"><span class=post-author>Posted by: Theo
+</span><span class=post-date><time>Dec 21, 2021, 11:31AM</time>
+</span><span class=post-tags><a href=https://theofbraune.github.io/blog/en/tags/web-development/>web development</a></span></div><div class=entry-content><p>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&rsquo;ll explain how you can easily setup your webblog with the static page generator <a href=https://gohugo.io/>hugo</a>.</p><p>To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.</p><figure><img src=../../../images/setup_blog/snap_store.png width=50% height=50%></figure><p>In the next step I created a new directory, where I created all the necessary files. In order to create a new hugo blog, you can cd into the desired directory and then call</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ hugo new site &lt;your sitename&gt;
+</span></span></code></pre></div><p>In the picture you can see, that the creation with the hugo new call creates directely a certain number of folders and files for you.<figure><img src=../../../images/setup_blog/create_site.png width=50% height=50%></figure></p><p>If you want to add some content to your blog, you can call</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ hugo new posts/&lt;title of your post&gt;.md
+</span></span></code></pre></div><p>This will create a markdown file with your chosen title. You will see a header, that is structured like</p><pre tabindex=0><code>+++
+title= &#34;Setting up a Webblog with Hugo&#34;
+date= 2021-12-21T11:31:19+01:00
+draft= false
+author = &#34;Your Name&#34;
+tags = []
++++
+</code></pre><p>Note that by default <code>draft</code> is set to <code>true</code>. This will prevent, that you cannot show it in your final blog.
+You can update the default settings for this header in the <code>config.toml</code> file. For further information how this can be done, I&rsquo;ll refer to the <a href=https://gohugo.io/getting-started/configuration/>official Hugo documentary</a>.
+It is useful to add tags, because later on you can show all posts, that share a tag together at once.</p><p>So, you are now able to create new content to your blog, but if you call</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ hugo server
+</span></span></code></pre></div><p>and launch your localhost, you&rsquo;ll realize, that you have no styling at all and that it looks really boring. Now you have two options (or certainly there are more and I just don&rsquo;t know about them). You can either choose a <a href=https://themes.gohugo.io/>theme on the official hugo website</a> and unpack this in the themes folder of your hugo project. You will find a lot of sample themes and I&rsquo;m sure you will find one that you like. In this case you do not need to touch any css or javascript at all.</p><p>Nevertheless I decided to design and play with <a href=https://getbootstrap.com/>bootstrap</a>, css, javascript and html on my own.
+In this blog with hugo I want to create content in the form of markdown files, which will then be in a nice looking websetup. In order to have for example the same header with navbar for all blog posts, we need to define a base website and then use some hugo code. The code shown below is an example of how this could be achieved. There is some base html with bootstrap. In order to convert the content in markdown into renderable html we make use of the hugo scipting language<figure><img src=../../../images/setup_blog/base_html.png width=80% height=80%></figure></p><p>Here we fetch the title of the site and put it in the header of the website. Note that the name of the website is strict. This side, that builds the skeleton for the content, must be named <code>baseof.html</code>.
+The hierarchy of the sites is strict! The rules of how to name the sites can be found <a href=https://gohugo.io/templates/base/>here</a>.
+In order to put the content from each site into the website, we see in the picture above <code>{{ block "main" .}}{{end}} </code>; we need to define the <code>"main"</code> in a file called <code>single.html</code>.</p><figure><img src=../../../images/setup_blog/single_post.png width=50% height=50%></figure><p>Note that the syntax starts with <code>{{define "main"}}</code> and ends with <code>{{end}}</code>. The part inbetween has the html article structure and uses the hugo script calls to fetch the title, the date, the tags and the content of the corresponding markdown file.</p><p>This allows you to define a single page with navbar and content. But of course we want to have an overview page for all the blog posts as well. To achieve this, we modify the <code>list.html</code>. Note that with the hierarchy, the <code>list.html</code> will be embedded into the skeleton defined above. I call a hugo method with the <code>{{ range .Paginator.Pages}}</code>, this allows to loop over all posts and to display them in the listing page.</p><figure><img src=../../../images/setup_blog/list-item.png width=50% height=50%></figure><p>We can fetch the information about the author, the date and the summary in order and display them, seen as above.</p><p>Lastly, we want to have a good looking landing page. All the .html files before need to be saven in the folder <code>layouts/_default</code>, the landing page only needs to be saven in the folder <code>layouts</code> and needs to be called <code>index.html</code>. So, have fun to choose your favorite layout, your fancy animations with javascript to design. I decided to keep it simple and to just choose a background image for the div, that is the main container, but that could be your wonderland for your front end skills.</p><p>There are a few thinks that should be noted on the links for the pictures and the css stylesheets. However there was some issue with the deployment on the server on github pages. I do not really know why this is happening, but in the localhost all the links for the images and css sheets seem to work. Nevertheless when performing the page build with the call <code>hugo</code>, the links all do not work anymore. For images, this is relatively easy to fix. You just need to add the line <code>relativeURLs = true</code> in your <code>config.toml</code> file. This will create the right relative paths in the generated html pages from the markdown content. But this does not work for the css stylesheets. The problem is, that the html file <code>baseof.html</code> is the base for each post and each the list page of all written posts. The hugo generator does not change the html files in the layout, but merges them smartly. When we precise the location of the css stylesheet, we have in the header of <code>baseof.html</code> the following line <code>&lt;link rel="stylesheet" href="../css/home.css"></code>, or whatever name you gave to your css sheet. The issue is now, that we have the paths <code>public/posts/index.html</code> for the overview page of all posts and for a single post <code>public/posts/blog-setup/index.html</code>, so the css link for the generated <code>blog-setup</code> page does not work, as we have to go up two directories to get to the css stylesheet. There are two ways to fix this.
+I made use of both. For the first I changed the the files <code>layout/_default/list.html</code> and <code>layout/_default/single.html</code>. For the <code>single.html</code>, there was before a structure as follows</p><pre tabindex=0><code>
+{{ define &#34;main&#34;}}
+
+  &lt;article class=&#34;single-post&#34;&gt;
+    [..]
+  &lt;/article&gt;
+
+{{end}}
+</code></pre><p>This would fetch the <code>baseof.html</code> and put the generated html in there. Instead I neglegted the <code>baseof.html</code> a bit and changed <code>single.html</code> to the following</p><pre tabindex=0><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+&lt;head&gt;
+    [...]
+    &lt;title&gt;{{.Title}}&lt;/title&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;../../css/bootstrap.min.css&#34;&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;../../css/home.css&#34;&gt;
+    [...]
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header id = &#34;site-header&#34;&gt;...
+&lt;/header&gt;
+&lt;main class=&#34;site-main&#34;&gt;
+    &lt;div class=&#34;container&#34;&gt;
+        &lt;article class=&#34;single-post&#34;&gt;
+        [...]
+        &lt;/article&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre><p>Similarly I changed the <code>list.html</code> to</p><pre tabindex=0><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+&lt;head&gt;
+    [...]
+    &lt;title&gt;{{.Title}}&lt;/title&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;../css/bootstrap.min.css&#34;&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;../css/home.css&#34;&gt;
+    [...]
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header id = &#34;site-header&#34;&gt;...
+&lt;/header&gt;
+&lt;main class=&#34;site-main&#34;&gt;
+    &lt;div class=&#34;container&#34;&gt;
+        &lt;article class=&#34;post-list&#34;&gt;
+        [...]
+        &lt;/article&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre><p>Now both have the correct links to the css stylesheets and can be displayed nicely.</p><p>A similar problem appeared for the overview pages for the different tags. There hugo also takes the <code>list.html</code> and iterates over all posts, that have for example the tag &ldquo;virtual reality&rdquo;. But for each tag, the path to the overview page is <code>public/tags/&lt;Your favorite tag>/index.html</code>, but the css directory can be found under <code>public/css/home.css</code>, hence one would need to go two directories up to read the css information. Compare this to the <code>list.html</code>. In order to overcome this, I just copied the css directory into <code>public/tags/css/</code>. Then the paths to the css directory work again.</p><h2 id=deployment-on-github>Deployment on Github</h2><p>First of all direct to the directory where your <code>config.toml</code> file is saved.
+The first thing you should do is to change the baseURL to <code>baseURL = 'https://&lt;YOUR USERNAME>.github.io/'</code>. If you choose the path like this you will get good results in the localhost, but big big big frustration, when you try to host the project on github pages. You need to add the repository name to your path. Otherwise all your paths are messed up. If the github repository for your blog is called <code>blog</code>, the baseURL needs to be <code>baseURL = 'https://&lt;YOUR USERNAME>.github.io/blog'</code></p><p>First of all direct to the directory where your config.toml file is saved.</p><p>In this directory, what could be called blog you should call git init. You now have locally on your machine some posts, and you need to add them to your git. Therefore you need to call to check in all the files in your git repository.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&lt;Directory-of-your-blog&gt;$ git add .
+</span></span><span style=display:flex><span>&lt;Directory-of-your-blog&gt;$ git commit -m <span style=color:#e6db74>&#34;&lt;Your favorite commit message&gt;
+</span></span></span></code></pre></div><p>Once this is done, you need to create on github a repository. In order to do this, go to github</p><p>and click on new repository. Then give the repository your favorite name and add some description if you want.</p><p>Now you should see a the github repository setup site. As you already created a repository, the second block entitled with …or push an existing repository from the command line is the one you are looking for.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&lt;Directory-of-your-blog&gt;$git remote add origin https://github.com/&lt;Your Account&gt;/&lt;Your Reponame&gt;.git
+</span></span><span style=display:flex><span>&lt;Directory-of-your-blog&gt;$git branch -M main
+</span></span><span style=display:flex><span>&lt;Directory-of-your-blog&gt;$git push -u origin main
+</span></span></code></pre></div><p>Make sure that you use the github access token and not your old access password.</p><p>Next we need to create a new folder inside our blog project. So cd into the folder of the blog project. Note that the folders strictly need to have these following names:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>mkdir .github
+</span></span><span style=display:flex><span>cd .github
+</span></span><span style=display:flex><span>mkdir workflows
+</span></span></code></pre></div><p>Inside of the directory workflows create a file called <code>gh-pages.yml</code>. This file will be important, because it will allow to run the hugo methods in the github pages, i.e the pagination, the tagging will work online with the help of this file. You will need to paste the following in the <code>gh-pages.yml</code> file</p><pre tabindex=0><code class=language-name: data-lang=name:>
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: &#39;latest&#39;
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == &#39;refs/heads/main&#39;
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+</code></pre><p>This can be found as well in the hugo documentation. Next of course push this folders with this file to github. You need to make sure, that your access token allows you to change the workflow.</p><p>Now all your content should be visible on github. Go to <code>Actions</code><figure><img src=../../../images/setup_blog/github_directory.png width=60% height=60%></figure></p><p>If you named the folder <code>workflows</code> correctly, you should see a page as follows<figure><img src=../../../images/setup_blog/build_workflow.png width=50% height=50%></figure>with an orange dot instead of the green one and your personal commit message. Once this is all posted, you will see that there is a second branch, called <code>gh-pages</code>. There all the static html sites are located, now you should be able to see your blog under the url
+<code>'https://&lt;YOUR USERNAME>.github.io/&lt;YOUR REPONAME>'</code></p></div></article></div></main><footer id=site-footer class="bg-dark text-white pb-4 pt-4"><div class=container><div class="copyright text-center">&copy;2022Maths of Glory</div></div></footer><script src=../../../js/bootstrap.min.js></script></body></html>
