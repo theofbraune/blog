@@ -1,7 +1,7 @@
 +++
 title= "Mixed Reality and the Metaverse - A dystopian world?"
 date= 2021-12-21T18:09:53+01:00
-draft= false
+draft= true
 author = "Theo"
 tags = ["virtual reality","ethics"]
 +++

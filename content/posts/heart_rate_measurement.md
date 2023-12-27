@@ -6,15 +6,15 @@ author = "Theo and Jingyi"
 tags = ["programming","projects", "Computer Vision"]
 +++
 
-For many applications in telemedicine or in surveillance a contactless heart rate measurement can be extremely useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed.
+For many applications in telemedicine or in a security context a contactless heart rate measurement can be great interest useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not always applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed.
 
-This project was part of the evaluation of the Computer Vision introduction course at École Polytechnique and is mainly based on [this article](http://alumni.media.mit.edu/~zher/papers/Poh-etal-OptExp.pdf)
+This project was part of the Computer Vision introduction course at École Polytechnique and is mainly based on [this article](http://alumni.media.mit.edu/~zher/papers/Poh-etal-OptExp.pdf)
 
 The basic idea behind will be, that when our heart is pumping, our skin is changing. We will detact these changes.
 
 
  {{< figure src="/images/heart_rate/stressed_guy.jpg"   width="20%" height="20%" >}} 
- We all know this guy. And in his case we do not need a very sophisticated image analysis algorithm to detect, that this guy is pretty stressed. In a way we are all this guy - on some days more then on others -, so our skin changes when we are stressed and we will measure that.
+ We all know this guy. And in his case we do not need a very advanced image analysis algorithm to detect, that this guy is stressed/excited. In a way we are all this guy, our skin changes when we are stressed and this is something that we will be able to measure.
 
 
 The first step for us was to use a face recognition system to extract the face from the video feed. For that, we used a Haar Cascade classifier in open CV to detect the face. The link for it can be found [here](https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html).
@@ -302,7 +302,7 @@ we obtain the following plot
 
 In this plot we need to focus on the first peak of the frequency, more precisely on the position of the peak. The position corresponds to the frequency. Here we still see the noisy data, where we have not cut of all the values below 0.75Hz, which would mean to have a heart rate of 45bpm. If we focus on the peak with frequency higher then 0.75, we get the heart rate. In practise it turned out, that it can be useful to take the mean of the red, green a blue heart rate for us. In this case we achieved for a stable sitting person values that were 5-10 bpm away from the ground truth, which we measured with a real heart rate sensor.
 
-I took a video capture of myself during the 2021 Formula 1 season final, where my heart rate was of course a bit higher then normal.
+I took a video capture of myself during the 2021 Formula 1 season final.
 
 {{< figure src="/images/heart_rate/final_measurement.gif"   width="70%" height="70%" >}} 
 
@@ -312,8 +312,6 @@ In general one can say, that if the lightning is uniform and one is not turning 
 
 {{< figure src="/images/heart_rate/andrew_interview.png"   width="20%" height="20%" >}} 
 
-We tried to find an answer to the question what might have been the heart rate of Prince Andrew, while his legendary interview. But we found with our method, that he would have had a heart rate of 51bpm, which seems a bit unlikely.
-
-On the other hand, it is also a bit relieving, that it did not work of right away perfectly. It would also be a bit scary, if one could capture these sensitive personal data without the consent of the person in question.
+We tried our method on publicly available interviews, like the interview of Prince Andrew. But we found with our method, that he would have had a heart rate of 51bpm, which seems a bit unlikely.
 
 The code for this project can be found under [https://github.com/JeansLli/X-INF573-heart-rater.](https://github.com/JeansLli/X-INF573-heart-rater)
