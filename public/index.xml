@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Maths of Glory</title>
+    <title>Theo Braune</title>
     <link>https://theofbraune.github.io/blog/</link>
-    <description>Recent content on Maths of Glory</description>
+    <description>Recent content on Theo Braune</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 25 Oct 2022 16:03:37 +0200</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -103,16 +103,6 @@ In 1994 Paul Milgram published with a work, where he introduced the idea of a Re
       <description>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&amp;rsquo;ll explain how you can easily setup your webblog with the static page generator hugo.
 To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.
 In the next step I created a new directory, where I created all the necessary files.</description>
-    </item>
-    
-    <item>
-      <title>About me and this blog.</title>
-      <link>https://theofbraune.github.io/blog/about/about_me/</link>
-      <pubDate>Wed, 08 Dec 2021 12:34:16 +0100</pubDate>
-      
-      <guid>https://theofbraune.github.io/blog/about/about_me/</guid>
-      <description>Welcome to my webblog. My Name is Theo Braune and here I will publish blogposts related to technology and Science.
-Currently I am in doing a Master at the Institut Polytechnique in Computer Science and a Master of Mathematics at the TU Berlin. I am interested in differential geometry, geometry processing and the simulation of physical systems. My cv can be found here</description>
     </item>
     
   </channel>

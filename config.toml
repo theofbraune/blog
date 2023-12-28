@@ -1,6 +1,6 @@
 baseURL = 'https://theofbraune.github.io/blog'
 DefaultContentLanguage = "en"
-title = 'Maths of Glory'
+title = 'Theo Braune'
 defaultContentLanguageInSubdir = true
 relativeURLs = true
 pathPrefix = 'blog'
