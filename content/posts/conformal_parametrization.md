@@ -113,7 +113,10 @@ Experiment with fixing different vertices on the boundary or to place them at di
 #### Bonus:
   Now that we have calculated the conformal parametrization of the mesh, you will realize that if you fix different points of the mesh as a constraint for the minimization, you will obtain different parametrizations.
   The conformal parametrization is angle preserving, but not area preserving. Two triangles that have the same angles can be transformed through a scaling and a rotation into each other.
-   Your task is now to compute this scaling factor --the conformal factor-- and color the parametrization with this factor. Fix different points of the mesh in the plane and compare the area distortion. Attach screenshots of the coloring of different meshes to your submission. Note that the conformal factor in the method ``compute_conformal_factor`` has to be computed per triangle. In order to obtain a coloring per vertex, you need to calculate subsequently the mean over the one ring neighborhood and determine a useful color scale in the method ``compute_conformal_coloring``.  
+   Your task is now to compute this scaling factor --the conformal factor-- and color the parametrization with this factor. Fix different points of the mesh in the plane and compare the area distortion. Attach screenshots of the coloring of different meshes to your submission. Note that the conformal factor in the method ``compute_conformal_factor`` has to be computed per triangle. In order to obtain a coloring per vertex, you need to calculate subsequently the mean over the one ring neighborhood and determine a useful color scale in the method ``compute_conformal_coloring``. Furthermore use the newly computed UV coordinates to map a texture onto the flattened mesh.
+
+   {{< figure src="/images/conformal_parametrization/conformal_factor_beetle_texture.png"   width="30%" height="30%" >}}
+
 
 
 
