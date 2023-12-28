@@ -5,17 +5,7 @@
     <link>https://theofbraune.github.io/blog/tags/teaching/</link>
     <description>Recent content in teaching on Maths of Glory</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 28 Dec 2023 00:12:28 +0100</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vector Field Processing</title>
-      <link>https://theofbraune.github.io/blog/posts/vector_field_processing/</link>
-      <pubDate>Thu, 28 Dec 2023 00:12:28 +0100</pubDate>
-      
-      <guid>https://theofbraune.github.io/blog/posts/vector_field_processing/</guid>
-      <description>In this TP we want to calculate vector fields on discrete surfaces.
-1. Precalculate the mesh information To calculate vector fields for discrete surfaces, we will use a class, where we precalculate different quantities that will come in handy for the calculation. You will calculate these quantities directly in the constructor of the class Mesh. In this TP, we will define subsequently a class ElectricMesh that will inherit from this class.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 25 Oct 2022 16:03:37 +0200</lastBuildDate><atom:link href="https://theofbraune.github.io/blog/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Conformal Parametrization</title>
       <link>https://theofbraune.github.io/blog/posts/conformal_parametrization/</link>
