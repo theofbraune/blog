@@ -1,7 +1,7 @@
 baseURL = 'https://theofbraune.github.io/blog'
 DefaultContentLanguage = "en"
 title = 'Theo Braune'
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false
 relativeURLs = true
 pathPrefix = 'blog'
 
