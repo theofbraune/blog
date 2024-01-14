@@ -2,7 +2,7 @@
 title= "Conformal Parametrization"
 date= 2022-10-25T16:03:37+02:00
 draft= false
-author = "Jiayi & Theo"
+author = " Theo & Jiayi"
 tags = ["programming","teaching"]
 +++
 In this TP we want to calculate the harmonic and the conformal parametrization of a mesh.

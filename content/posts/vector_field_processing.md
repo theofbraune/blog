@@ -1,12 +1,12 @@
 +++
 title= "Vector Field Processing"
 date= 2023-12-28T00:12:28+01:00
-draft= true
+draft= false
 author = "Theo"
 tags = ["programming","teaching"]
 +++
 
-In this TP we want to calculate vector fields on discrete surfaces.
+In this task we want to calculate vector fields on discrete surfaces.
 
 ## 1. Precalculate the mesh information
 

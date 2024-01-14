@@ -134,6 +134,25 @@ img {
    padding:0; /*if your want to padding */
    float:left;
 }
+
+.picture4{
+    width:8rem; /*width of your image*/
+   height:6rem; /*height of your image*/
+   margin-top:25px;
+   background-image:url('../images/project_teaser/beetle_after.png');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
+.picture5{
+    width:8rem; /*width of your image*/
+   height:6rem; /*height of your image*/
+   margin-top:25px;
+   background-image:url('../images/project_teaser/trivial_connection_bunny.png');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
 .project-text{
     padding-top: 1em;
 }
