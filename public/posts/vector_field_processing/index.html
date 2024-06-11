@@ -202,10 +202,10 @@ For a triangle consisting of the vertices $[v_i, v_j, v_k]$, the gradient of a f
 <p>If $\mathcal{B}_ a, \mathcal{B}_ b$ describe the bases of the tangent spaces $f_a$, resp. $f_b$, let $v$ be a tangent vector in $f_a$ and $v&rsquo;$ be the tangent vector in $f_b$ that arises through parallel transport with the Levi-Civita connection along the dual edge $e_{a,b}$. Let<br>
 $[v]_{\mathcal{B}_ a}, [v&rsquo;]_{\mathcal{B}_ b}\in \mathbb{R}^2$ be the coordinate vectors of $v,v&rsquo;$ in the respective bases. In this case, the parallel transport can be expressed via
 $$
-[v&rsquo;]_{\mathcal{B}_ b} = \begin{pmatrix} \cos(\theta_{ab})&amp; -\sin(\theta_{ab})\\ \sin(\theta_{ab})&amp; \cos(\theta_{ab})\end{pmatrix}[v]_{\mathcal{B}_ a}
+[v&rsquo;]_{\mathcal{B}_ b} = \begin{pmatrix} \cos(\theta_{ab})&amp; -\sin(\theta_{ab})\\ \sin(\theta_{ab})&amp; \cos(\theta_{ab})\end{pmatrix}[v]_{\mathcal{B}_ a} 
 $$</p>
 <h4 id="3-calculation-of-basis-cycles">3) Calculation of Basis Cycles</h4>
-<p>In order to compute a trivial connection we need to handle the holonomy around every cycle on the mesh. Any cycle that is the boundary of a 2D domain can be constructed as the union of boundaries of 1-ring cycles around vertices, that are already computed. Thus, surfaces of genus $0$ can be entirely handled like that.
+<p>In order to compute a trivial connection we need to handle the holonomy around every cycle on the mesh. Any cycle that is the boundary of a 2D domain can be constructed as the union of boundaries of 1-ring cycles around vertices, that are already computed. Thus, surfaces of genus $0$ can be entirely handled like that. 
 If you want to continue to work with the bunny, for example, you can skip this step and go directly to step 4).</p>
 <p>However, on surfaces with $g&gt;0$ this is not sufficient. There exist cycles that are not the boundary of a 2D domain (more formally, those surfaces have a non-trivial first homology group). Complete the method <code>compute_homology_generators()</code> to find these basic non-contractible cycles. You will represent the generators as a sequence of integers in a <code>std::vector&lt;std::vector&lt;int&gt;&gt;</code>.</p>
 <p>As one of the possible ways to traverse a mesh, we will construct a spanning tree of the primal mesh (in the figure in green) in a first step. Subsequently, we will calculate a spanning tree of the dual mesh (in the figure in blue) whose edges do not cross the edges of the primal spanning tree.
