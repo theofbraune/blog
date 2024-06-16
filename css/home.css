@@ -153,6 +153,15 @@ img {
    padding:0; /*if your want to padding */
    float:left;
 }
+.picture6{
+    width:8rem; /*width of your image*/
+   height:6rem; /*height of your image*/
+   margin-top:25px;
+   background-image:url('../images/project_teaser/avg_10.png');
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+   float:left;
+}
 .project-text{
     padding-top: 1em;
 }
@@ -348,3 +357,5 @@ height: calc(100% - 20px); /* for demonstration purposes, subtracts top and bott
     position: fixed;
   
 }
+
+
