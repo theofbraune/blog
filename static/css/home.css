@@ -164,8 +164,8 @@ img {
 }
 .picture7{
    width:8rem; /*width of your image*/
-   height:6rem; /*height of your image*/
-   margin-top:15px;
+   height:8rem; /*height of your image*/
+   margin-top:25px;
    background-image:url('../images/project_teaser/theta_function_first_one_degree_3_1.png');
    margin:0; /* If you want no margin */
    padding:0; /*if your want to padding */
