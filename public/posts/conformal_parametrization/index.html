@@ -98,14 +98,14 @@ We recommend to use the camelhead as a shape, since you will need to parametrize
 <p>To calculate the minimizer of quadratic energies under constraints, Libigl has an in-build method to solve these kind of quadratic minimization problems.
 For a general sparse, symmetric, positive definite $n\times n$ matrix $Q$ (hint: check whether your matrix is really positive definite…) and a vector $B$, let $\mid \text{Constraints} \mid$ be the number of constraints for the minimization. Let $z_{\partial M}$ be a vector of shape $\mid\text{Constraints} \mid\times 1$ (Attention: not $\mid \text{Constraints} \mid\times 2$ !!) that indicate the where a constraint is set. Let $z_{bc}$ be a vector of shape $\mid \text{Constraints} \mid\times 1$ encoding the constraints for the chosen points. In our cases for this task we can set $A_{eq} = 0$, an empty sparse matrix and $B, B_{eq}$ as zero vectors.
 Then we can solve the minimization problem
-$$\mathrm{min}_z \   z^t Q z + z^t B,\quad \mathrm{where}\quad z_{\partial M} = z_{bc}\quad \mathrm{and}\quad  A_{eq}\ z = B_{eq} \qquad(1)$$ 
+$$\mathrm{min}_z \   z^t Q z + z^t B,\quad \mathrm{where}\quad z_{\partial M} = z_{bc}\quad \mathrm{and}\quad  A_{eq}\ z = B_{eq} \qquad(1)$$
 with the method</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>igl<span style="color:#f92672">::</span>min_quad_with_fixed_data<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> data;
 </span></span><span style="display:flex;"><span>igl<span style="color:#f92672">::</span>min_quad_with_fixed_precompute(Q, zb, SparseMatrix<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span>(),true, data); 
 </span></span><span style="display:flex;"><span>igl<span style="color:#f92672">::</span>min_quad_with_fixed_solve(data,B,zbc,VectorXd(),minimal_z);
 </span></span></code></pre></div><h4 id="task">Task:</h4>
-<p>Solve for the minimizer of the problem 
-$$\text{min}_z\ \ z^T (-L) z\quad \text{ where } \quad z_{\partial M} = z_{bc}$$ 
+<p>Solve for the minimizer of the problem
+$$\text{min}_z\ \ z^T (-L) z\quad \text{ where } \quad z_{\partial M} = z_{bc}$$
 to compute the coordinates of the harmonic parametrization and overwrite the matrix <code>V_uv_harmonic</code>. Experiment with different boundary shapes.</p>
 <p><strong>Notational Remark:</strong> For the description of the smooth problem it is a common convention to use the letter $u$ as argument for the (smooth) Dirichlet energy. However for the description of the minimization of discrete quadratic energies, it is more common to use the letter $z$ as argument (especially the arguments in the code of the minimizer are named by default <code>z</code>).</p>
 <p>The harmonic parametrization of the camelhead, where each boundary vertex is mapped to a square could look like that.</p>

@@ -26,7 +26,7 @@
     <header id = "site-header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="../index.html">Maths of Glory</a>
+              <a class="navbar-brand" href="../index.html">Theo Braune</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -51,7 +51,7 @@
             <article class="single-post">
                 <h1 class="entry-title mt-4 mb-4">Conformal Parametrization</h1>
                 <div class="post-meta mb-2">
-                    <span class="post-author">Posted by: Jiayi &amp; Theo
+                    <span class="post-author">Posted by:  Theo &amp; Jiayi
                     </span>
             
                     <span class="post-date">
@@ -75,11 +75,11 @@ A detailed description about the task and further information can be found in th
 <h3 id="minimizing-the-dirichlet-energy-and-harmonic-parametrization">Minimizing the Dirichlet Energy and Harmonic Parametrization</h3>
 <p>In the first part of the TD it will be our objective to construct a parametrization that minimizes the Dirichlet energy. This energy will be also needed later on to calculate the conformal energy, which you will minimize for the conformal parametrization. The scenario will be that we prescribe in 2D a boundary curve and we will subsequently calculate for every vertex a 2D coordinate inside the bounded domain such that the Dirichlet energy is minimized.</p>
 <p>As you have seen in the lecture, a function $u$ is a minimizer of the Dirichlet energy if and only if it is harmonic, i.e
-$$\mathrm{min}_{u}E_D(u) = \int_C |{\nabla u}|^2 \Leftrightarrow \Delta u = -\Delta u = 0.$$</p>
+$$\mathrm{min}_{u}\ E_D(u) = \int_C |{\nabla u}|^2 \Leftrightarrow \Delta u = -\Delta u = 0.$$</p>
 <p>To compute the minimization of this energy, and with it the surface parametrization, we will solve the Poisson problem with a constraint on the boundary, i.e we want to solve.
 $$-\Delta u = 0,\quad\text{where }\quad u\mid_{\partial M} = u_{\text{boundary constraint}}$$</p>
-<p>As a first step you should build the matrix for the laplacian. To do that complete the method <code>compute_dirichlet()</code> in the class <code>ConformalParametrization</code> to build the discrete Laplacian as a sparse matrix (see below).<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->Remark:<!-- raw HTML omitted --> The equation you are solving in here is a Poisson problem of the form $$ -\Delta u = 0.$$ If you compare this with the heat equation  $$\partial_t u =  \Delta u,$$ these are two equations, that involve the Laplacian. In the continuous case, this is exactly the same operator. However in the discrete case it makes a difference, whether we regard the Laplacian as a pointwise or an integrated quantity. From a mathematical point of view it is equivalent to solve
+<p>As a first step you should build the matrix for the laplacian. To do that complete the method <code>compute_dirichlet()</code> in the class <code>ConformalParametrization</code> to build the discrete Laplacian as a sparse matrix (see below).<!-- raw HTML omitted --></p>
+<p><strong>Remark:</strong> The equation you are solving in here is a Poisson problem of the form $$ -\Delta u = 0.$$ If you compare this with the heat equation  $$\partial_t u =  \Delta u,$$ these are two equations, that involve the Laplacian. In the continuous case, this is exactly the same operator. However in the discrete case it makes a difference, whether we regard the Laplacian as a pointwise or an integrated quantity. From a mathematical point of view it is equivalent to solve
 $$-\Delta u = -A^{-1} L u = 0$$ or $$-Lu = A\cdot 0 = 0.$$ However from a numerical perspective it is benificial to consider systems that involve symmetric, positive definite matrices, sin
 ce it is easier to solve them and allows to use tailored minimizers.</p>
 <p>Therefore, in contrast to the operator in the previous exercise, you do not need to calculate the Voronoi areas. It is sufficient to compute the matrix $L$.
@@ -98,18 +98,21 @@ We recommend to use the camelhead as a shape, since you will need to parametrize
 <p>To calculate the minimizer of quadratic energies under constraints, Libigl has an in-build method to solve these kind of quadratic minimization problems.
 For a general sparse, symmetric, positive definite $n\times n$ matrix $Q$ (hint: check whether your matrix is really positive definite…) and a vector $B$, let $\mid \text{Constraints} \mid$ be the number of constraints for the minimization. Let $z_{\partial M}$ be a vector of shape $\mid\text{Constraints} \mid\times 1$ (Attention: not $\mid \text{Constraints} \mid\times 2$ !!) that indicate the where a constraint is set. Let $z_{bc}$ be a vector of shape $\mid \text{Constraints} \mid\times 1$ encoding the constraints for the chosen points. In our cases for this task we can set $A_{eq} = 0$, an empty sparse matrix and $B, B_{eq}$ as zero vectors.
 Then we can solve the minimization problem
-$$\mathrm{min}\  z^t Q z + z^t B,,\qquad (1)$$  where   $z_{\partial M} = z_{bc}\quad \mathrm{and}\quad  A_{eq}\ z = B_{eq} $
+$$\mathrm{min}_z \   z^t Q z + z^t B,\quad \mathrm{where}\quad z_{\partial M} = z_{bc}\quad \mathrm{and}\quad  A_{eq}\ z = B_{eq} \qquad(1)$$
 with the method</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>igl<span style="color:#f92672">::</span>min_quad_with_fixed_data<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> data;
 </span></span><span style="display:flex;"><span>igl<span style="color:#f92672">::</span>min_quad_with_fixed_precompute(Q, zb, SparseMatrix<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span>(),true, data); 
 </span></span><span style="display:flex;"><span>igl<span style="color:#f92672">::</span>min_quad_with_fixed_solve(data,B,zbc,VectorXd(),minimal_z);
 </span></span></code></pre></div><h4 id="task">Task:</h4>
 <p>Solve for the minimizer of the problem
-$$\text{min}_z\  z^T (-L) z \text{ where } \quad z{\partial M} = z{bc}$$
-to compute the coordinates of the harmonic parametrization and overwrite the matrix <code>V_uv_harmonic</code>. Experiment with different boundary shapes.
-<!-- raw HTML omitted -->Notational Remark: <!-- raw HTML omitted --> For the description of the smooth problem it is a common convention to use the letter $u$ as argument for the (smooth) Dirichlet energy. However for the description of the minimization of discrete quadratic energies, it is more common to use the letter $z$ as argument (especially the arguments in the code of the minimizer are named by default <!-- raw HTML omitted -->z<!-- raw HTML omitted -->).</p>
+$$\text{min}_z\ \ z^T (-L) z\quad \text{ where } \quad z_{\partial M} = z_{bc}$$
+to compute the coordinates of the harmonic parametrization and overwrite the matrix <code>V_uv_harmonic</code>. Experiment with different boundary shapes.</p>
+<p><strong>Notational Remark:</strong> For the description of the smooth problem it is a common convention to use the letter $u$ as argument for the (smooth) Dirichlet energy. However for the description of the minimization of discrete quadratic energies, it is more common to use the letter $z$ as argument (especially the arguments in the code of the minimizer are named by default <code>z</code>).</p>
 <p>The harmonic parametrization of the camelhead, where each boundary vertex is mapped to a square could look like that.</p>
-<h4 id="bonus">Bonus</h4>
+<figure><img src="../../images/conformal_parametrization/camelhead_to_square.png" width="50%" height="50%"/>
+</figure>
+
+<h4 id="bonus">Bonus:</h4>
 <p>Solve this problem without the in-build solver and code the constraint minimization yourself. Set up the Lagrange function $$\mathcal{L}(z,\lambda)$$ of the minimization problem under constraints $(1)$ and calculate the Lagrange multipliers $\lambda$. Transform the problem by a calculation on paper into a problem where a linear solve is sufficient to determine the parametrization. Attach a pdf of your calculation with explanation to your submission and implement this minimization.</p>
 <h3 id="conformal-parametrization">Conformal Parametrization</h3>
 <p>With the working Dirichlet energy we can now focus on the minimization of the conformal energy to calculate a conformal parametrization.</p>
@@ -136,10 +139,14 @@ $$L_{ij} = \begin{cases} 1,\ \mathrm{if}\ (i,j)\in \mathcal{E}\
 0,\ \mathrm{if}\ (i,j)\notin \mathcal{E}\end{cases}\quad   \mathrm{and}\quad   L_{ii} = \sum_{(ij)\in\mathcal{E}} L_{ij}.$$
 For the Laplacian that uses the euclidean distances, the weights are given through $$L_{ij} = \begin{cases} ||{v_i-v_j}||,\ \mathrm{if}\ (i,j)\in \mathcal{E}\
 0,\ \mathrm{if}\ (i,j)\notin \mathcal{E}\end{cases}\quad   \mathrm{and}\quad   L_{ii} = \sum_{(ij)\in\mathcal{E}} L_{ij},$$ thus you only have to make minimal changes for your sparse matrices.</p>
+<p>However if you just change the Laplacian like that and try to build the conformal energy you might run in a numerical error. Why is that the case and what do you have to do to change that ?</p>
 <h4 id="bonus-2">Bonus:</h4>
 <p>Now that we have calculated the conformal parametrization of the mesh, you will realize that if you fix different points of the mesh as a constraint for the minimization, you will obtain different parametrizations.
 The conformal parametrization is angle preserving, but not area preserving. Two triangles that have the same angles can be transformed through a scaling and a rotation into each other.
-Your task is now to compute this scaling factor &ndash;the conformal factor&ndash; and color the parametrization with this factor. Fix different points of the mesh in the plane and compare the area distortion. Attach screenshots of the coloring of different meshes to your submission. Note that the conformal factor in the method <!-- raw HTML omitted -->compute_conformal_factor<!-- raw HTML omitted --> has to be computed per triangle. In order to obtain a coloring per vertex, you need to calculate subsequently the mean over the one ring neighborhood and determine a useful color scale in the method <!-- raw HTML omitted -->compute_conformal_coloring<!-- raw HTML omitted -->.</p>
+Your task is now to compute this scaling factor &ndash;the conformal factor&ndash; and color the parametrization with this factor. Fix different points of the mesh in the plane and compare the area distortion. Attach screenshots of the coloring of different meshes to your submission. Note that the conformal factor in the method <code>compute_conformal_factor</code> has to be computed per triangle. In order to obtain a coloring per vertex, you need to calculate subsequently the mean over the one ring neighborhood and determine a useful color scale in the method <code>compute_conformal_coloring</code>. Furthermore use the newly computed UV coordinates to map a texture onto the flattened mesh.</p>
+<figure><img src="../../images/conformal_parametrization/conformal_factor_beetle_texture.png" width="30%" height="30%"/>
+   </figure>
+
 </div>
             </article>
         </div>
@@ -149,7 +156,7 @@ Your task is now to compute this scaling factor &ndash;the conformal factor&ndas
     <footer id="site-footer" class="bg-dark text-white pb-4 pt-4">
         <div class="container">
             <div class="copyright text-center">
-                &copy;2022Maths of Glory
+                &copy;2024Theo Braune
             </div>
         </div>
         
