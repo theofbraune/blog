@@ -232,3 +232,11 @@ nav {
   footer {
     height: 100px;
   }
+
+  .special-link {
+    color: #44596e; /* Brighter color for the special link */
+  }
+
+  .special-link:hover {
+      color: #0056b3; /* Hover color for the special link */
+  }
