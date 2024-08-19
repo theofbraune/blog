@@ -24,6 +24,9 @@
     padding: 0 20px;
   }
   
+  .site-main{
+    padding-top: 90px;
+  }
   
 /* Navbar styles */
 nav {
