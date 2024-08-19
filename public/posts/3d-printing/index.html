@@ -60,11 +60,11 @@
             
                     <span class="post-tags">
                         
-                            <a href="https://theofbraune.github.io/blog/tags/programming/">programming</a>
+                            <a href="https://theofbraune.github.io/blog/tags/programming/">Programming</a>
                         
-                            <a href="https://theofbraune.github.io/blog/tags/projects/">projects</a>
+                            <a href="https://theofbraune.github.io/blog/tags/projects/">Projects</a>
                         
-                            <a href="https://theofbraune.github.io/blog/tags/fabrication/">fabrication</a>
+                            <a href="https://theofbraune.github.io/blog/tags/fabrication/">Fabrication</a>
                         
                     </span>
                 </div>
@@ -74,7 +74,7 @@ This project was part as a final project of the École Polytechnique course &ldq
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><figure><img src="../../images/3dprinting/initial_problem.png" width="40%" height="40%"/>
+<th style="text-align:center"><figure><img src="../../images/3dprinting/initial_problem.png" width="40%" height="40%">
 </figure>
 </th>
 </tr>
@@ -89,7 +89,7 @@ This project was part as a final project of the École Polytechnique course &ldq
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><figure><img src="../../images/3dprinting/problem_stat.png" width="30%" height="30%"/>
+<th style="text-align:center"><figure><img src="../../images/3dprinting/problem_stat.png" width="30%" height="30%">
 </figure>
 </th>
 </tr>
@@ -106,7 +106,7 @@ This project was part as a final project of the École Polytechnique course &ldq
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><figure><img src="../../images/3dprinting/voxelization.png" width="30%" height="30%"/>
+<th style="text-align:center"><figure><img src="../../images/3dprinting/voxelization.png" width="30%" height="30%">
 </figure>
 </th>
 </tr>
@@ -123,7 +123,7 @@ This can be done for example with Houdini SideFx Software, later we will discuss
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><figure><img src="../../images/3dprinting/before_carving.png" width="30%" height="30%"/>
+<th style="text-align:center"><figure><img src="../../images/3dprinting/before_carving.png" width="30%" height="30%">
 </figure>
 </th>
 </tr>
@@ -138,7 +138,7 @@ This can be done for example with Houdini SideFx Software, later we will discuss
 <table>
 <thead>
 <tr>
-<th style="text-align:center"><figure><img src="../../images/3dprinting/after_carving.png" width="30%" height="30%"/>
+<th style="text-align:center"><figure><img src="../../images/3dprinting/after_carving.png" width="30%" height="30%">
 </figure>
 </th>
 </tr>
@@ -150,15 +150,15 @@ This can be done for example with Houdini SideFx Software, later we will discuss
 </tbody>
 </table>
 <p>In this case we are done and we can start to print the shape. It might happen, that we carve layer by layer through the shape and pass the support base, but the center of mass does not end up in the support base. In this case carving alone is not sufficient. If the object is for example very tall and thin, it also makes intuitively sense, that if the shape is tilted heavily in one direction, carving alone might not be sufficient.</p>
-<figure><img src="../../images/3dprinting/rocket_without_booster.PNG" width="15%" height="15%"/>
+<figure><img src="../../images/3dprinting/rocket_without_booster.PNG" width="15%" height="15%">
 </figure>
 
 <p>In order to overcome this issue, we came up with two options. The first one is -if it is possible- to add further mass to stabelize the figure, such that the center of mass becomes moved by that amd the carving can be more efficient.
-<figure><img src="../../images/3dprinting/add_mass.png" width="70%" height="70%"/>
+<figure><img src="../../images/3dprinting/add_mass.png" width="70%" height="70%">
 </figure>
 </p>
 <p>The second option is to deform the shape, such that the features of the shape are preserved, but at the same time the mass distribution becomes improved.
-<figure><img src="../../images/3dprinting/deformation.png" width="70%" height="70%"/>
+<figure><img src="../../images/3dprinting/deformation.png" width="70%" height="70%">
 </figure>
 </p>
 <p>In the initial <a href="https://igl.ethz.ch/projects/make-it-stand/">paper mentioned above</a> they suggested an alternating algorithm between deforming and carving in order to improve the weight distribution of the shape.</p>
@@ -166,15 +166,15 @@ This can be done for example with Houdini SideFx Software, later we will discuss
 <p>Well, so far these rough ideas might not seem that difficult, but then you get to the point, where you just want to take the mesh and get a stable <code>.stl</code> file, it is a bit challenging.</p>
 <p>We made use of Houdini Software for the purposes, because a lot of the file type conversion, mesh smoothing or cage deformations can be done there quite easily.
 In order to create an <code>.obj</code> file of a shape, that is tilted, we first start to import an <code>.obj</code> of the shape with a file node in Houdini and remesh it.</p>
-<p><figure><img src="../../images/3dprinting/remeshing_in_houdini.png" width="50%" height="50%"/>
+<p><figure><img src="../../images/3dprinting/remeshing_in_houdini.png" width="50%" height="50%">
 </figure>
 
 In the next step we use a deform handle to bring the bunny in the desired tilted position.
-<figure><img src="../../images/3dprinting/deform_the_shape.png" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/deform_the_shape.png" width="50%" height="50%">
 </figure>
 
 In order to tilt and move the shape with the mouse, one needs to click on the geometry handle in the left bar. Next, to create the support base where the shape should stand on, we will delete all nodes that have a y-component below zero and fill them. In order to do this, we create a boolean attribute with the information, whether a node is to delete.</p>
-<figure><img src="../../images/3dprinting/coloring_pts_to_delete.png" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/coloring_pts_to_delete.png" width="50%" height="50%">
 </figure>
 
 <p>In the code of the pointwrangle <code>mark_to_delete</code> add the code</p>
@@ -183,19 +183,19 @@ if(v@P.y&lt;0){
     i@to_delete=1;
 }
 </code></pre><p>Now use a blast node to delete the blue vertices
-<figure><img src="../../images/3dprinting/delete_selection.png" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/delete_selection.png" width="50%" height="50%">
 </figure>
 </p>
 <p>To fill this hole, we use a polyfill node. But before we can do that, we need to declare which hole it should fill. To do this, we need to declare a boundary first.</p>
-<p><figure><img src="../../images/3dprinting/boundary_edge_bunny.PNG" width="50%" height="50%"/>
+<p><figure><img src="../../images/3dprinting/boundary_edge_bunny.PNG" width="50%" height="50%">
 </figure>
 
 With this boundary, we can then fill the hole with a polyfill node, where we will need to remesh afterwards, since it creates an anisotropic mesh, which is not good for our purpose.
-<figure><img src="../../images/3dprinting/fill_the_hole.PNG" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/fill_the_hole.PNG" width="50%" height="50%">
 </figure>
 
 In the end, to export the tilted mesh with stable base we can again use a file node
-<figure><img src="../../images/3dprinting/remeshing_the_damage.PNG" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/remeshing_the_damage.PNG" width="50%" height="50%">
 </figure>
 
 but I highly recommend to deactivate that node during most of the time, because as soon as there is some change to the mesh, it will directly overwrite the change to the disk. This not just slows down your program, often you don&rsquo;t even want that.</p>
@@ -306,7 +306,7 @@ Lastly, to finalize the file <code>voxelizer.py</code>, we need to add the lines
 </span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;Support base is reasonable!!&#34;</span>)
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> scaled_support_base
 </span></span></code></pre></div><p>Then the support base can be of the form
-<figure><img src="../../images/3dprinting/before_carving.png" width="30%" height="30%"/>
+<figure><img src="../../images/3dprinting/before_carving.png" width="30%" height="30%">
 </figure>
 </p>
 <p>To compute the center of mass, we just compute the mean of all x-,y- and z-components, i.e</p>
@@ -402,28 +402,28 @@ Lastly, to finalize the file <code>voxelizer.py</code>, we need to add the lines
 The other option is to deform the shape. In the original paper, they deformed the carved shape. In our attempt, we had some struggle to retransform the carved boolean shape in an inner and outer mesh in an <code>.obj</code> format. Our solution is therefore a semi automatic approach. We print out the values of the current carving plane and the center of mass. If the carving fails, one can deduce where we need to add more mass and how we need to deform them. Prevost et al used an energy from the bounded biharmonic weights with deformation handles in order to achieve the deformation. In our approach we use a cage based deformation in Houdini to deform the shapes. It should be noted, that this needs to be done before the carving process, we were not able yet to implement an alternating carving and deforming.</p>
 <h3 id="deformation-with-houdini">Deformation with Houdini</h3>
 <p>In order to implement a cage based deformation in Houdini, we need to define a bounding box first
-<figure><img src="../../images/3dprinting/bounding_box_cage.PNG" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/bounding_box_cage.PNG" width="50%" height="50%">
 </figure>
 
 For our purpose, we used a 3x3x3 bounding box, but this can be modified in the parameters of the node.
 To apply the cage based deformation to an object, one needs to use an edit node, which will allow to deform the cage. The lattice node will allow to deform the shape according to the cage deformation.
-<figure><img src="../../images/3dprinting/initial_bunny.PNG" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/initial_bunny.PNG" width="50%" height="50%">
 </figure>
 
 The first input to the Lattice node needs to be the shape in question. The second input is the initial cage, then third one is the deformed cage. The output of this node will be the shaped deformed according to the rules of the edit nodes.</p>
 <p>To use an edit node, one needs to select first a number of points inside the cage.
-<figure><img src="../../images/3dprinting/select_group.PNG" width="30%" height="30%"/>
+<figure><img src="../../images/3dprinting/select_group.PNG" width="30%" height="30%">
 </figure>
 
-<figure><img src="../../images/3dprinting/select_nodes.PNG" width="30%" height="30%"/>
+<figure><img src="../../images/3dprinting/select_nodes.PNG" width="30%" height="30%">
 </figure>
 </p>
 <p>Once these nodes are selected, the selection of nodes can be moved around.</p>
-<p><figure><img src="../../images/3dprinting/deformed_cage.PNG" width="30%" height="30%"/>
+<p><figure><img src="../../images/3dprinting/deformed_cage.PNG" width="30%" height="30%">
 </figure>
 .</p>
 <p>If the transformation is applied, and we merge them together properly, the result could look like that:
-<figure><img src="../../images/3dprinting/deformed_bunny.PNG" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/deformed_bunny.PNG" width="50%" height="50%">
 </figure>
 </p>
 <p>If you do this a few times, you will notice in which way it is benefitial to deform the shape, before starting the carving.</p>
@@ -445,27 +445,27 @@ The first input to the Lattice node needs to be the shape in question. The secon
 Thanks to the Télécom Paris Fablab we were able to print our shapes with their 3D-Printer. We used a Creality3D CR-10S Pro Imprimante 3D to start printing our models.
 Before starting the printing process, we use the <code>Ultimaker Cura</code> Software to prepare our 3D prints.</p>
 <p>Make sure, that you increase in the printer settings the infill to 100%, since we want to use the mass of the infill for the balancing.</p>
-<figure><img src="../../images/3dprinting/3d_printing_infill.png" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/3d_printing_infill.png" width="50%" height="50%">
 </figure>
 
 <p>The Ultimaker software then creates &ldquo;a roadmap&rdquo; for the 3D-printer at what time it should travel with the nozzle to which position with which speed, also to create the support.</p>
-<figure><img src="../../images/3dprinting/layer_by_layer.png" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/layer_by_layer.png" width="50%" height="50%">
 </figure>
 
 <p>This plan can then be saved to disk and excecuted by the 3D-printer.</p>
-<figure><img src="../../images/3dprinting/printer_moving.gif" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/printer_moving.gif" width="50%" height="50%">
 </figure>
 
 <p>The successful models can be seen here for example
-<figure><img src="../../images/3dprinting/pinecone_falling.gif" width="50%" height="50%"/>
+<figure><img src="../../images/3dprinting/pinecone_falling.gif" width="50%" height="50%">
 </figure>
 </p>
 <p>Nevertheless, one needs to be careful with the thickness and position of the boundary. If the boundary is too thin and has no support behind it, the surface easily breaks.
-<figure><img src="../../images/3dprinting/shell_broken.png" width="40%" height="40%"/>
+<figure><img src="../../images/3dprinting/shell_broken.png" width="40%" height="40%">
 </figure>
 </p>
 <p>Nevertheless, you can still get your tilted christmas tree pinecone :)</p>
-<figure><img src="../../images/3dprinting/christmas_tree.gif" width="40%" height="40%"/>
+<figure><img src="../../images/3dprinting/christmas_tree.gif" width="40%" height="40%">
 </figure>
 
 <p>The code for this project can be found under <a href="https://github.com/JeansLli/X-INF574_3D-printing">https://github.com/JeansLli/X-INF574_3D-printing</a></p>

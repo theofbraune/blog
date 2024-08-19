@@ -60,19 +60,19 @@
             
                     <span class="post-tags">
                         
-                            <a href="https://theofbraune.github.io/blog/tags/web-development/">web development</a>
+                            <a href="https://theofbraune.github.io/blog/tags/web-development/">Web Development</a>
                         
                     </span>
                 </div>
                 <div class="entry-content"><p>If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I&rsquo;ll explain how you can easily setup your webblog with the static page generator <a href="https://gohugo.io/">hugo</a>.<!-- raw HTML omitted --></p>
 <p>To get started, you first need to install the Hugo framework. I used on Ubuntu the Snap store for it.</p>
-<figure><img src="../../images/setup_blog/snap_store.png" width="50%" height="50%"/>
+<figure><img src="../../images/setup_blog/snap_store.png" width="50%" height="50%">
 </figure>
 
 <p>In the next step I created a new directory, where I created all the necessary files. In order to create a new hugo blog, you can cd into the desired directory and then call</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ hugo new site &lt;your sitename&gt;
 </span></span></code></pre></div><p>In the picture you can see, that the creation with the hugo new call creates directely a certain number of folders and files for you.
-<figure><img src="../../images/setup_blog/create_site.png" width="50%" height="50%"/>
+<figure><img src="../../images/setup_blog/create_site.png" width="50%" height="50%">
 </figure>
 </p>
 <p>If you want to add some content to your blog, you can call</p>
@@ -93,18 +93,18 @@ It is useful to add tags, because later on you can show all posts, that share a 
 </span></span></code></pre></div><p>and launch your localhost, you&rsquo;ll realize, that you have no styling at all and that it looks really boring. Now you have two options (or certainly there are more and I just don&rsquo;t know about them). You can either choose a <a href="https://themes.gohugo.io/">theme on the official hugo website</a> and unpack this in the themes folder of your hugo project. You will find a lot of sample themes and I&rsquo;m sure you will find one that you like. In this case you do not need to touch any css or javascript at all.</p>
 <p>Nevertheless I decided to design and play with <a href="https://getbootstrap.com/">bootstrap</a>, css, javascript and html on my own.
 In this blog with hugo I want to create content in the form of markdown files, which will then be in a nice looking websetup. In order to have for example the same header with navbar for all blog posts, we need to define a base website and then use some hugo code. The code shown below is an example of how this could be achieved. There is some base html with bootstrap. In order to convert the content in markdown into renderable html we make use of the hugo scipting language
-<figure><img src="../../images/setup_blog/base_html.png" width="80%" height="80%"/>
+<figure><img src="../../images/setup_blog/base_html.png" width="80%" height="80%">
 </figure>
 </p>
 <p>Here we fetch the title of the site and put it in the header of the website. Note that the name of the website is strict. This side, that builds the skeleton for the content, must be named <code>baseof.html</code>.
 The hierarchy of the sites is strict! The rules of how to name the sites can be found <a href="https://gohugo.io/templates/base/">here</a>.
 In order to put the content from each site into the website, we see in the picture above <code>{{ block &quot;main&quot; .}}{{end}} </code>; we need to define the <code>&quot;main&quot;</code> in a file called <code>single.html</code>.</p>
-<figure><img src="../../images/setup_blog/single_post.png" width="50%" height="50%"/>
+<figure><img src="../../images/setup_blog/single_post.png" width="50%" height="50%">
 </figure>
 
 <p>Note that the syntax starts with <code>{{define &quot;main&quot;}}</code> and ends with <code>{{end}}</code>. The part inbetween has the html article structure and uses the hugo script calls to fetch the title, the date, the tags and the content of the corresponding markdown file.</p>
 <p>This allows you to define a single page with navbar and content. But of course we want to have an overview page for all the blog posts as well. To achieve this, we modify the <code>list.html</code>. Note that with the hierarchy, the <code>list.html</code> will be embedded into the skeleton defined above. I call a hugo method with the <code>{{ range .Paginator.Pages}}</code>, this allows to loop over all posts and to display them in the listing page.</p>
-<figure><img src="../../images/setup_blog/list-item.png" width="50%" height="50%"/>
+<figure><img src="../../images/setup_blog/list-item.png" width="50%" height="50%">
 </figure>
 
 <p>We can fetch the information about the author, the date and the summary in order and display them, seen as above.</p>
@@ -214,11 +214,11 @@ jobs:
           publish_dir: ./public
 </code></pre><p>This can be found as well in the hugo documentation. Next of course push this folders with this file to github. You need to make sure, that your access token allows you to change the workflow.</p>
 <p>Now all your content should be visible on github. Go to <code>Actions</code>
-<figure><img src="../../images/setup_blog/github_directory.png" width="60%" height="60%"/>
+<figure><img src="../../images/setup_blog/github_directory.png" width="60%" height="60%">
 </figure>
 </p>
 <p>If you named the folder <code>workflows</code> correctly, you should see a page as follows
-<figure><img src="../../images/setup_blog/build_workflow.png" width="50%" height="50%"/>
+<figure><img src="../../images/setup_blog/build_workflow.png" width="50%" height="50%">
 </figure>
 
 with an orange dot instead of the green one and your personal commit message. Once this is all posted, you will see that there is a second branch, called <code>gh-pages</code>. There all the static html sites are located, now you should be able to see your blog under the url

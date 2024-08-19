@@ -60,9 +60,9 @@
             
                     <span class="post-tags">
                         
-                            <a href="https://theofbraune.github.io/blog/tags/programming/">programming</a>
+                            <a href="https://theofbraune.github.io/blog/tags/programming/">Programming</a>
                         
-                            <a href="https://theofbraune.github.io/blog/tags/projects/">projects</a>
+                            <a href="https://theofbraune.github.io/blog/tags/projects/">Projects</a>
                         
                             <a href="https://theofbraune.github.io/blog/tags/computer-vision/">Computer Vision</a>
                         
@@ -71,7 +71,7 @@
                 <div class="entry-content"><p>For many applications in telemedicine or in a security context a contactless heart rate measurement can be great interest useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not always applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed.</p>
 <p>This project was part of the Computer Vision introduction course at École Polytechnique and is mainly based on <a href="http://alumni.media.mit.edu/~zher/papers/Poh-etal-OptExp.pdf">this article</a></p>
 <p>The basic idea behind will be, that when our heart is pumping, our skin is changing. We will detact these changes.</p>
-<p><figure><img src="../../images/heart_rate/stressed_guy.jpg" width="20%" height="20%"/>
+<p><figure><img src="../../images/heart_rate/stressed_guy.jpg" width="20%" height="20%">
  </figure>
 
 We all know this guy. And in his case we do not need a very advanced image analysis algorithm to detect, that this guy is stressed/excited. In a way we are all this guy, our skin changes when we are stressed and this is something that we will be able to measure.</p>
@@ -126,7 +126,7 @@ We all know this guy. And in his case we do not need a very advanced image analy
 </span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>rectangle(frame, (x, y), (x<span style="color:#f92672">+</span>w, y<span style="color:#f92672">+</span>h), (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>), thickness<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> coords
 </span></span></code></pre></div><p>This code mainly draws a rectangle on the frame as a face bounding box and returns the coordinates of the rectangle.
-<figure><img src="../../images/heart_rate/bounding_box.png" width="30%" height="30%"/>
+<figure><img src="../../images/heart_rate/bounding_box.png" width="30%" height="30%">
  </figure>
 </p>
 <p>In the first part of the implementation, in order to get a region of interest of the forehead, we just used basic face <a href="https://www.pinterest.fr/pin/485544403577439662/">proportion rules</a> that one can use to cut out a rectangular part of the forehead.
@@ -146,12 +146,12 @@ The implementation for such a method, to cut out the forehead can be done like t
 </span></span><span style="display:flex;"><span>   frame_mod <span style="color:#f92672">=</span> frame[start_y:stop_y,start_x:stop_x]
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> (frame,frame_mod)
 </span></span></code></pre></div><p>In the values are a bit empirical, but nevertheless they provide a region in the face, that could look like that
-<figure><img src="../../images/heart_rate/bounding_box_roi.png" width="30%" height="30%"/>
+<figure><img src="../../images/heart_rate/bounding_box_roi.png" width="30%" height="30%">
  </figure>
 </p>
 <p>The function <code>forehead_detection(frame, coordinates)</code> returns the cropped region of interest, that only contains the forehead. This can then further be analyzed.</p>
 <p>If one wants to use real time analysis, it is useful to use this segmentation method, because it is extremely quick. If one is more interested in a better region of interest, it is benefitial to use another segmentation method, such as a grab cut segmentation. In this case, the face can be extracted like that</p>
-<figure><img src="../../images/heart_rate/grab_cut.png" width="30%" height="30%"/>
+<figure><img src="../../images/heart_rate/grab_cut.png" width="30%" height="30%">
  </figure>
 
 <p>The code, that mainly uses the openCv grab cut method, can be excecuted like that:</p>
@@ -217,7 +217,7 @@ on temporal frequency using Fourier Transformation. The measured heart rate will
 frequency with highest magnitude in the range from 0.75 to 3 Hz, which corresponds to
 physiological heart rate ranges from 45 to 180 bpm.</p>
 <p>You can think of the ICA as a technique, that can seperate from a signal with several sources the individual signals. For example in <a href="https://www.hindawi.com/journals/isrn/2011/672353/fig1/">this journal</a></p>
-<figure><img src="../../images/heart_rate/ica_intuition.jpg" width="50%" height="50%"/>
+<figure><img src="../../images/heart_rate/ica_intuition.jpg" width="50%" height="50%">
 </figure>
 
 <p>they illustrate this with the example, to extract one voice in a crowded room with several voices.</p>
@@ -320,17 +320,17 @@ physiological heart rate ranges from 45 to 180 bpm.</p>
 </span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>draw()
 </span></span><span style="display:flex;"><span>        plt<span style="color:#f92672">.</span>pause(<span style="color:#ae81ff">0.01</span>)
 </span></span></code></pre></div><p>we obtain the following plot
-<figure><img src="../../images/heart_rate/fourier_frequency.gif" width="50%" height="50%"/>
+<figure><img src="../../images/heart_rate/fourier_frequency.gif" width="50%" height="50%">
 </figure>
 </p>
 <p>In this plot we need to focus on the first peak of the frequency, more precisely on the position of the peak. The position corresponds to the frequency. Here we still see the noisy data, where we have not cut of all the values below 0.75Hz, which would mean to have a heart rate of 45bpm. If we focus on the peak with frequency higher then 0.75, we get the heart rate. In practise it turned out, that it can be useful to take the mean of the red, green a blue heart rate for us. In this case we achieved for a stable sitting person values that were 5-10 bpm away from the ground truth, which we measured with a real heart rate sensor.</p>
 <p>I took a video capture of myself during the 2021 Formula 1 season final.</p>
-<figure><img src="../../images/heart_rate/final_measurement.gif" width="70%" height="70%"/>
+<figure><img src="../../images/heart_rate/final_measurement.gif" width="70%" height="70%">
 </figure>
 
 <p>In this case I took the mean of the heart rates obtained from the different color channels.</p>
 <p>In general one can say, that if the lightning is uniform and one is not turning the head too much, the method yields values that are acceptable. Nevertheless, there are some severe failure cases. If a person is wearing Make-Up -for example for a TV interview- it is more difficult to detect the changes in the skin color through the heart pumping.</p>
-<figure><img src="../../images/heart_rate/andrew_interview.png" width="20%" height="20%"/>
+<figure><img src="../../images/heart_rate/andrew_interview.png" width="20%" height="20%">
 </figure>
 
 <p>We tried our method on publicly available interviews, like the interview of Prince Andrew. But we found with our method, that he would have had a heart rate of 51bpm, which seems a bit unlikely.</p>

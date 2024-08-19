@@ -98,35 +98,35 @@ $$\partial_t V^{(t)} = \Delta V^{(t)} \Longrightarrow \quad \frac{1}{\tau}(V^{(n
 <p>and therefore
 $$V^{(n+1)} = (1 - \tau) \cdot V^{(n)} + \tau \tilde{W} V^{(n)}.$$</p>
 <p>Consider the following knot with noise:
-<figure><img src="../../images/surface_denoising/knot_iter/Figure_original.png" width="30%" height="30%"/>
+<figure><img src="../../images/surface_denoising/knot_iter/Figure_original.png" width="30%" height="30%">
 </figure>
 
 <figure><img src="../../images/surface_denoising/knot_iter/Figure_noise.png"
-         alt="Noise Figure" width="30%" height="30%"/>
+    alt="Noise Figure" width="30%" height="30%">
 </figure>
 </p>
 <p>We apply one iteration of denoising using the combinatorial Laplacian and diffusion, one with the Laplacian with distance weights, and one with the Laplacian with cotangent weights. This yields:
-<figure><img src="../../images/surface_denoising/knot_1_iter.png" width="60%" height="60%"/>
+<figure><img src="../../images/surface_denoising/knot_1_iter.png" width="60%" height="60%">
 </figure>
 </p>
 <p>Thus, in this example, it turns out that visually the combinatorial Laplacian is the most appealing.</p>
 <h4 id="validation-of-the-denoising-techniques">Validation of the Denoising Techniques</h4>
 <p>To compare the performance of the denoising algorithms beyond visual aspects, we consider the Signal-to-Noise Ratio (SNR). This metric measures the amount of noise in one mesh relative to another. Given meshes $M$ and $\tilde{M}$ with the same number of vertices and the same edge set, we define the <em>signal-to-noise ratio</em> as:$$ \operatorname{SNR}(M,\tilde{M}) = -20\cdot\log_{10}\bigg(\frac{\sum_{i}\ || v_i-\tilde{v}_i|| }{\Sigma_i\  || v_i || } \bigg) .$$
 For the presented mesh, the combinatorial Laplacian seems to converge the best. After 10 iterations, the denoised mesh appears as follows:
-<figure><img src="../../images/surface_denoising/knot_10_iter.png" width="60%" height="60%"/>
+<figure><img src="../../images/surface_denoising/knot_10_iter.png" width="60%" height="60%">
 </figure>
 </p>
 <p>We observe that the combinatorial Laplacian makes the mesh smoother but also causes it to shrink. Consequently, the actual vertex positions for the target mesh may differ significantly, and although the mesh appears smooth, it may have high SNR values.</p>
 <p>It turns out that the combinatorial Laplacian can indeed alter the mesh. Consider, for example, an F-16 jet with missiles. In this case, with some added noise, we observe that the mesh quality can worsen:
-<figure><img src="../../images/surface_denoising/f16_issue_comb.png" width="60%" height="60%"/>
+<figure><img src="../../images/surface_denoising/f16_issue_comb.png" width="60%" height="60%">
 </figure>
 </p>
 <p>In this example, the main body of the mesh becomes smoother, but the details of the surface are entirely removed. It appears that the missiles are actually &ldquo;fired off.&rdquo; The diffusion from the cotangent Laplacian, however, is better at preserving geometric features, though the main body is denoised more slowly:
-<figure><img src="../../images/surface_denoising/f16_ctan_comb.png" width="60%" height="60%"/>
+<figure><img src="../../images/surface_denoising/f16_ctan_comb.png" width="60%" height="60%">
 </figure>
 </p>
 <p>The time evolution for the combinatorial denoising can be seen here:
-<figure><img src="../../images/surface_denoising/f16_different_appr_0_2.gif" width="45%" height="45%"/>
+<figure><img src="../../images/surface_denoising/f16_different_appr_0_2.gif" width="45%" height="45%">
 </figure>
 </p>
 <p>The code for this project can be found <a href="https://github.com/theofbraune/project_mathdd">here.</a></p>
