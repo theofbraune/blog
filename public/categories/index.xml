@@ -4,6 +4,8 @@
     <title>Categories on Theo Braune</title>
     <link>https://theofbraune.github.io/blog/categories/</link>
     <description>Recent content in Categories on Theo Braune</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://theofbraune.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://theofbraune.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

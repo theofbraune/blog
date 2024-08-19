@@ -7,6 +7,7 @@
     <title>Vector Field Processing</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/style_landing.css">
     <script>
       MathJax = {
         tex: {
@@ -24,27 +25,22 @@
 <body>
 
     <header id = "site-header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="../index.html">Theo Braune</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../../">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../posts/index.html">Posts</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../custum/projects/index.html">Projects</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+      <nav>
+        <div class="logo">
+          <a href="#">Theo Braune</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../posts/index.html">Posts</a></li>
+          <li><a href="../custum/projects/index.html">Projects</a></li>
+          
+        </ul>
+        <div class="hamburger-menu">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
     </header>
     <main class="site-main">
         <div class="container">
@@ -60,9 +56,9 @@
             
                     <span class="post-tags">
                         
-                            <a href="https://theofbraune.github.io/blog/tags/programming/">programming</a>
+                            <a href="https://theofbraune.github.io/blog/tags/programming/">Programming</a>
                         
-                            <a href="https://theofbraune.github.io/blog/tags/teaching/">teaching</a>
+                            <a href="https://theofbraune.github.io/blog/tags/teaching/">Teaching</a>
                         
                     </span>
                 </div>
@@ -76,15 +72,15 @@
 <li>In a first step, we want you to prepare a class <code>Mesh</code> to precompute all necessary mesh information. Further, we want you to compute the barycentric and voronoi dual complex. To compute the Voronoi dual complex, you need to calculate the circumcenter of the primal triangles. For the barycentric dual complex, you need to compute the barycenters. The dual complex is no longer a simplicial complex; we cannot represent it with a <code>Eigen::MatrixXd V</code> and <code>Eigen::MatrixXi F</code>. A priori we cannot tell the number of vertices in a dual face. Therefore, we will use a <code>std::vector&lt; std::vector&lt; int&gt;&gt;</code> where each entry contains the indices of the dual vertices. As in the simplicial case, the order of the vertices will determine the face.</li>
 </ol>
 <p>The disadvantage of the Voronoi dual complex is that for a &ldquo;bad&rdquo; mesh, with obtuse triangles, the circumcenter may lie far outside the triangle.</p>
-<figure><img src="../../images/vector_field_proc/bad_mesh_for_input.png" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/bad_mesh_for_input.png" width="30%" height="30%">
   </figure>
 
 <p>The advantage of the Voronoi dual complex compared to the barycentric dual complex is that the dual edges are necessarily perpendicular to the primal edges. However, for the barycentric dual complex, the dual vertices will always lie inside the faces.</p>
-<figure><img src="../../images/vector_field_proc/barycentric_non_perp.png" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/barycentric_non_perp.png" width="30%" height="30%">
   </figure>
 
 <p>However, if your mesh is sufficiently &ldquo;nice&rdquo;, the vertices in the dual complex will lie inside the primal triangles, and primal and dual edges intersect perpendicular.</p>
-<figure><img src="../../images/vector_field_proc/better_triangulation_delauney.png" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/better_triangulation_delauney.png" width="30%" height="30%">
   </figure>
 
 <p><strong>Task:</strong> Complete the method <code>build_dual_complex</code> and <code>compute_edges</code>. We provide you with a class <code>Visualizer</code> to create wireframes and vector fields. The method <code>get_wireframe_from_edges(const MatrixXd&amp; V, const std::vector&lt;Edge&gt;&amp; edges, MatrixXd&amp; V_wireframe, MatrixXi&amp; F_wireframe, double radius)</code> constructs for a given set of points and edges, that are formed out of these points a novel (triangular) mesh, that can be attached to the viewer. Once the wireframe is formed, you can attach this new mesh to the viewer through</p>
@@ -99,11 +95,11 @@
 <li>
 <p>In a second step, you have to initialize a basis for every tangent space. We will store the basis as a <code>std::vector&lt; std::pair&lt; MatrixXd,MatrixXd&gt;&gt;</code>, make sure that you are using an orthonormal basis. These basis will later in the TD allow to encode represent face-based vector fields and to encode parallel transport between primal faces.
 To debug, you can use the provided method <code>visualize_basis</code>, you might need to play with the parameters for scaling and the radius of the tubes in order to get a good result.
-<figure><img src="../../images/vector_field_proc/choice_of_frame_field.png" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/choice_of_frame_field.png" width="30%" height="30%">
   </figure>
 </p>
 <p>However, you need to make sure that your basis are chosen in a consistent manner, such that they can be aligned with an angle. It might be necessary to flip the order of the vectors in the basis. This means, in particular, that you should avoid a situation like that:
-<figure><img src="../../images/vector_field_proc/avoid_inconsistent_bases.JPG" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/avoid_inconsistent_bases.JPG" width="30%" height="30%">
  </figure>
 </p>
 </li>
@@ -161,7 +157,7 @@ $$</p>
 <ol start="3">
 <li>Calculate the electric field. To do that calculate for every face the gradient of the electric potential. Complete the method <code>compute_electric_field</code> and overwrite the matrix <code> electric_field</code>, such that each row contains the obtained electric field. Draw the electric field using the method <code>build_face_based_vector_field</code> onto your mesh.</li>
 </ol>
-<figure><img src="../../images/vector_field_proc/electric_field_face_based.JPG" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/electric_field_face_based.JPG" width="30%" height="30%">
   </figure>
 
 <p><strong>Remark:</strong>
@@ -177,26 +173,26 @@ For a triangle consisting of the vertices $[v_i, v_j, v_k]$, the gradient of a f
 <p>A detailed description of the algorithm that you will implement can be found in the <a href="https://pages.saclay.inria.fr/mathieu.desbrun/pubs/CDS10.pdf">original publication</a>.</p>
 <h4 id="1-calculation-of-the-discrete-levi-civita-connection">1) Calculation of the Discrete Levi-Civita Connection</h4>
 <p>In a first step, we will calculate the Levi-Civita Connection for the mesh. In the constructor of the class <code>Mesh</code>, you have already defined an orthonormal basis for every tangent space. A discrete connection on the discrete tangent bundle is a linear map per dual edge mapping from adjacent tangent planes to each other. As you have seen in the lecture, the Levi-Civita Connection can be obtained through the following procedure:</p>
-<figure><img src="../../images/vector_field_proc/levi_civita_illustration.png" width="40%" height="40%"/>
+<figure><img src="../../images/vector_field_proc/levi_civita_illustration.png" width="40%" height="40%">
 </figure>
 
 <p>Once the tangent planes are folded out in a plane, the bases can be aligned with a 2D rotation.</p>
-<figure><img src="../../images/vector_field_proc/aligning_angles.gif" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/aligning_angles.gif" width="30%" height="30%">
 </figure>
 
 <p>It is now your task to calculate this angle per dual edge and store it in the range $[-\pi,\pi]$. Complete the method <code>compute_adjustment_angles</code> and store, for every edge, the frame adjustment angle in the vector <code>adjustment_angle_frames</code>.</p>
 <p>Fortunately, you do not have to unfold your triangles actively to get this rotation. Instead, you can align the first vector of your basis of your start face with the shared edge and subsequently do the same with the first vector of the basis of your second face.</p>
-<figure><img src="../../images/vector_field_proc/get_levi_civita_connection.png" width="40%" height="40%"/>
+<figure><img src="../../images/vector_field_proc/get_levi_civita_connection.png" width="40%" height="40%">
 </figure>
 
 <h4 id="2-calculation-of-the-holonomy">2) Calculation of the Holonomy</h4>
 <p>Once the Levi-Civita connection/adjustment angles are calculated, you can calculate the holonomy around each basis cycle by computing the sum of the adjustment angles. Complete the method <code>compute_holonomy</code>.</p>
 <p>The sum of your adjustment angles should amount to an integer multiple of $2\pi$ (the number of turns in your cycle) to the Gaussian curvature of each vertex. Using the header <code>&lt; igl / gaussian_curvature.h&gt;</code>, we provide you a piece of code to verify whether your angle defect satisfies this. Once you checked your results, overwrite the variable <code>holonomy</code> with the values of the holonomy for every basis cycle around every vertex.</p>
-<figure><img src="../../images/vector_field_proc/target_holonomy.JPG" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/target_holonomy.JPG" width="30%" height="30%">
 </figure>
 
 <p>We highly recommend using the class <code>Visualizer</code> for visual debugging. If you realize, for example, that your calculations work for some edges but not for others, you can mark them (for example using the variable <code>bad_edges</code>) and visualize them separately, as in the figure below. Like that, you might discover specific patterns where something might have gone wrong in the first place.</p>
-<figure><img src="../../images/vector_field_proc/debugging_visual_for_sanity.JPG" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/debugging_visual_for_sanity.JPG" width="30%" height="30%">
 </figure>
 
 <p>If $\mathcal{B}_ a, \mathcal{B}_ b$ describe the bases of the tangent spaces $f_a$, resp. $f_b$, let $v$ be a tangent vector in $f_a$ and $v&rsquo;$ be the tangent vector in $f_b$ that arises through parallel transport with the Levi-Civita connection along the dual edge $e_{a,b}$. Let<br>
@@ -209,7 +205,7 @@ $$</p>
 If you want to continue to work with the bunny, for example, you can skip this step and go directly to step 4).</p>
 <p>However, on surfaces with $g&gt;0$ this is not sufficient. There exist cycles that are not the boundary of a 2D domain (more formally, those surfaces have a non-trivial first homology group). Complete the method <code>compute_homology_generators()</code> to find these basic non-contractible cycles. You will represent the generators as a sequence of integers in a <code>std::vector&lt;std::vector&lt;int&gt;&gt;</code>.</p>
 <p>As one of the possible ways to traverse a mesh, we will construct a spanning tree of the primal mesh (in the figure in green) in a first step. Subsequently, we will calculate a spanning tree of the dual mesh (in the figure in blue) whose edges do not cross the edges of the primal spanning tree.
-<figure><img src="../../images/vector_field_proc/tree_cotree_decomposition.png" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/tree_cotree_decomposition.png" width="30%" height="30%">
 </figure>
 </p>
 <p>Let $g$ be the genus of the surface. The Euler characteristic of the mesh is given by
@@ -217,10 +213,10 @@ $$ |V| - |E| + |F| = 2 - 2g. $$
 To calculate the generators of the first homology group, note that
 $$ (|V| - 1) + (|F| - 1) + 2g = |E|. $$</p>
 <p>The calculation shows that there are $2g$ many edges left that are neither in the dual nor in the primal spanning tree. You can now search these $2g$ edges and follow the vertices of these edges to the root of the dual spanning tree. The result will be a non-contractible cycle; a generator of the first homology group of your surface.</p>
-<p><figure><img src="../../images/vector_field_proc/homology_generators.png" width="30%" height="30%"/>
+<p><figure><img src="../../images/vector_field_proc/homology_generators.png" width="30%" height="30%">
 </figure>
 
-<figure><img src="../../images/vector_field_proc/generators_higher_order.png" width="30%" height="30%"/>
+<figure><img src="../../images/vector_field_proc/generators_higher_order.png" width="30%" height="30%">
 </figure>
 </p>
 <p>We provide you with a class <code>VertexTree</code> that you can use to build these trees. Complete the method <code>compute_homology_generators</code>. We provide you with some basis code in this method that can serve as a basis to finish this task. However, feel free to implement it in your favorite way. If you want to define an extra class, feel free to do so!</p>
@@ -228,7 +224,7 @@ $$ (|V| - 1) + (|F| - 1) + 2g = |E|. $$</p>
 <p>It will be the aim to prescribe the holonomy around the basis cycles (i.e., the cycles of the one-ring neighborhood of each vertex and the chosen homology generators). This means we will set a constraint on the sum of the angles that we assign to the edges. We will work with edges—not half edges. In the constructor of the class <code>Mesh</code>, make sure that you store a single copy of a (dual) edge. The orientation is arbitrary. For example, if the vertices $3$ and $4$ are connected, you can either store <code>Edge(3,4)</code> or <code>Edge(4,3)</code> in the vector <code>Edges</code> resp. <code>dual_edges</code>.</p>
 <p><strong>Example:</strong>
 For a given cell complex,
-<figure><img src="../../images/vector_field_proc/sample_cell_complex.png" width="40%" height="40%"/>
+<figure><img src="../../images/vector_field_proc/sample_cell_complex.png" width="40%" height="40%">
    </figure>
 </p>
 <p>the 6th row of the &ldquo;cycle matrix&rdquo; will have the form
@@ -266,10 +262,10 @@ $$[v&rsquo;]_{\mathcal{B}_b} = \begin{pmatrix} \cos(\theta_{ab} + \alpha_{ab})&a
 <p>To do that, pick one face of the mesh and place one vector there. Now, for the trivial connection, parallel transport is path independent. Hence we can transport this chosen vector into every other tangent space, for example using the dual spanning tree.</p>
 <p>To finish, you can as before visualize the vector field with the provided method <code>build_face_based_vector_field</code>, that will overwrite a wireframe which can subsequently serve to visualize the vector field.</p>
 <p>Observe that the obtained vector field has only singularities for the chosen cycles.</p>
-<figure><img src="../../images/vector_field_proc/trivial_connection_bunny.png" width="40%" height="40%"/>
+<figure><img src="../../images/vector_field_proc/trivial_connection_bunny.png" width="40%" height="40%">
   </figure>
 
-<figure><img src="../../images/vector_field_proc/torus_trivial.png" width="40%" height="40%"/>
+<figure><img src="../../images/vector_field_proc/torus_trivial.png" width="40%" height="40%">
   </figure>
 
 <p>Attach screenshots of your vector fields together with a readme to your submission where you explain which mesh you were using and where you placed the singularities.</p>
