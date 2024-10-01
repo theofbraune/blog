@@ -4,6 +4,7 @@ date= 2022-02-21T18:04:26+01:00
 draft= false
 author = "Theo"
 tags = ["virtual reality","programming"]
+summary = "In this post I will describe how I installed and set up the Unity Hub and editor on my machine."
 +++
 In this post I will describe how I installed and set up the Unity Hub and editor on my machine.
 

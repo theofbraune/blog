@@ -4,6 +4,7 @@ date= 2023-12-28T00:12:28+01:00
 draft= false
 author = "Theo"
 tags = ["programming","teaching"]
+summary = "This post originated as teaching material for the DDG course at École Polytechnique to calculate trivial connections on discrete surfaces for vector field processing and electrostatics."
 +++
 
 In this task we want to calculate vector fields on discrete surfaces.

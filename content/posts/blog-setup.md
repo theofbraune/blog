@@ -4,6 +4,7 @@ date= 2021-12-21T11:31:19+01:00
 draft= false
 author = "Theo"
 tags = ["web development"]
+summary = "In this post I explain, how you can setup your own webblog with hugo and host it on github pages."
 +++
 
 If you want to create your own website or webblog, you are often faced with a ton of possible frameworks. Here in this post, I'll explain how you can easily setup your webblog with the static page generator [hugo](https://gohugo.io/).<br>

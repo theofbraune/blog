@@ -4,6 +4,7 @@ date= 2022-03-30T13:15:57+02:00
 draft= false
 author = "Theo and Jingyi"
 tags = ["programming","projects", "Computer Vision"]
+summary="For many applications in telemedicine or in a security context a contactless heart rate measurement can be great interest useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not always applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed. This post gives a first overview how a code prototype for that could be build."
 +++
 
 For many applications in telemedicine or in a security context a contactless heart rate measurement can be great interest useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not always applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed.

@@ -4,10 +4,11 @@ date= 2022-03-22T18:00:10+01:00
 draft= false
 author = "Theo and Jingyi"
 tags = ["programming","projects","fabrication"]
+summary = "Through the evolution of 3D-printers, the it has become more and more easy to produce prototypes of 3 dimensional shapes. In this project we developed our first software to produce shapes and printable objects for a 3D-printer. This project was part as a final project of the École Polytechnique course X-INF 574 Digital Representations and Analysis of Shapes"
 +++
 
 Through the evolution of 3D-printers, the it has become more and more easy to produce prototypes of 3 dimensional shapes. In this project we developed our first software to produce shapes and printable objects for a 3D-printer.
-This project was part as a final project of the École Polytechnique course "X-INF 573 Digital Representations and Analysis of Shapes".
+This project was part as a final project of the École Polytechnique course "X-INF 574 Digital Representations and Analysis of Shapes".
 
 
 The aim of this project was to give an input shape, define an angle an orientation axis and then to carve out and deform the shape, such that the new modified shape can stand in this desired position. 

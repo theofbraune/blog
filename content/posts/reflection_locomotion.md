@@ -4,6 +4,7 @@ date= 2022-02-28T11:18:11+01:00
 draft= false
 author = "Theo"
 tags = ["virtual reality","programming"]
+summary="In this post I will summarize the work on the virtual reality project and reflect a bit what I experienced in the implementation process. First of all I should point out that unity is an extremely powerful platform and is easy to use, when having some programming experience. All these things like collision, drag and mass otherwise would be difficult to implement."
 +++
 
 In this post I will summarize the work on the virtual reality project and reflect a bit what I experienced in the implementation process. First of all I should point out that unity is an extremely powerful platform and is easy to use, when having some programming experience. All these things like collision, drag and mass otherwise would be difficult to implement.

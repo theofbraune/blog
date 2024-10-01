@@ -4,7 +4,8 @@ title= "Surface Denoising"
 date= 2022-06-16T10:26:46+02:00
 draft= false
 author = "Theo"
-tags = []
+tags = ["programming"]
+summary = "This post is the summary of the results for a project undertaken at ENS to implement and compare different denoising techniques of meshes."
 +++
 
 

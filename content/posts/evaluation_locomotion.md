@@ -4,6 +4,7 @@ date= 2022-02-21T18:27:13+01:00
 draft= false
 author = "Theo"
 tags = ["virtual reality"]
+summary="This post presents an evaluation of the implementation of my implemented locomotion technique in the VR parcours, which was done in form of cross country skiing."
 +++
 
 In order to evaluate the locomotion technique, I conducted a series of tests with our course participants that were familiar with the usage of virtual reality techniques and other people, that have not used VR technology in any form before. I discovered a discrepancy in the ease of use for these two groups. The group non familiar with this technology needed more attempts to get familiar with the haptic and the general environment. This can be seen in the times as well. One participant, who used an Oculus for the first time needed for the first time sector 61 seconds, whereas participants more familiar with the VR-Gear could usually make it in around half the time

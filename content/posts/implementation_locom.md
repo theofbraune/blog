@@ -4,6 +4,7 @@ date= 2022-01-31T14:29:19+01:00
 draft= false
 author = "Theo"
 tags = ["virtual reality", "programming","projects"]
+summary = "In this post I explain how I implemented cross country skiing as a locomotion technique in a VR parcours." 
 +++
 
 

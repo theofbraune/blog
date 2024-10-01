@@ -4,6 +4,7 @@ date= 2022-02-21T18:03:18+01:00
 draft= false
 author = "Theo"
 tags = ["virtual reality","programming"]
+summary = "The aim of this article is to guide you through the process of creating your first game in unity."
 +++
 
 The aim of this article is to guide you through the process of creating your first game in unity. In order to do this start by your Unity Hub, click on *new project* and select for this tutorial 3D-Core. Give the project your favorite name and location.

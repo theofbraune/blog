@@ -4,8 +4,11 @@ date= 2022-10-25T16:03:37+02:00
 draft= false
 author = " Theo & Jiayi"
 tags = ["programming","teaching"]
+summary = "This post originated as teaching material for the DDG course at École Polytechnique to calculate the harmonic and conformal parameterization of an open mesh."
 +++
 In this TP we want to calculate the harmonic and the conformal parametrization of a mesh.
+
+
 
 You will need to complete the class methods in the class ``ConformalParametrization`` that you will find in the file ``conformal.cpp``. In order to see the goal of the TP, you can press 4 to use the pre-build Libigl method of the conformal parametrization on the mesh.
 {{< figure src="/images/conformal_parametrization/beetle_after.png"   width="50%" height="50%" >}}
