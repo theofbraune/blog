@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Virtual Reality on Theo Braune</title>
-    <link>https://theofbraune.github.io/blog/tags/virtual-reality/</link>
+    <link>http://localhost:1313/blog/tags/virtual-reality/</link>
     <description>Recent content in Virtual Reality on Theo Braune</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 28 Feb 2022 11:18:11 +0100</lastBuildDate>
-    <atom:link href="https://theofbraune.github.io/blog/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/virtual-reality/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reflection on the locomotion technique</title>
-      <link>https://theofbraune.github.io/blog/posts/reflection_locomotion/</link>
+      <link>http://localhost:1313/blog/posts/reflection_locomotion/</link>
       <pubDate>Mon, 28 Feb 2022 11:18:11 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/reflection_locomotion/</guid>
+      <guid>http://localhost:1313/blog/posts/reflection_locomotion/</guid>
       <description>In this post I will summarize the work on the virtual reality project and reflect a bit what I experienced in the implementation process. First of all I should point out that unity is an extremely powerful platform and is easy to use, when having some programming experience. All these things like collision, drag and mass otherwise would be difficult to implement.</description>
     </item>
     <item>
       <title>Evaluation of the Ski-locomotion</title>
-      <link>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</link>
+      <link>http://localhost:1313/blog/posts/evaluation_locomotion/</link>
       <pubDate>Mon, 21 Feb 2022 18:27:13 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</guid>
+      <guid>http://localhost:1313/blog/posts/evaluation_locomotion/</guid>
       <description>This post presents an evaluation of the implementation of my implemented locomotion technique in the VR parcours, which was done in form of cross country skiing.</description>
     </item>
     <item>
       <title>Unity setup</title>
-      <link>https://theofbraune.github.io/blog/posts/unity_setup/</link>
+      <link>http://localhost:1313/blog/posts/unity_setup/</link>
       <pubDate>Mon, 21 Feb 2022 18:04:26 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/unity_setup/</guid>
+      <guid>http://localhost:1313/blog/posts/unity_setup/</guid>
       <description>In this post I will describe how I installed and set up the Unity Hub and editor on my machine.</description>
     </item>
     <item>
       <title>Roll a ball - Tutorial for a first game in Unity</title>
-      <link>https://theofbraune.github.io/blog/posts/roll_a_ball/</link>
+      <link>http://localhost:1313/blog/posts/roll_a_ball/</link>
       <pubDate>Mon, 21 Feb 2022 18:03:18 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/roll_a_ball/</guid>
+      <guid>http://localhost:1313/blog/posts/roll_a_ball/</guid>
       <description>The aim of this article is to guide you through the process of creating your first game in unity.</description>
     </item>
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/blog/posts/implementation_locom/</link>
+      <link>http://localhost:1313/blog/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
+      <guid>http://localhost:1313/blog/posts/implementation_locom/</guid>
       <description>In this post I explain how I implemented cross country skiing as a locomotion technique in a VR parcours.</description>
     </item>
     <item>
       <title>Sutherlands vision of the Ultimate display and the Reality-Virtuality Continuum</title>
-      <link>https://theofbraune.github.io/blog/posts/ultimate_display/</link>
+      <link>http://localhost:1313/blog/posts/ultimate_display/</link>
       <pubDate>Tue, 21 Dec 2021 18:14:13 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/ultimate_display/</guid>
+      <guid>http://localhost:1313/blog/posts/ultimate_display/</guid>
       <description>Who knows whether we are not all the time already in some kind of ultimate display&amp;hellip;.&#xA;In 1994 Paul Milgram published with a work, where he introduced the idea of a Reality-Virtuality Continuum. You can think of it in the following way: With the rise of technology, like smartphones or in general some Silicon Valley Hardware device, the line between what is reality and what is virtual becomes more and more unclear.</description>
     </item>
   </channel>

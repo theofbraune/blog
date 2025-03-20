@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Theo Braune</title>
-    <link>https://theofbraune.github.io/blog/tags/</link>
+    <link>http://localhost:1313/blog/tags/</link>
     <description>Recent content in Tags on Theo Braune</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Dec 2023 00:12:28 +0100</lastBuildDate>
-    <atom:link href="https://theofbraune.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programming</title>
-      <link>https://theofbraune.github.io/blog/tags/programming/</link>
+      <link>http://localhost:1313/blog/tags/programming/</link>
       <pubDate>Thu, 28 Dec 2023 00:12:28 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/programming/</guid>
+      <guid>http://localhost:1313/blog/tags/programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Teaching</title>
-      <link>https://theofbraune.github.io/blog/tags/teaching/</link>
+      <link>http://localhost:1313/blog/tags/teaching/</link>
       <pubDate>Thu, 28 Dec 2023 00:12:28 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/teaching/</guid>
+      <guid>http://localhost:1313/blog/tags/teaching/</guid>
       <description></description>
     </item>
     <item>
       <title>Computer Vision</title>
-      <link>https://theofbraune.github.io/blog/tags/computer-vision/</link>
+      <link>http://localhost:1313/blog/tags/computer-vision/</link>
       <pubDate>Wed, 30 Mar 2022 13:15:57 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/computer-vision/</guid>
+      <guid>http://localhost:1313/blog/tags/computer-vision/</guid>
       <description></description>
     </item>
     <item>
       <title>Projects</title>
-      <link>https://theofbraune.github.io/blog/tags/projects/</link>
+      <link>http://localhost:1313/blog/tags/projects/</link>
       <pubDate>Wed, 30 Mar 2022 13:15:57 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/projects/</guid>
+      <guid>http://localhost:1313/blog/tags/projects/</guid>
       <description></description>
     </item>
     <item>
       <title>Fabrication</title>
-      <link>https://theofbraune.github.io/blog/tags/fabrication/</link>
+      <link>http://localhost:1313/blog/tags/fabrication/</link>
       <pubDate>Tue, 22 Mar 2022 18:00:10 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/fabrication/</guid>
+      <guid>http://localhost:1313/blog/tags/fabrication/</guid>
       <description></description>
     </item>
     <item>
       <title>Virtual Reality</title>
-      <link>https://theofbraune.github.io/blog/tags/virtual-reality/</link>
+      <link>http://localhost:1313/blog/tags/virtual-reality/</link>
       <pubDate>Mon, 28 Feb 2022 11:18:11 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/virtual-reality/</guid>
+      <guid>http://localhost:1313/blog/tags/virtual-reality/</guid>
       <description></description>
     </item>
     <item>
       <title>Web Development</title>
-      <link>https://theofbraune.github.io/blog/tags/web-development/</link>
+      <link>http://localhost:1313/blog/tags/web-development/</link>
       <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/tags/web-development/</guid>
+      <guid>http://localhost:1313/blog/tags/web-development/</guid>
       <description></description>
     </item>
   </channel>

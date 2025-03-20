@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Teaching on Theo Braune</title>
-    <link>https://theofbraune.github.io/blog/tags/teaching/</link>
+    <link>http://localhost:1313/blog/tags/teaching/</link>
     <description>Recent content in Teaching on Theo Braune</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Dec 2023 00:12:28 +0100</lastBuildDate>
-    <atom:link href="https://theofbraune.github.io/blog/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vector Field Processing</title>
-      <link>https://theofbraune.github.io/blog/posts/vector_field_processing/</link>
+      <link>http://localhost:1313/blog/posts/vector_field_processing/</link>
       <pubDate>Thu, 28 Dec 2023 00:12:28 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/vector_field_processing/</guid>
+      <guid>http://localhost:1313/blog/posts/vector_field_processing/</guid>
       <description>This post originated as teaching material for the DDG course at École Polytechnique to calculate trivial connections on discrete surfaces for vector field processing and electrostatics.</description>
     </item>
     <item>
       <title>Conformal Parametrization</title>
-      <link>https://theofbraune.github.io/blog/posts/conformal_parametrization/</link>
+      <link>http://localhost:1313/blog/posts/conformal_parametrization/</link>
       <pubDate>Tue, 25 Oct 2022 16:03:37 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/conformal_parametrization/</guid>
+      <guid>http://localhost:1313/blog/posts/conformal_parametrization/</guid>
       <description>This post originated as teaching material for the DDG course at École Polytechnique to calculate the harmonic and conformal parameterization of an open mesh.</description>
     </item>
   </channel>

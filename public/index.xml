@@ -2,94 +2,94 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Theo Braune</title>
-    <link>https://theofbraune.github.io/blog/</link>
+    <link>http://localhost:1313/blog/</link>
     <description>Recent content on Theo Braune</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 28 Dec 2023 00:12:28 +0100</lastBuildDate>
-    <atom:link href="https://theofbraune.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vector Field Processing</title>
-      <link>https://theofbraune.github.io/blog/posts/vector_field_processing/</link>
+      <link>http://localhost:1313/blog/posts/vector_field_processing/</link>
       <pubDate>Thu, 28 Dec 2023 00:12:28 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/vector_field_processing/</guid>
+      <guid>http://localhost:1313/blog/posts/vector_field_processing/</guid>
       <description>This post originated as teaching material for the DDG course at École Polytechnique to calculate trivial connections on discrete surfaces for vector field processing and electrostatics.</description>
     </item>
     <item>
       <title>Conformal Parametrization</title>
-      <link>https://theofbraune.github.io/blog/posts/conformal_parametrization/</link>
+      <link>http://localhost:1313/blog/posts/conformal_parametrization/</link>
       <pubDate>Tue, 25 Oct 2022 16:03:37 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/conformal_parametrization/</guid>
+      <guid>http://localhost:1313/blog/posts/conformal_parametrization/</guid>
       <description>This post originated as teaching material for the DDG course at École Polytechnique to calculate the harmonic and conformal parameterization of an open mesh.</description>
     </item>
     <item>
       <title>Surface Denoising</title>
-      <link>https://theofbraune.github.io/blog/posts/surface_denoising/</link>
+      <link>http://localhost:1313/blog/posts/surface_denoising/</link>
       <pubDate>Thu, 16 Jun 2022 10:26:46 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/surface_denoising/</guid>
+      <guid>http://localhost:1313/blog/posts/surface_denoising/</guid>
       <description>This post is the summary of the results for a project undertaken at ENS to implement and compare different denoising techniques of meshes.</description>
     </item>
     <item>
       <title>Heart Rate Measurement through Computer Vision</title>
-      <link>https://theofbraune.github.io/blog/posts/heart_rate_measurement/</link>
+      <link>http://localhost:1313/blog/posts/heart_rate_measurement/</link>
       <pubDate>Wed, 30 Mar 2022 13:15:57 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/heart_rate_measurement/</guid>
+      <guid>http://localhost:1313/blog/posts/heart_rate_measurement/</guid>
       <description>For many applications in telemedicine or in a security context a contactless heart rate measurement can be great interest useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not always applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed. This post gives a first overview how a code prototype for that could be build.</description>
     </item>
     <item>
       <title>Make it Stand - Balancing Shapes for 3D-printing</title>
-      <link>https://theofbraune.github.io/blog/posts/3d-printing/</link>
+      <link>http://localhost:1313/blog/posts/3d-printing/</link>
       <pubDate>Tue, 22 Mar 2022 18:00:10 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/3d-printing/</guid>
+      <guid>http://localhost:1313/blog/posts/3d-printing/</guid>
       <description>Through the evolution of 3D-printers, the it has become more and more easy to produce prototypes of 3 dimensional shapes. In this project we developed our first software to produce shapes and printable objects for a 3D-printer. This project was part as a final project of the École Polytechnique course X-INF 574 Digital Representations and Analysis of Shapes</description>
     </item>
     <item>
       <title>Reflection on the locomotion technique</title>
-      <link>https://theofbraune.github.io/blog/posts/reflection_locomotion/</link>
+      <link>http://localhost:1313/blog/posts/reflection_locomotion/</link>
       <pubDate>Mon, 28 Feb 2022 11:18:11 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/reflection_locomotion/</guid>
+      <guid>http://localhost:1313/blog/posts/reflection_locomotion/</guid>
       <description>In this post I will summarize the work on the virtual reality project and reflect a bit what I experienced in the implementation process. First of all I should point out that unity is an extremely powerful platform and is easy to use, when having some programming experience. All these things like collision, drag and mass otherwise would be difficult to implement.</description>
     </item>
     <item>
       <title>Evaluation of the Ski-locomotion</title>
-      <link>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</link>
+      <link>http://localhost:1313/blog/posts/evaluation_locomotion/</link>
       <pubDate>Mon, 21 Feb 2022 18:27:13 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</guid>
+      <guid>http://localhost:1313/blog/posts/evaluation_locomotion/</guid>
       <description>This post presents an evaluation of the implementation of my implemented locomotion technique in the VR parcours, which was done in form of cross country skiing.</description>
     </item>
     <item>
       <title>Unity setup</title>
-      <link>https://theofbraune.github.io/blog/posts/unity_setup/</link>
+      <link>http://localhost:1313/blog/posts/unity_setup/</link>
       <pubDate>Mon, 21 Feb 2022 18:04:26 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/unity_setup/</guid>
+      <guid>http://localhost:1313/blog/posts/unity_setup/</guid>
       <description>In this post I will describe how I installed and set up the Unity Hub and editor on my machine.</description>
     </item>
     <item>
       <title>Roll a ball - Tutorial for a first game in Unity</title>
-      <link>https://theofbraune.github.io/blog/posts/roll_a_ball/</link>
+      <link>http://localhost:1313/blog/posts/roll_a_ball/</link>
       <pubDate>Mon, 21 Feb 2022 18:03:18 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/roll_a_ball/</guid>
+      <guid>http://localhost:1313/blog/posts/roll_a_ball/</guid>
       <description>The aim of this article is to guide you through the process of creating your first game in unity.</description>
     </item>
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/blog/posts/implementation_locom/</link>
+      <link>http://localhost:1313/blog/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
+      <guid>http://localhost:1313/blog/posts/implementation_locom/</guid>
       <description>In this post I explain how I implemented cross country skiing as a locomotion technique in a VR parcours.</description>
     </item>
     <item>
       <title>Sutherlands vision of the Ultimate display and the Reality-Virtuality Continuum</title>
-      <link>https://theofbraune.github.io/blog/posts/ultimate_display/</link>
+      <link>http://localhost:1313/blog/posts/ultimate_display/</link>
       <pubDate>Tue, 21 Dec 2021 18:14:13 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/ultimate_display/</guid>
+      <guid>http://localhost:1313/blog/posts/ultimate_display/</guid>
       <description>Who knows whether we are not all the time already in some kind of ultimate display&amp;hellip;.&#xA;In 1994 Paul Milgram published with a work, where he introduced the idea of a Reality-Virtuality Continuum. You can think of it in the following way: With the rise of technology, like smartphones or in general some Silicon Valley Hardware device, the line between what is reality and what is virtual becomes more and more unclear.</description>
     </item>
     <item>
       <title>Setting up a Webblog with Hugo</title>
-      <link>https://theofbraune.github.io/blog/posts/blog-setup/</link>
+      <link>http://localhost:1313/blog/posts/blog-setup/</link>
       <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/blog-setup/</guid>
+      <guid>http://localhost:1313/blog/posts/blog-setup/</guid>
       <description>In this post I explain, how you can setup your own webblog with hugo and host it on github pages.</description>
     </item>
   </channel>

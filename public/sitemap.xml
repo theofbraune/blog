@@ -2,72 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://theofbraune.github.io/blog/posts/</loc>
+    <loc>http://localhost:1313/blog/posts/</loc>
     <lastmod>2023-12-28T00:12:28+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/programming/</loc>
+    <loc>http://localhost:1313/blog/tags/programming/</loc>
     <lastmod>2023-12-28T00:12:28+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/</loc>
+    <loc>http://localhost:1313/blog/tags/</loc>
     <lastmod>2023-12-28T00:12:28+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/teaching/</loc>
+    <loc>http://localhost:1313/blog/tags/teaching/</loc>
     <lastmod>2023-12-28T00:12:28+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/</loc>
+    <loc>http://localhost:1313/blog/</loc>
     <lastmod>2023-12-28T00:12:28+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/vector_field_processing/</loc>
+    <loc>http://localhost:1313/blog/posts/vector_field_processing/</loc>
     <lastmod>2023-12-28T00:12:28+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/conformal_parametrization/</loc>
+    <loc>http://localhost:1313/blog/posts/conformal_parametrization/</loc>
     <lastmod>2022-10-25T16:03:37+02:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/surface_denoising/</loc>
+    <loc>http://localhost:1313/blog/posts/surface_denoising/</loc>
     <lastmod>2022-06-16T10:26:46+02:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/computer-vision/</loc>
+    <loc>http://localhost:1313/blog/tags/computer-vision/</loc>
     <lastmod>2022-03-30T13:15:57+02:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/heart_rate_measurement/</loc>
+    <loc>http://localhost:1313/blog/posts/heart_rate_measurement/</loc>
     <lastmod>2022-03-30T13:15:57+02:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/projects/</loc>
+    <loc>http://localhost:1313/blog/tags/projects/</loc>
     <lastmod>2022-03-30T13:15:57+02:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/fabrication/</loc>
+    <loc>http://localhost:1313/blog/tags/fabrication/</loc>
     <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/3d-printing/</loc>
+    <loc>http://localhost:1313/blog/posts/3d-printing/</loc>
     <lastmod>2022-03-22T18:00:10+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/reflection_locomotion/</loc>
+    <loc>http://localhost:1313/blog/posts/reflection_locomotion/</loc>
     <lastmod>2022-02-28T11:18:11+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/virtual-reality/</loc>
+    <loc>http://localhost:1313/blog/tags/virtual-reality/</loc>
     <lastmod>2022-02-28T11:18:11+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/evaluation_locomotion/</loc>
+    <loc>http://localhost:1313/blog/posts/evaluation_locomotion/</loc>
     <lastmod>2022-02-21T18:27:13+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/unity_setup/</loc>
+    <loc>http://localhost:1313/blog/posts/unity_setup/</loc>
     <lastmod>2022-02-21T18:04:26+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/roll_a_ball/</loc>
+    <loc>http://localhost:1313/blog/posts/roll_a_ball/</loc>
     <lastmod>2022-02-21T18:03:18+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/implementation_locom/</loc>
+    <loc>http://localhost:1313/blog/posts/implementation_locom/</loc>
     <lastmod>2022-01-31T14:29:19+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/ultimate_display/</loc>
+    <loc>http://localhost:1313/blog/posts/ultimate_display/</loc>
     <lastmod>2021-12-21T18:14:13+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/posts/blog-setup/</loc>
+    <loc>http://localhost:1313/blog/posts/blog-setup/</loc>
     <lastmod>2021-12-21T11:31:19+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/tags/web-development/</loc>
+    <loc>http://localhost:1313/blog/tags/web-development/</loc>
     <lastmod>2021-12-21T11:31:19+01:00</lastmod>
   </url><url>
-    <loc>https://theofbraune.github.io/blog/categories/</loc>
+    <loc>http://localhost:1313/blog/categories/</loc>
   </url>
 </urlset>
