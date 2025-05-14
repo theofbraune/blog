@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projects</title>
+    <link rel="stylesheet" href="./css/styles4.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/style_landing.css">
+
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../../images/integral_icon.png">
+
+</head>
+
+<body>
+
+    <header id="site-header" style="padding-bottom: 100px;">
+        <nav>
+            <div class="logo">
+                <a href="#">Theo Braune</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../index.html">Publications</a></li>
+                <li><a href="../../posts/index.html">Posts</a></li>
+                <li><a href="./index.html">Projects</a></li>
+                <!--<li><a href="#">Contact</a></li>-->
+            </ul>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="p-10 max-w-8xl mx-auto space-y-10">
+
+            <!-- Publication Card 1 -->
+            <div
+                class="flex flex-col md:flex-row bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:border hover:border-blue-400 transition-all duration-300 ease-in-out p-6">
+
+                <!-- Image -->
+                <img src="publication_files/TorsionOnSurfaces/teaser.png" alt="Publication Thumbnail"
+                    class="w-48 h-48 object-contain flex-shrink-0 rounded-xl mr-6 mb-4 md:mb-0">
+
+
+                <!-- Text Content -->
+                <div class="flex flex-col justify-center">
+                    <h2
+                        class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-300 ease-in-out">
+
+                        <a href="publication_files/TorsionOnSurfaces/DiscreteTorsion.pdf"> Discrete Torsion of Connection Forms on Simplicial Meshes</a>
+                    </h2>
+
+                    <p class="text-sm text-gray-500 italic mb-1">
+                        ACM Transactions on Graphics (SIGGRAPH 2025)
+                    </p>
+
+                    <p class="text-sm text-gray-700 mb-3">
+                        Theo Braune*, Mark Gillespie*, Yiying Tong, Mathieu Desbrun
+                    </p>
+
+                    <!-- Abstract -->
+                    <p class="text-sm text-gray-600 mb-4">
+                        Discrete connections are a staple of vector field design and analysis on meshes, but the notion
+                        of torsion of a discrete connection has remained unstudied. This is all the more surprising as
+                        torsion is a crucial ingredient of the smooth theory, underlying the fundamental theorem of
+                        Riemannian geometry. We extend the existing geometry processing toolbox by developing a theory
+                        of torsion for discrete connections.
+                    </p>
+
+                    <!-- Material Links -->
+                    <div class="text-sm">
+                        <span class="font-semibold text-gray-700">Material: </span>
+                        <a href="./publication_files/TorsionOnSurfaces/DiscreteTorsion.pdf"
+                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
+                            target="_blank">[PDF]</a> |
+                        <a href="./publication_files/TorsionOnSurfaces/DiscreteTorsionSupplemental.pdf"
+                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
+                            target="_blank">[Supplemental Material]</a> |
+                        <a href="./publication_files/TorsionOnSurfaces/DiscreteTorsionLeviCivitaConnection.nb"
+                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
+                            target="_blank">[Mathematica Notebook]</a> |
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:border hover:border-blue-400 transition-all duration-300 ease-in-out p-6">
+
+                <!-- Image -->
+                <img src="publication_files/FullDEC/radial_ppf_vs_non_ppf.jpg" alt="Publication Thumbnail"
+                    class="w-48 h-48 object-contain flex-shrink-0 rounded-xl mr-6 mb-4 md:mb-0">
+
+                <!-- Text Content -->
+                <div class="flex flex-col justify-center">
+                    <h2 href="publication_files/FullDEC/radial_ppf_vs_non_ppf.jpg"
+                        class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-300 ease-in-out">
+                        <a href="publication_files/FullDEC/full_DEC_submission.pdf"> A Discrete Exterior Calculus of Bundle-valued Forms</a>
+                    </h2>
+
+                    <p class="text-sm text-gray-500 italic mb-1">
+                        Arxiv preprint arXiv:2406.05383 (2024)
+                    </p>
+
+                    <p class="text-sm text-gray-700 mb-3">
+                        Theo Braune, Yiying Tong, François Gay-Balmaz, Mathieu Desbrun
+                    </p>
+
+                    <!-- Abstract -->
+                    <p class="text-sm text-gray-600 mb-4">
+                        The discretization of Cartan's exterior calculus of differential forms has been fruitful in a
+                        variety of theoretical and practical endeavors: from computational electromagnetics to the
+                        development of Finite-Element Exterior Calculus, the development of structure-preserving
+                        numerical tools satisfying exact discrete equivalents to Stokes' theorem or the de Rham complex
+                        for the exterior derivative have found numerous applications in computational physics. However,
+                        there has been a dearth of effort in establishing a more general discrete calculus, this time
+                        for differential forms with values in vector bundles over a combinatorial manifold equipped with
+                        a connection. In this work, we propose a discretization of the exterior covariant derivative of
+                        bundle-valued differential forms. We demonstrate that our discrete operator mimics its
+                        continuous counterpart, satisfies the Bianchi identities on simplicial cells, and contrary to
+                        previous attempts at its discretization, ensures numerical convergence to its exact evaluation
+                        with mesh refinement under mild assumptions.
+                    </p>
+
+                    <!-- Material Links -->
+                    <div class="text-sm">
+                        <span class="font-semibold text-gray-700">Material: </span>
+                        <a href="./publication_files/FullDEC/full_DEC_submission.pdf"
+                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
+                            target="_blank">[PDF]</a> |
+                        <a href="https://gitlab.inria.fr/geomerix/public/fulldec.git"
+                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
+                            target="_blank">[Code]</a> |
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script src="./javascript/scripts4.js"></script>
+    </main>
+</body>
+
+</html>
