@@ -5,21 +5,355 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>projects</title>
-    <link rel="stylesheet" href="./css/styles4.css">
+    <title>Publications — Theo Braune</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="../../css/home.css">
     <link rel="stylesheet" href="../../css/style_landing.css">
-
+    <link rel="icon" href="../../images/integral_icon.png">
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="../../images/integral_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .pub-page {
+            font-family: 'DM Sans', sans-serif;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .pub-page-heading {
+            font-family: 'EB Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .pub-page-sub {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pub-card {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid #ebebeb;
+            border-radius: 12px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .pub-card:hover {
+            border-color: #c8c8c8;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .pub-thumb-wrap {
+            flex-shrink: 0;
+            align-self: flex-start;
+            width: 148px;
+            height: 148px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pub-thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .pub-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pub-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .pub-badge.journal {
+            background: #eef4ff;
+            color: #2c5eb8;
+        }
+
+        .pub-badge.preprint {
+            background: #f2f2f0;
+            color: #666;
+        }
+
+        .pub-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.35;
+            color: #111;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+            transition: color 0.15s;
+        }
+
+        .pub-title:hover { color: #2c5eb8; }
+
+        .pub-authors {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .pub-authors strong {
+            color: #444;
+            font-weight: 500;
+        }
+
+        .pub-abstract {
+            font-size: 13px;
+            line-height: 1.65;
+            color: #555;
+            margin-bottom: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .pub-abstract:hover {
+            display: block;
+            -webkit-line-clamp: unset;
+            -webkit-box-orient: unset;
+            overflow: visible;
+        }
+
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #444;
+            text-decoration: none;
+            padding: 4px 11px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+
+        .pub-link:hover {
+            color: #2c5eb8;
+            border-color: #b0c4f0;
+            background: #f0f5ff;
+        }
+
+        .pub-icon {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .bibtex-wrap {
+            position: relative;
+            display: inline-flex;
+        }
+
+        .pub-link.bibtex-btn {
+            cursor: pointer;
+            background: none;
+            border: 1px solid #ddd;
+            font-family: inherit;
+        }
+
+        .bibtex-popup {
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 0;
+            z-index: 100;
+            width: 420px;
+            max-width: 90vw;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+
+        .bibtex-wrap:hover .bibtex-popup,
+        .bibtex-wrap:focus-within .bibtex-popup {
+            display: block;
+        }
+
+        .bibtex-popup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px solid #ebebeb;
+            background: #fafafa;
+        }
+
+        .bibtex-popup-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .bibtex-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: inherit;
+            color: #444;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 3px 10px;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+
+        .bibtex-copy-btn:hover {
+            color: #2c5eb8;
+            border-color: #b0c4f0;
+            background: #f0f5ff;
+        }
+
+        .bibtex-copy-btn.copied {
+            color: #1a7a3f;
+            border-color: #a0d4b4;
+            background: #edfaf3;
+        }
+
+        .bibtex-popup pre {
+            margin: 0;
+            padding: 12px 14px;
+            font-family: 'DM Mono', 'Fira Mono', monospace;
+            font-size: 11.5px;
+            line-height: 1.6;
+            color: #333;
+            white-space: pre;
+            overflow-x: auto;
+            background: #fff;
+        }
+
+        @media (max-width: 600px) {
+            .pub-card {
+                flex-direction: column;
+            }
+            .pub-thumb-wrap {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
+    <!-- ─── SVG sprite — add new icons here, use with <svg class="pub-icon"><use href="#icon-NAME"/></svg> ─── -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+
+        <!-- badge icons -->
+        <symbol id="icon-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+        </symbol>
+        <symbol id="icon-preprint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </symbol>
+
+        <!-- link button icons -->
+        <symbol id="icon-pdf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        </symbol>
+        <symbol id="icon-supplemental" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+        </symbol>
+        <symbol id="icon-notebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7h16M4 12h16M4 17h10"/>
+        </symbol>
+        <symbol id="icon-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+        </symbol>
+        <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </symbol>
+        <symbol id="icon-gitlab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"/>
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </symbol>
+        <symbol id="icon-slides" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </symbol>
+        <symbol id="icon-doi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </symbol>
+        <symbol id="icon-bibtex" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7V5a1 1 0 0 1 1-1h3"/><path d="M4 17v2a1 1 0 0 0 1 1h3"/>
+            <path d="M20 7V5a1 1 0 0 0-1-1h-3"/><path d="M20 17v2a1 1 0 0 1-1 1h-3"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+        </symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </symbol>
+
+    </svg>
+    <!-- ─────────────────────────────────────────────────────────────────────── -->
 
     <header id="site-header" style="padding-bottom: 100px;">
         <nav>
@@ -31,7 +365,6 @@
                 <li><a href="../../index.html">Publications</a></li>
                 <li><a href="../../posts/index.html">Posts</a></li>
                 <li><a href="../../custum/projects/index.html">Projects</a></li>
-                <!--<li><a href="#">Contact</a></li>-->
             </ul>
             <div class="hamburger-menu">
                 <div class="bar"></div>
@@ -42,115 +375,243 @@
     </header>
 
     <main>
-        <div class="p-10 max-w-8xl mx-auto space-y-10">
+        <div class="pub-page">
+            <h1 class="pub-page-heading">Publications</h1>
+            <p class="pub-page-sub">Discrete differential geometry &amp; geometry processing</p>
 
-            <!-- Publication Card 1 -->
-            <div
-                class="flex flex-col md:flex-row bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:border hover:border-blue-400 transition-all duration-300 ease-in-out p-6">
-
-                <!-- Image -->
-                <img src="publication_files/TorsionOnSurfaces/teaser.png" alt="Publication Thumbnail"
-                    class="w-48 h-48 object-contain flex-shrink-0 rounded-xl mr-6 mb-4 md:mb-0">
-
-
-                <!-- Text Content -->
-                <div class="flex flex-col justify-center">
-                    <h2
-                        class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-300 ease-in-out">
-
-                        <a href="publication_files/TorsionOnSurfaces/DiscreteTorsion.pdf"> Discrete Torsion of Connection Forms on Simplicial Meshes</a>
-                    </h2>
-
-                    <p class="text-sm text-gray-500 italic mb-1">
-                        ACM Transactions on Graphics (SIGGRAPH 2025)
-                    </p>
-
-                    <p class="text-sm text-gray-700 mb-3">
-                        Theo Braune*, Mark Gillespie*, Yiying Tong, Mathieu Desbrun
-                    </p>
-
-                    <!-- Abstract -->
-                    <p class="text-sm text-gray-600 mb-4">
-                        Discrete connections are a staple of vector field design and analysis on meshes, but the notion
-                        of torsion of a discrete connection has remained unstudied. This is all the more surprising as
-                        torsion is a crucial ingredient of the smooth theory, underlying the fundamental theorem of
-                        Riemannian geometry. We extend the existing geometry processing toolbox by developing a theory
-                        of torsion for discrete connections.
-                    </p>
-
-                    <!-- Material Links -->
-                    <div class="text-sm">
-                        <span class="font-semibold text-gray-700">Material: </span>
-                        <a href="./publication_files/TorsionOnSurfaces/DiscreteTorsion.pdf"
-                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
-                            target="_blank">[PDF]</a> |
-                        <a href="./publication_files/TorsionOnSurfaces/DiscreteTorsionSupplemental.pdf"
-                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
-                            target="_blank">[Supplemental Material]</a> |
-                        <a href="./publication_files/TorsionOnSurfaces/DiscreteTorsionLeviCivitaConnection.nb"
-                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
-                            target="_blank">[Mathematica Notebook]</a> |
+            <div class="pub-list">
+                <article class="pub-card">
+                    <div class="pub-thumb-wrap">
+                        <img src="publication_files/multiscaleEigvs/teaser.jpg" alt="multiscale teaser">
                     </div>
-                </div>
-
-            </div>
-
-            <div
-                class="flex flex-col md:flex-row bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.02] hover:border hover:border-blue-400 transition-all duration-300 ease-in-out p-6">
-
-                <!-- Image -->
-                <img src="publication_files/FullDEC/radial_ppf_vs_non_ppf.jpg" alt="Publication Thumbnail"
-                    class="w-48 h-48 object-contain flex-shrink-0 rounded-xl mr-6 mb-4 md:mb-0">
-
-                <!-- Text Content -->
-                <div class="flex flex-col justify-center">
-                    <h2 href="publication_files/FullDEC/radial_ppf_vs_non_ppf.jpg"
-                        class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600 transition-colors duration-300 ease-in-out">
-                        <a href="publication_files/FullDEC/full_DEC_submission.pdf"> A Discrete Exterior Calculus of Bundle-valued Forms</a>
-                    </h2>
-
-                    <p class="text-sm text-gray-500 italic mb-1">
-                        Arxiv preprint arXiv:2406.05383 (2024)
-                    </p>
-
-                    <p class="text-sm text-gray-700 mb-3">
-                        Theo Braune, Yiying Tong, François Gay-Balmaz, Mathieu Desbrun
-                    </p>
-
-                    <!-- Abstract -->
-                    <p class="text-sm text-gray-600 mb-4">
-                        The discretization of Cartan's exterior calculus of differential forms has been fruitful in a
-                        variety of theoretical and practical endeavors: from computational electromagnetics to the
-                        development of Finite-Element Exterior Calculus, the development of structure-preserving
-                        numerical tools satisfying exact discrete equivalents to Stokes' theorem or the de Rham complex
-                        for the exterior derivative have found numerous applications in computational physics. However,
-                        there has been a dearth of effort in establishing a more general discrete calculus, this time
-                        for differential forms with values in vector bundles over a combinatorial manifold equipped with
-                        a connection. In this work, we propose a discretization of the exterior covariant derivative of
-                        bundle-valued differential forms. We demonstrate that our discrete operator mimics its
-                        continuous counterpart, satisfies the Bianchi identities on simplicial cells, and contrary to
-                        previous attempts at its discretization, ensures numerical convergence to its exact evaluation
-                        with mesh refinement under mild assumptions.
-                    </p>
-
-                    <!-- Material Links -->
-                    <div class="text-sm">
-                        <span class="font-semibold text-gray-700">Material: </span>
-                        <a href="./publication_files/FullDEC/full_DEC_submission.pdf"
-                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
-                            target="_blank">[PDF]</a> |
-                        <a href="https://gitlab.inria.fr/geomerix/public/fulldec.git"
-                            class="text-blue-600 hover:text-blue-800 transition-all duration-300 underline underline-offset-4 decoration-2 hover:decoration-4"
-                            target="_blank">[Code]</a> |
+                    <div class="pub-body">
+                        <span class="pub-badge journal">
+                            <svg class="pub-icon"><use href="#icon-medal"/></svg>
+                            ACM Transactions on Graphics (SIGGRAPH 2026)
+                        </span>
+                        <a class="pub-title" href="publication_files/multiscaleEigvs/mainCompressed.pdf">
+                            Efficient Multiscale Lanczos Eigenpair Extraction
+                        </a>
+                        <p class="pub-authors">
+                            <strong>Theo Braune</strong>, Jeremie Dumas, Jean-Marc Thiery
+                        </p>
+                        <p class="pub-abstract">
+                            Eigenpair extractions are crucial for various applications in geometry processing and graphics. State of the Art libraries like ARPACK or Spectra rely on the implicitly restarted Lanczos iteration to extract eigenpairs efficiently. However for some large scale problems they lack convergence speed and robustness. In this paper we present a simple multigrid extension to accelerate the convergence and robustness of the implicitly restarted Lanczos method,
+        and we demonstrate the efficiency of our method on a variety of problems commonly found in geometry processing and graphics.
+                        </p>
+                        <div class="pub-links">
+                            <a class="pub-link" href="./publication_files/multiscaleEigvs/mainCompressed.pdf" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-pdf"/></svg>
+                                PDF
+                            </a>
+                            
+                            <div class="bibtex-wrap">
+                                <button class="pub-link bibtex-btn">
+                                    <svg class="pub-icon"><use href="#icon-bibtex"/></svg>
+                                    BibTeX
+                                </button>
+                                <div class="bibtex-popup">
+                                    <div class="bibtex-popup-header">
+                                        <span class="bibtex-popup-label">BibTeX</span>
+                                        <button class="bibtex-copy-btn" onclick="copyBibtex(this)">
+                                            <svg class="pub-icon"><use href="#icon-copy"/></svg>
+                                            Copy
+                                        </button>
+                                    </div>
+                                    <pre>@article{BDT2026MultiscaleLanczos,
+author = {Braune, Theo and Dumas, Jeremie and Thiery, Jean-Marc},
+title = {Efficient Multiscale Lanczos Eigenpair Extraction},
+year = {2026},
+issue_date = {July 2026},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {45},
+number = {5},
+url = {https://doi.org/10.1145/3811367},
+doi = {10.1145/3811367},
+abstract = {Eigenpair extractions are crucial for various applications in geometry processing
+and graphics. State of the Art libraries like ARPACK or Spectra rely
+on the implicitly restarted Lanczos iteration to extract eigenpairs efficiently.
+However for some large scale problems they lack convergence speed and robustness.
+In this paper we present a simple multigrid extension to accelerate
+the convergence and robustness of the implicitly restarted Lanczos method,
+and we demonstrate the efficiency of our method on a variety of problems
+commonly found in geometry processing and graphics.},
+journal = {ACM Trans. Graph.},
+month = jul,
+articleno = {5},
+numpages = {14},
+keywords = {Linear Algebra, Eigenpair extraction, Multigrid, Lanczos}
+}</pre>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- Publication 1 -->
+                <article class="pub-card">
+                    <div class="pub-thumb-wrap">
+                        <img src="publication_files/TorsionOnSurfaces/teaser.png" alt="Discrete torsion teaser">
+                    </div>
+                    <div class="pub-body">
+                        <span class="pub-badge journal">
+                            <svg class="pub-icon"><use href="#icon-medal"/></svg>
+                            ACM Transactions on Graphics (SIGGRAPH 2025)
+                        </span>
+                        <a class="pub-title" href="publication_files/TorsionOnSurfaces/DiscreteTorsion.pdf">
+                            Discrete Torsion of Connection Forms on Simplicial Meshes
+                        </a>
+                        <p class="pub-authors">
+                            <strong>Theo Braune*</strong>, Mark Gillespie*, Yiying Tong, Mathieu Desbrun
+                        </p>
+                        <p class="pub-abstract">
+                            Discrete connections are a staple of vector field design and analysis on meshes, but the notion
+                            of torsion of a discrete connection has remained unstudied. This is all the more surprising as
+                            torsion is a crucial ingredient of the smooth theory, underlying the fundamental theorem of
+                            Riemannian geometry. We extend the existing geometry processing toolbox by developing a theory
+                            of torsion for discrete connections.
+                        </p>
+                        <div class="pub-links">
+                            <a class="pub-link" href="./publication_files/TorsionOnSurfaces/DiscreteTorsion.pdf" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-pdf"/></svg>
+                                PDF
+                            </a>
+                            <a class="pub-link" href="./publication_files/TorsionOnSurfaces/DiscreteTorsionSupplemental.pdf" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-supplemental"/></svg>
+                                Supplemental
+                            </a>
+                            <a class="pub-link" href="./publication_files/TorsionOnSurfaces/DiscreteTorsionLeviCivitaConnection.nb" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-notebook"/></svg>
+                                Notebook
+                            </a>
+                            <a class="pub-link" href="https://dl.acm.org/doi/10.1145/3731197" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-video"/></svg>
+                                Video
+                            </a>
+                            <div class="bibtex-wrap">
+                                <button class="pub-link bibtex-btn">
+                                    <svg class="pub-icon"><use href="#icon-bibtex"/></svg>
+                                    BibTeX
+                                </button>
+                                <div class="bibtex-popup">
+                                    <div class="bibtex-popup-header">
+                                        <span class="bibtex-popup-label">BibTeX</span>
+                                        <button class="bibtex-copy-btn" onclick="copyBibtex(this)">
+                                            <svg class="pub-icon"><use href="#icon-copy"/></svg>
+                                            Copy
+                                        </button>
+                                    </div>
+                                    <pre>@article{BGTD2025DiscreteTorsion,
+author = {Braune, Theo and Gillespie, Mark and Tong, Yiying and Desbrun, Mathieu},
+title = {Discrete Torsion of Connection Forms on Simplicial Meshes},
+year = {2025},
+issue_date = {August 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {44},
+number = {4},
+issn = {0730-0301},
+url = {https://doi.org/10.1145/3731197},
+doi = {10.1145/3731197},
+abstract = {While discrete (metric) connections have become a staple of n-vector field design and analysis on simplicial meshes, the notion of torsion of a discrete connection has remained unstudied. This is all the more surprising as torsion is a crucial component in the fundamental theorem of Riemannian geometry, which introduces the existence and uniqueness of the Levi-Civita connection induced by the metric. In this paper, we extend the existing geometry processing toolbox by providing torsion control over discrete connections. Our approach consists in first introducing a new discrete Levi-Civita connection for a metric with locally-constant curvature to replace the hinge connection of a triangle mesh whose curvature is concentrated at singularities; from this reference connection, we define the discrete torsion of a connection to be the discrete dual 1-form by which a connection deviates from our discrete Levi-Civita connection. We discuss how the curvature and torsion of a discrete connection can then be controlled and assigned in a manner consistent with the continuous case. We also illustrate our approach through theoretical analysis and practical examples arising in vector and frame design.},
+journal = {ACM Trans. Graph.},
+month = jul,
+articleno = {67},
+numpages = {10},
+keywords = {discrete metric connections, parallel transport, discrete torsion, discrete levi-civita connections}
+}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Publication 2 -->
+                <article class="pub-card">
+                    <div class="pub-thumb-wrap">
+                        <img src="publication_files/FullDEC/radial_ppf_vs_non_ppf.jpg" alt="DEC bundle-valued forms teaser">
+                    </div>
+                    <div class="pub-body">
+                        <span class="pub-badge preprint">
+                            <svg class="pub-icon"><use href="#icon-preprint"/></svg>
+                            arXiv preprint · 2024
+                        </span>
+                        <a class="pub-title" href="publication_files/FullDEC/full_DEC_submission.pdf">
+                            A Discrete Exterior Calculus of Bundle-valued Forms
+                        </a>
+                        <p class="pub-authors">
+                            <strong>Theo Braune</strong>, Yiying Tong, François Gay-Balmaz, Mathieu Desbrun
+                        </p>
+                        <p class="pub-abstract">
+                            The discretization of Cartan's exterior calculus of differential forms has been fruitful in a
+                            variety of theoretical and practical endeavors: from computational electromagnetics to the
+                            development of Finite-Element Exterior Calculus, the development of structure-preserving
+                            numerical tools satisfying exact discrete equivalents to Stokes' theorem or the de Rham complex
+                            for the exterior derivative have found numerous applications in computational physics. However,
+                            there has been a dearth of effort in establishing a more general discrete calculus for
+                            differential forms with values in vector bundles over a combinatorial manifold equipped with
+                            a connection. We propose a discretization of the exterior covariant derivative of bundle-valued
+                            differential forms that mimics its continuous counterpart and ensures numerical convergence
+                            with mesh refinement.
+                        </p>
+                        <div class="pub-links">
+                            <a class="pub-link" href="./publication_files/FullDEC/full_DEC_submission.pdf" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-pdf"/></svg>
+                                PDF
+                            </a>
+                            <a class="pub-link" href="https://gitlab.inria.fr/geomerix/public/fulldec.git" target="_blank">
+                                <svg class="pub-icon"><use href="#icon-gitlab"/></svg>
+                                Code
+                            </a>
+                            <div class="bibtex-wrap">
+                                <button class="pub-link bibtex-btn">
+                                    <svg class="pub-icon"><use href="#icon-bibtex"/></svg>
+                                    BibTeX
+                                </button>
+                                <div class="bibtex-popup">
+                                    <div class="bibtex-popup-header">
+                                        <span class="bibtex-popup-label">BibTeX</span>
+                                        <button class="bibtex-copy-btn" onclick="copyBibtex(this)">
+                                            <svg class="pub-icon"><use href="#icon-copy"/></svg>
+                                            Copy
+                                        </button>
+                                    </div>
+                                    <pre>@misc{Braune2024FullDEC,
+  author        = {Braune, Theo and Tong, Yiying and
+                   Gay-Balmaz, Fran{\c{c}}ois and
+                   Desbrun, Mathieu},
+  title         = {A Discrete Exterior Calculus of
+                   Bundle-valued Forms},
+  year          = {2024},
+  eprint        = {2406.05383},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.NA},
+}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </div>
-
-
-        <script src="./javascript/scripts4.js"></script>
     </main>
+
+    <script src="./javascript/scripts4.js"></script>
+    <script>
+        function copyBibtex(btn) {
+            const text = btn.closest('.bibtex-popup').querySelector('pre').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<svg class="pub-icon"><use href="#icon-check"/></svg> Copied';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<svg class="pub-icon"><use href="#icon-copy"/></svg> Copy';
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 
 </html>
