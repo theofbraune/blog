@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="generator" content="Hugo 0.152.2"><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
 	<title>Theo Braune
 	</title>
 	<link rel="icon" href="../../images/integral_icon.png">
@@ -15,6 +16,78 @@
 	  </script>
 	  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 	  </script>
+
+	<style>
+		/* when .math-mode is on the body, reset everything to browser defaults */
+		body.math-mode,
+		body.math-mode * {
+			all: revert;
+		}
+		body.math-mode img {
+			all: revert;
+			max-width: 200px;
+			display: block;
+			margin: 8px 0;
+		}
+		body.math-mode #news-toggle {
+			display: none;
+		}
+		body.math-mode #extra-news {
+			display: none;
+		}
+
+		/* re-add only the toggle button so the user can get back */
+		body.math-mode #math-mode-btn {
+			all: revert;
+			display: block;
+			margin: 8px;
+			cursor: pointer;
+		}
+		#math-mode-btn {
+			margin-left: 1.5rem;
+			background: transparent;
+			border: 1px solid rgba(255,255,255,0.4);
+			color: inherit;
+			border-radius: 4px;
+			padding: 4px 10px;
+			cursor: pointer;
+			font-size: 0.85rem;
+			opacity: 0.75;
+			transition: opacity 0.15s;
+		}
+
+		#math-mode-btn:hover {
+			opacity: 1;
+		}
+	</style>
+	<script>
+		function toggleMathMode() {
+		const on = document.body.classList.toggle('math-mode');
+		document.getElementById('math-mode-btn').textContent =
+			on ? '← Go back' : 'Retro Mode';
+		localStorage.setItem('mathMode', on);
+
+		// in math mode: just show everything, no animated nonsense
+		const extra = document.getElementById('extra-news');
+		const newsToggle = document.getElementById('news-toggle');
+		if (on) {
+			extra.style.maxHeight = 'none';
+			extra.style.overflow = 'visible';
+			newsToggle.style.display = 'none';
+		} else {
+			extra.style.maxHeight = '0';
+			extra.style.overflow = 'hidden';
+			newsToggle.style.display = '';
+			open = false;
+		}
+	}
+
+		// persist across page loads
+		if (localStorage.getItem('mathMode') === 'true') {
+			document.body.classList.add('math-mode');
+			document.getElementById('math-mode-btn').textContent = '← Go Back';
+		}
+	</script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
 </head>
 <body>
@@ -28,7 +101,9 @@
 		  <li><a href="./publications/projects/index.html">Publications </a></li>
 		  <li><a href="./posts/index.html">Posts</a></li>
 		  <li><a href="./custum/projects/index.html">Projects</a></li>
-		  <!--<li><a href="#">Contact</a></li>-->
+		  <!-- put this button somewhere visible, e.g. in the nav -->
+		  <button id="math-mode-btn" onclick="toggleMathMode()">Retro Mode</button>
+		  
 		</ul>
 		<div class="hamburger-menu">
 		  <div class="bar"></div>
@@ -46,7 +121,7 @@
 			<img src="images/photo_theo_braune.jpg" alt="My Photo">
 			<div class="text">
 				<h1>Hi, I'm Theo Braune</h1>
-				<h2>PhD Student in Computer Science in  IP-Paris/ École Polytechnique/ Inria</h2>
+				<h2>PhD Graduate in Computer Science in  IP-Paris/ École Polytechnique/ Inria</h2>
 				<p>In my work I focus on computational differential geometry, especially discrete exterior calculus. We work on extensions to discrete vector bundle valued forms and its possible applications.</p>
 				
 			
