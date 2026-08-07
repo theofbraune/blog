@@ -243,3 +243,58 @@ nav {
   .special-link:hover {
       color: #0056b3; /* Hover color for the special link */
   }
+
+  /* news-list shared class so both visible + hidden items style identically */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* divider lines between items */
+.news-list > li {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.news-list > li:last-child {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 0;
+}
+
+#extra-news .news-list > li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+#extra-news .news-list > li:first-child {
+  padding-top: 30px;
+}
+
+/* toggle button */
+#news-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2rem;
+  background: none;
+  border: 1.5px solid #44596e;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #44596e;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#news-toggle:hover {
+  background-color: #44596e;
+  color: white;
+}
+
+#news-chevron {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}

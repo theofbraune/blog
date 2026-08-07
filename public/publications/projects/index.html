@@ -52,7 +52,7 @@
         .pub-card {
             display: flex;
             flex-direction: row;
-            align-items: flex-start;
+            align-items: center;
             gap: 1.5rem;
             padding: 1.5rem;
             background: #fff;
@@ -68,9 +68,9 @@
 
         .pub-thumb-wrap {
             flex-shrink: 0;
-            align-self: flex-start;
+            align-self: flex;
             width: 148px;
-            height: 148px;
+            height: auto;
             border-radius: 8px;
             overflow: hidden;
             background: #f5f5f3;
@@ -303,6 +303,10 @@
     <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
 
         <!-- badge icons -->
+         <symbol id="icon-thesis" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </symbol>
         <symbol id="icon-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
         </symbol>
@@ -352,6 +356,7 @@
             <polyline points="20 6 9 17 4 12"/>
         </symbol>
 
+
     </svg>
     <!-- ─────────────────────────────────────────────────────────────────────── -->
 
@@ -379,6 +384,81 @@
             <h1 class="pub-page-heading">Publications</h1>
             <p class="pub-page-sub">Discrete differential geometry &amp; geometry processing</p>
 
+            <article class="pub-card">
+                <div class="pub-thumb-wrap">
+                    <img src="publication_files/dissertation/EDIPP.png" alt="EDTeaser">
+                </div>
+                <div class="pub-body">
+                    <span class="pub-badge journal">
+                        <svg class="pub-icon"><use href="#icon-thesis"/></svg>
+                        Doctoral Thesis
+                    </span>
+                    <a class="pub-title" href="publication_files/dissertation/thesis.pdf">
+                        Geometry Driven Discretization of Differential Operators
+                    </a>
+                    <p class="pub-authors">
+                        <strong>Theo Braune</strong>
+                    </p>
+                    <p class="pub-abstract">
+                        Discrete Exterior Calculus (DEC) has emerged as a key tool for the structure-preserving discretiza-
+                        tion of differential forms, proving vital in fields such as computational fluid dynamics, electromag-
+                        netism, and geometry processing. By maintaining the underlying geometric and topological prop-
+                        erties of physical systems, DEC ensures numerical and physical fidelity. However, traditional DEC
+                        is restricted to scalar-valued forms. This limitation is significant, as many fundamental theories in
+                        physics and geometry, including general relativity, non-linear elasticity, and Yang-Mills gauge theo-
+                        ries, are naturally formulated using bundle-valued differential forms and their associated covariant
+                        operators.
+                        This thesis bridges that gap by extending the DEC framework to the bundle-valued setting. In
+                        the first part, we investigate the special case of connections on simplicial 2-manifolds, addressing
+                        the challenge of representing curvature and torsion consistently in a discrete environment. We
+                        introduce a modified discrete Levi-Civita connection and a corresponding discrete representation
+                        of the torsion 2-form, demonstrating their utility within a geometry processing pipeline.
+                        In the second part, we develop a general framework for discrete bundle-valued exterior calculus.
+                        A central contribution is the formalization of integration for bundle-valued forms by leveraging
+                        the interplay between connections and retractions. This theoretical foundation enables a rigor-
+                        ous discretization scheme that induces discrete bundle-valued forms directly from their smooth
+                        counterparts. Building on this integration theory, we introduce a novel discrete exterior covariant
+                        derivative. We demonstrate that this operator converges to its continuous counterpart under mesh
+                        refinement, overcoming limitations in prior research. Furthermore, we show that the Bianchi
+                        identities are satisfied in an exact combinatorial sense and hold true in the limit. In addition, we
+                        establish that core properties of the continuous theory, such as naturality and Whitney interpo-
+                        lation, are preserved within our framework. Finally, we demonstrate that the presented construc-
+                        tions are not limited to simplicial complexes, but extend to a broader class of non-simplicial cells.
+                    </p>
+                    <div class="pub-links">
+                        <a class="pub-link" href="./publication_files/dissertation/thesis.pdf" target="_blank">
+                            <svg class="pub-icon"><use href="#icon-pdf"/></svg>
+                            PDF
+                        </a>
+                        
+                        <div class="bibtex-wrap">
+                            <button class="pub-link bibtex-btn">
+                                <svg class="pub-icon"><use href="#icon-bibtex"/></svg>
+                                BibTeX
+                            </button>
+                            <div class="bibtex-popup">
+                                <div class="bibtex-popup-header">
+                                    <span class="bibtex-popup-label">BibTeX</span>
+                                    <button class="bibtex-copy-btn" onclick="copyBibtex(this)">
+                                        <svg class="pub-icon"><use href="#icon-copy"/></svg>
+                                        Copy
+                                    </button>
+                                </div>
+                                <pre>
+                                    @phdthesis{thesisTheoBraune,
+                                    Author = {Theo F. Braune},
+                                    School = {Institut Polytechnique de Paris},
+                                    Title = {Geometry Driven Discretization of Differential Operators},
+                                    Url = {https://theofbraune.github.io/blog/publications/projects/dissertation/thesis.pdf},
+                                    Year = {2026}}
+
+
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
             <div class="pub-list">
                 <article class="pub-card">
                     <div class="pub-thumb-wrap">

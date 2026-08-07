@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Theo Braune</title>
-    <link>https://theofbraune.github.io/blog/tags/projects/</link>
+    <link>http://localhost:1313/blog/tags/projects/</link>
     <description>Recent content in Projects on Theo Braune</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 30 Mar 2022 13:15:57 +0200</lastBuildDate>
-    <atom:link href="https://theofbraune.github.io/blog/tags/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Heart Rate Measurement through Computer Vision</title>
-      <link>https://theofbraune.github.io/blog/posts/heart_rate_measurement/</link>
+      <link>http://localhost:1313/blog/posts/heart_rate_measurement/</link>
       <pubDate>Wed, 30 Mar 2022 13:15:57 +0200</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/heart_rate_measurement/</guid>
+      <guid>http://localhost:1313/blog/posts/heart_rate_measurement/</guid>
       <description>For many applications in telemedicine or in a security context a contactless heart rate measurement can be great interest useful. Most of the conventional approaches use a wearable object like a chest belt or a special watch. In the mentioned cases, this is not always applicable. Therefore one is interested in methods, that can extract the heart rate from a video feed. This post gives a first overview how a code prototype for that could be build.</description>
     </item>
     <item>
       <title>Make it Stand - Balancing Shapes for 3D-printing</title>
-      <link>https://theofbraune.github.io/blog/posts/3d-printing/</link>
+      <link>http://localhost:1313/blog/posts/3d-printing/</link>
       <pubDate>Tue, 22 Mar 2022 18:00:10 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/3d-printing/</guid>
+      <guid>http://localhost:1313/blog/posts/3d-printing/</guid>
       <description>Through the evolution of 3D-printers, the it has become more and more easy to produce prototypes of 3 dimensional shapes. In this project we developed our first software to produce shapes and printable objects for a 3D-printer. This project was part as a final project of the École Polytechnique course X-INF 574 Digital Representations and Analysis of Shapes</description>
     </item>
     <item>
       <title>Implementation of Ski Locomotion in Virtual Reality.</title>
-      <link>https://theofbraune.github.io/blog/posts/implementation_locom/</link>
+      <link>http://localhost:1313/blog/posts/implementation_locom/</link>
       <pubDate>Mon, 31 Jan 2022 14:29:19 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/implementation_locom/</guid>
+      <guid>http://localhost:1313/blog/posts/implementation_locom/</guid>
       <description>In this post I explain how I implemented cross country skiing as a locomotion technique in a VR parcours.</description>
     </item>
   </channel>
