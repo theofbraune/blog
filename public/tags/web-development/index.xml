@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web Development on Theo Braune</title>
-    <link>https://theofbraune.github.io/blog/tags/web-development/</link>
+    <link>http://localhost:1313/blog/tags/web-development/</link>
     <description>Recent content in Web Development on Theo Braune</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 21 Dec 2021 11:31:19 +0100</lastBuildDate>
-    <atom:link href="https://theofbraune.github.io/blog/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up a Webblog with Hugo</title>
-      <link>https://theofbraune.github.io/blog/posts/blog-setup/</link>
+      <link>http://localhost:1313/blog/posts/blog-setup/</link>
       <pubDate>Tue, 21 Dec 2021 11:31:19 +0100</pubDate>
-      <guid>https://theofbraune.github.io/blog/posts/blog-setup/</guid>
+      <guid>http://localhost:1313/blog/posts/blog-setup/</guid>
       <description>In this post I explain, how you can setup your own webblog with hugo and host it on github pages.</description>
     </item>
   </channel>
