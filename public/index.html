@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="generator" content="Hugo 0.152.2"><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.152.2"><script src="./blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
 	<title>Theo Braune
 	</title>
 	<link rel="icon" href="../../images/integral_icon.png">
@@ -18,7 +18,7 @@
 	  </script>
 
 	<style>
-		/* when .math-mode is on the body, reset everything to browser defaults */
+		 
 		body.math-mode,
 		body.math-mode * {
 			all: revert;
@@ -36,7 +36,7 @@
 			display: none;
 		}
 
-		/* re-add only the toggle button so the user can get back */
+		 
 		body.math-mode #math-mode-btn {
 			all: revert;
 			display: block;
@@ -67,7 +67,7 @@
 			on ? '← Go back' : 'Retro Mode';
 		localStorage.setItem('mathMode', on);
 
-		// in math mode: just show everything, no animated nonsense
+		
 		const extra = document.getElementById('extra-news');
 		const newsToggle = document.getElementById('news-toggle');
 		if (on) {
@@ -82,7 +82,7 @@
 		}
 	}
 
-		// persist across page loads
+		
 		if (localStorage.getItem('mathMode') === 'true') {
 			document.body.classList.add('math-mode');
 			document.getElementById('math-mode-btn').textContent = '← Go Back';
@@ -101,7 +101,7 @@
 		  <li><a href="./publications/projects/index.html">Publications </a></li>
 		  <li><a href="./posts/index.html">Posts</a></li>
 		  <li><a href="./custum/projects/index.html">Projects</a></li>
-		  <!-- put this button somewhere visible, e.g. in the nav -->
+		  
 		  <button id="math-mode-btn" onclick="toggleMathMode()">Retro Mode</button>
 		  
 		</ul>

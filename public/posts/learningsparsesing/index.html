@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Sparse Singularities for Cross Fields</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/style_landing.css">
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+      </script>
+      <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+      </script>
+    
+    <link rel="icon" href="../../images/integral_icon.png">
+
+</head>
+<body>
+
+    <header id = "site-header">
+      <nav>
+        <div class="logo">
+          <a href="#">Theo Braune</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../posts/index.html">Posts</a></li>
+          <li><a href="../../custum/projects/index.html">Projects</a></li>
+          
+        </ul>
+        <div class="hamburger-menu">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </header>
+    <main class="site-main">
+        <div class="container">
+            <article class="single-post">
+                <h1 class="entry-title mt-4 mb-4">Learning Sparse Singularities for Cross Fields</h1>
+                <div class="post-meta mb-2">
+                    <span class="post-author">Posted by: Theo
+                    </span>
+            
+                    <span class="post-date">
+                        <time>Oct 1, 2026, 12:02PM</time>
+                    </span>
+            
+                    <span class="post-tags">
+                        
+                            <a href="https://theofbraune.github.io/blog/tags/programming/">Programming</a>
+                        
+                            <a href="https://theofbraune.github.io/blog/tags/learning/">Learning</a>
+                        
+                            <a href="https://theofbraune.github.io/blog/tags/geometry-processing/">Geometry Processing</a>
+                        
+                    </span>
+                </div>
+                <div class="entry-content"><p>Nowerdays in graphics and geometry processing I see more and more people working on or with Neural Networks. And I thought it may actually be interesting to give it myself a try. And I should say this was a pretty cool and fun project.
+I saw this year at Siggraph the presentation of the paper <a href="https://dl.acm.org/doi/10.1145/3787520">&ldquo;Learning Sparse Singularities for Cross Field Design&rdquo; from Xiaozhu Zhang, Hujun Bao, and Jin Huang</a> and I should say that I like the idea of this article a lot. Because I feel plenty of learning papers do not really solve a problem by using learning and just use it for the sake of using learning.
+Hpwever I thought in my research before in a more classical way about singularities for cross fields and it is indeed a hard problem. Therefore to use in here learning for the hard part &ndash; to predict where the singularities are &ndash; and then to rely on robust and well etablished traditional methods for the cross field generation from there on is something I wanted to try.
+This post should document a bit my own learning process of how I used classic <code>C++</code> and then  <code>pytorch</code> in order to rebuild the pipeline proposed by Zhang et al.
+<figure><img src="../../images/learningSings/teaser.png" width="100%">
+</figure>
+</p>
+<p>One thing up front: I am not (yet) a big fan of doing geometry processing in Python. I feel the more natural home for geometry processing is in C++, and I want to keep it there. I saw the YouTube tutorial by <a href="https://www.youtube.com/@kevkev-70">Kavan</a>, where he trains a humanoid to do backflips. In there the physics simulation is written in C++, and only the learning happens in PyTorch.
+It is a great video, I recommend to check it out <a href="https://www.youtube.com/watch?v=vKDj_XIKW7o">here</a>.
+That split made a lot of sense to me, so I asked myself whether something like that could be done for singularity predictionas well, i.e to treat the geometry in C++, learning in Python. Since Claude is getting better and better the entry barrier to smehow get started is also getting lower, so lets see what we can cook up!</p>
+<h2 id="the-idea-in-one-picture">The idea in one picture</h2>
+<p>A cross field assigns four orthogonal directions to every point of a surface. It is the backbone of most quad meshing pipelines. Almost everywhere the field is smooth, but at a few isolated points, the <strong>singularities</strong>, the directions rotate by a multiple of 90° when you walk once around them. These are exactly the irregular vertices of the final quad mesh (valence 3 or 5 instead of 4). Where they sit decides how the quad mesh looks, so in practice they are where the &ldquo;art of design&rdquo; lives.</p>
+<p>The key insight of the paper is to <strong>not</strong> learn the cross field itself. A dense cross field can jump discontinuously when the shape changes slightly, which is very hard for a network. The singularities, on the other hand, move continuously. So the pipeline has two stages:</p>
+<ol>
+<li>A neural network predicts <em>where</em> the singularities are and <em>which index</em> they have.</li>
+<li>A classical, deterministic algorithm, <a href="https://www.cs.cmu.edu/~kmcrane/Projects/TrivialConnections/"><strong>trivial connections</strong></a> (Crane, Desbrun and Schröder 2010), builds the smoothest cross field with exactly these singularities.</li>
+</ol>
+<p>A nice side effect: you don&rsquo;t need cross fields as training data, only singularity annotations. And these can come from simple, hand-written rules. The network then learns <em>your</em> rule and applies it to new shapes.</p>
+<h2 id="c-for-geometry-pytorch-for-learning">C++ for geometry, PyTorch for learning</h2>
+<p>In the backflip project, C++ and Python talk over UDP at every simulation step, because reinforcement learning needs the simulator inside the training loop. My problem is plain supervised learning, so the two sides never need to run at the same time. The bridge is therefore just files: the C++ app writes one <code>.npz</code> file per mesh (NumPy&rsquo;s format, written with the small <a href="https://github.com/rogersce/cnpy">cnpy</a> library), and PyTorch reads it with <code>np.load</code>.</p>
+<p>The C++ app (<code>singlearn</code>) has three commands:</p>
+<ul>
+<li><code>singlearn prepare mesh.obj --sing mesh.sing</code> computes the <strong>network inputs</strong> and the <strong>training labels</strong> for one mesh and writes them to an <code>.npz</code> file.</li>
+<li><code>singlearn predict mesh.obj --ckpt model.pt</code> computes the inputs for a new mesh, hands them to a short Python script that runs the network, reads the prediction back, extracts the singularities and builds the cross field.</li>
+<li><code>singlearn tc mesh.obj --sing mesh.sing</code> skips the network and builds a cross field directly from given singularities. I use it to check whether my annotations are valid at all.</li>
+</ul>
+<p>For the trivial connections I re-used some old code snippets and used then geometry-central for the implementation. The mesh data structures, the Laplacian and the geodesic distances come from <a href="https://geometry-central.net">geometry-central</a>, and for the eigenvalue problem I use <a href="https://spectralib.org">Spectra</a>. For visual debugging, <a href="https://polyscope.run">polyscope</a> is wonderful. I added a mode where the app stops after every stage of the pipeline and shows what it currently has.</p>
+<figure><img src="../../images/learningSings/learnedDistanceField.png" width="80%">
+</figure>
+
+<blockquote>
+</blockquote>
+<h2 id="input-features-the-heat-kernel-signature">Input features: the heat kernel signature</h2>
+<p>A network that looks at vertex coordinates would give different answers for a rotated copy of the same shape. To avoid that, the paper uses only <em>intrinsic</em> quantities, and the standard choice is the <strong>heat kernel signature</strong> (HKS). Put one unit of heat at a point <em>x</em>, let it diffuse for a time <em>t</em>, and measure how much is still at <em>x</em>:</p>
+<p>$$ \mathrm{HKS}(x,t) = \sum_i e^{-\lambda_i t}, \phi_i(x)^2 , $$</p>
+<p>where $\lambda_i, \phi_i$ are the eigenvalues and eigenfunctions of the Laplace–Beltrami operator. Small <em>t</em> describes the neighbourhood of a point, large <em>t</em> its place in the whole shape. I sample 16 values of <em>t</em> between 0.01 and 1, which gives 16 numbers per vertex. In machine-learning language, this is the <strong>input feature vector</strong> of each vertex.</p>
+<p>In C++ this means solving the generalized eigenvalue problem $L\phi = \lambda M \phi$ (cotan Laplacian <em>L</em>, lumped mass matrix <em>M</em>) for the 128 smallest eigenvalues. Spectra does this with a shift-invert solver:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> OpType  <span style="color:#f92672">=</span> Spectra<span style="color:#f92672">::</span>SymShiftInvert<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span>, Eigen<span style="color:#f92672">::</span>Sparse, Eigen<span style="color:#f92672">::</span>Sparse<span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> BOpType <span style="color:#f92672">=</span> Spectra<span style="color:#f92672">::</span>SparseSymMatProd<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span>;
+</span></span><span style="display:flex;"><span>OpType <span style="color:#a6e22e">op</span>(L, M);
+</span></span><span style="display:flex;"><span>BOpType <span style="color:#a6e22e">Bop</span>(M);
+</span></span><span style="display:flex;"><span>Spectra<span style="color:#f92672">::</span>SymGEigsShiftSolver<span style="color:#f92672">&lt;</span>OpType, BOpType, Spectra<span style="color:#f92672">::</span>GEigsMode<span style="color:#f92672">::</span>ShiftInvert<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    solver(op, Bop, k, ncv, <span style="color:#75715e">/*sigma=*/</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1e-3</span>);
+</span></span><span style="display:flex;"><span>solver.init();
+</span></span><span style="display:flex;"><span>solver.compute(Spectra<span style="color:#f92672">::</span>SortRule<span style="color:#f92672">::</span>LargestMagn, <span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1e-10</span>);
+</span></span></code></pre></div><p>The HKS is then just a matrix–vector product per time:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Eigen<span style="color:#f92672">::</span>MatrixXd phi2 <span style="color:#f92672">=</span> ops.evecs.array().square();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; s <span style="color:#f92672">&lt;</span> nHKS; s<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">double</span> t <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>pow(<span style="color:#ae81ff">10.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2.0</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2.0</span> <span style="color:#f92672">*</span> s <span style="color:#f92672">/</span> (nHKS <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>));   <span style="color:#75715e">// t in [0.01, 1]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  Eigen<span style="color:#f92672">::</span>VectorXd w <span style="color:#f92672">=</span> (<span style="color:#f92672">-</span>ops.evals.array() <span style="color:#f92672">*</span> t).exp();
+</span></span><span style="display:flex;"><span>  ops.hks.col(s) <span style="color:#f92672">=</span> phi2 <span style="color:#f92672">*</span> w;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Every mesh is first scaled to unit area, so the same <em>t</em> means the same thing on every shape.</p>
+<p>On a flat plate the Gaussian curvature is zero everywhere, so the signal comes from the boundary. Heat cannot leave the domain, so it piles up near the boundary and especially in the corners. The small-<em>t</em> channels light up along the walls; the large-<em>t</em> channels vary smoothly across the plate.</p>
+<p>The eigenvectors themselves are also stored in the file, because the network needs them too, as we&rsquo;ll see below.</p>
+<h2 id="the-data-plates-with-holes">The data: plates with holes</h2>
+<p>To get started I used the simplest dataset of the paper: a square plate with circular holes. Each hole gets four singularities of index −1 (valence 5 in the quad mesh), placed at the corners of the hole&rsquo;s axis-aligned bounding box. That is the &ldquo;design rule&rdquo; the network should learn. It is not what a classical solver would produce: it is a style choice, and that is exactly the point.</p>
+<p>A small Python script, <code>make_pch.py</code>, generates these shapes. It samples non-overlapping holes, triangulates the plate with Shewchuk&rsquo;s Triangle, applies the rule, and finally rotates and scales the whole shape randomly. The rule itself is just four lines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> c, r <span style="color:#f92672">in</span> holes:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> sx <span style="color:#f92672">in</span> (<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> sy <span style="color:#f92672">in</span> (<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            sings<span style="color:#f92672">.</span>append([c[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> sx <span style="color:#f92672">*</span> r, c[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> sy <span style="color:#f92672">*</span> r, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])   <span style="color:#75715e"># x, y, index</span>
+</span></span></code></pre></div><p>The script writes a mesh <code>pch_0007.obj</code> and an annotation file <code>pch_0007.sing</code> with one line <code>x y z index</code> per singularity. I also vary the triangle size from shape to shape, so the network doesn&rsquo;t get used to one particular tessellation. For testing, the script can write every test shape at several hole sizes: the same holes, at the same positions, with the radius scaled by a factor between 0.6 and 1.4.</p>
+<p><figure><img src="../../images/learningSings/input.png" width="90%">
+</figure>
+
+In this example you can see one of the training examples with the ground truth singularities colored.</p>
+<h2 id="the-labels-distance-and-oversampled-index">The labels: distance and oversampled index</h2>
+<p>The beautiful key idea of the paper in my opinion is that predicting &ldquo;is this vertex a singularity?&rdquo; directly is hopeless. If a plate has about 2,000–3,000 vertices but only a dozen singularities, so a network that always says &ldquo;no&rdquo; is already 99.5% right. Instead, the network regresses two fields that are defined on <em>every</em> vertex:</p>
+<ul>
+<li><strong>Distance field:</strong> the geodesic distance from each vertex to the nearest singularity. Its local minima are the singularities. It is a dense, smooth target, much easier to learn.</li>
+<li><strong>Oversampled index field:</strong> every vertex within a small geodesic radius of a singularity gets that singularity&rsquo;s index; all other vertices get 0 (&ldquo;regular&rdquo;). This blows each singularity up from one vertex to about a hundred, which fixes the class imbalance.</li>
+</ul>
+<p>In C++, <code>prepare</code> computes both with geometry-central&rsquo;s heat method, one distance solve per singularity:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (size_t s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; s <span style="color:#f92672">&lt;</span> sings.size(); s<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  VertexData<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">double</span><span style="color:#f92672">&gt;</span> d <span style="color:#f92672">=</span> heat<span style="color:#f92672">-&gt;</span>computeDistance(mesh.vertex(sings[s].vertex));
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (Vertex v : mesh.vertices()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> v.getIndex();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (d[v] <span style="color:#f92672">&lt;</span> L.dist[i]) { L.dist[i] <span style="color:#f92672">=</span> d[v]; L.owner[i] <span style="color:#f92672">=</span> s; }   <span style="color:#75715e">// nearest singularity
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (L.owner[i] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> L.dist[i] <span style="color:#f92672">&lt;=</span> radius)
+</span></span><span style="display:flex;"><span>    L.cls[i] <span style="color:#f92672">=</span> classOf(sings[L.owner[i]].index);                   <span style="color:#75715e">// oversampling
+</span></span></span></code></pre></div><p>So for every vertex we store two labels, a distance and a class, next to the 16 input features. That is one training sample.</p>
+<figure><img src="../../images/learningSings/learnedDistanceField.png" width="90%">
+</figure>
+
+<h2 id="the-network-diffusionnet">The network: DiffusionNet</h2>
+<p>The paper uses <a href="https://arxiv.org/abs/2012.00888">DiffusionNet</a> (Sharp et al. 2022), and I re-implemented a compact version of it. What makes it work on meshes of any size and connectivity is that its <strong>weights are shared by all vertices</strong>. Each vertex carries a feature vector, and the same small layers act on every vertex. Information travels between vertices only through heat diffusion and surface gradients.</p>
+<p>One DiffusionNet block does three things with the 128 feature channels of every vertex:</p>
+<ol>
+<li><strong>Diffusion:</strong> each channel is diffused over the surface for its own <strong>learned time</strong> $t_c$. This is the heat equation again, solved exactly in the eigenbasis that C++ already computed: project onto the eigenfunctions, damp mode <em>i</em> by $e^{-\lambda_i t_c}$, and project back.</li>
+<li><strong>Gradient features:</strong> a tangent gradient of the diffused features at each vertex, combined into rotation-invariant features. This lets the network sense directions, for example &ldquo;towards the hole&rdquo;.</li>
+<li><strong>A small MLP</strong> combines the original, diffused and gradient features. Its output is added back to the input (a residual connection).</li>
+</ol>
+<p>The diffusion step is only a few lines in PyTorch:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LearnedTimeDiffusion</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, C):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>diffusion_time <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>zeros(C))      <span style="color:#75715e"># one learnable t per channel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x, mass, evals, evecs):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>diffusion_time<span style="color:#f92672">.</span>clamp_(min<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-8</span>)                <span style="color:#75715e"># keep t &gt;= 0</span>
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>diffusion_time
+</span></span><span style="display:flex;"><span>        x_spec <span style="color:#f92672">=</span> evecs<span style="color:#f92672">.</span>t() <span style="color:#f92672">@</span> (x <span style="color:#f92672">*</span> mass<span style="color:#f92672">.</span>unsqueeze(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))           <span style="color:#75715e"># coefficients &lt;phi_i, x&gt;_M</span>
+</span></span><span style="display:flex;"><span>        x_spec <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>evals<span style="color:#f92672">.</span>unsqueeze(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> t) <span style="color:#f92672">*</span> x_spec   <span style="color:#75715e"># heat flow for time t</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> evecs <span style="color:#f92672">@</span> x_spec                                   <span style="color:#75715e"># back to the vertices</span>
+</span></span></code></pre></div><p>The learnable parameters are therefore the diffusion times, the weights and biases of the linear layers, and the matrices of the gradient features: about 1.2 million numbers in total. The 16 HKS values of a vertex are first lifted to 128 channels, then pass through 8 such blocks, and come out as a 128-dimensional feature vector per vertex. Two separate MLPs (layer sizes 128 → 512 → 256 → output) turn this vector into:</p>
+<ul>
+<li><strong>a distance</strong>: one number per vertex, kept non-negative with a softplus;</li>
+<li><strong>an index distribution</strong>: the probabilities of the possible index classes. In general these are the indices −2, −1, 0, +1, +2, so a vector in ℝ⁵. For the plates only index −1 occurs, so the head reduces to two classes, regular or −1.</li>
+</ul>
+<h2 id="training">Training</h2>
+<p>Training is plain supervised learning. For each mesh, the network predicts both fields, and two losses compare them with the labels:</p>
+<ul>
+<li>a <strong>relative L1 loss</strong> on the distance, $|d/(\hat d + \varepsilon) - 1|$, which punishes errors close to a singularity the most, exactly where precision matters;</li>
+<li>a <strong>cross-entropy loss</strong> on the index class, where singular vertices weigh 100 times more than regular ones.</li>
+</ul>
+<p>Backpropagation computes the gradient of the summed loss with respect to all 1.2 million parameters, and Adam takes a small step. The HKS, the eigenbasis and the gradient operators are constants in this process: they depend only on the mesh. So no gradient ever needs to flow back into C++, and once <code>prepare</code> has run, the C++ side is done.</p>
+<p>I generated 500 training shapes with 1 to 3 holes, plus 50 validation shapes that I used only to pick the best checkpoint. Then I trained for 40 epochs (20,000 weight updates) on the GPU of my MacBook Air (PyTorch&rsquo;s MPS backend), which took about half an hour:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python tools/make_pch.py   --out data/train --n <span style="color:#ae81ff">500</span> --holes <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> --seed <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>python tools/prepare_all.py data/train data/train_npz --classes -1
+</span></span><span style="display:flex;"><span>python python/train.py --train data/train_npz --val data/val_npz --classes -1 --epochs <span style="color:#ae81ff">40</span> --out models/pch40.pt
+</span></span></code></pre></div><figure><img src="../../images/learningSings/training_curves.png" width="100%">
+</figure>
+
+<p>Both losses go down smoothly, and training and validation stay close together, so with 500 shapes there is no sign of overfitting yet. The relative distance error on the validation set drops from 0.30 after the first epoch to about 0.066, and the share of regular vertices that the network wrongly calls singular falls from 27% to about 7%. The bump after epoch 20 is the learning rate being halved. The best validation loss was reached in epoch 38, so the model was still improving when training stopped.</p>
+<p>The false-positive curve is the one to watch. The weight of 100 on singular vertices makes the network generous: the predicted &ldquo;singular&rdquo; blobs are fatter than the true discs. Where two singularities are close, their blobs merge, and that is exactly where things go wrong later.</p>
+<p>The false-positive curve is the one to watch. The weight of 100 on singular vertices makes the network generous: the predicted &ldquo;singular&rdquo; blobs are fatter than the true discs. Where two singularities are close, their blobs merge, and that is exactly where things go wrong later.</p>
+<h2 id="results-on-unseen-shapes">Results on unseen shapes</h2>
+<p>To measure what the network really learned, I generated a separate test set of 100 plates that the network never saw during training. To probe how sensitive the method is to hole size, every test plate also exists in five variants: the same holes at the same positions, with all radii multiplied by 0.6, 0.8, 1.0, 1.2 or 1.4. At the large factors, holes start to overlap or leave the plate. Those variants are skipped, so only 46 plates remain at ×1.2 and 29 at ×1.4, most of them with a single hole.</p>
+<p>For every test plate, <code>singlearn predict</code> runs the full pipeline, and I compare the result with the rule. A predicted singularity counts as correct if it lies within 0.05 (on the unit-area plate, about two edge lengths) of a true one. Three numbers come out:</p>
+<ul>
+<li><strong>precision</strong>: the fraction of predicted singularities that are correct;</li>
+<li><strong>recall</strong>: the fraction of true singularities that were found;</li>
+<li><strong>valid</strong>: the fraction of plates whose predicted singularities can actually be connected into a cross field. Trivial connections tells us this: if the indices violate the Poincaré–Hopf theorem, the linear system has no solution.
+The last one is the number that matters in the end, and it is unforgiving. A single missing or extra singularity makes the whole configuration infeasible.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>radius factor</th>
+          <th>test plates</th>
+          <th>precision</th>
+          <th>recall</th>
+          <th>valid fields</th>
+          <th>valid, 5 epochs</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>×0.6</td>
+          <td>100</td>
+          <td>0.995</td>
+          <td>0.983</td>
+          <td><strong>90%</strong></td>
+          <td>42%</td>
+      </tr>
+      <tr>
+          <td>×0.8</td>
+          <td>100</td>
+          <td>0.999</td>
+          <td>0.999</td>
+          <td><strong>98%</strong></td>
+          <td>76%</td>
+      </tr>
+      <tr>
+          <td>×1.0</td>
+          <td>100</td>
+          <td>0.994</td>
+          <td>0.986</td>
+          <td><strong>92%</strong></td>
+          <td>84%</td>
+      </tr>
+      <tr>
+          <td>×1.2</td>
+          <td>46</td>
+          <td>0.993</td>
+          <td>0.993</td>
+          <td><strong>96%</strong></td>
+          <td>89%</td>
+      </tr>
+      <tr>
+          <td>×1.4</td>
+          <td>29</td>
+          <td>0.993</td>
+          <td>1.000</td>
+          <td><strong>97%</strong></td>
+          <td>97%</td>
+      </tr>
+  </tbody>
+</table>
+<figure><img src="../../images/learningSings/test_validity.png" width="80%">
+</figure>
+
+<p>With working diffusion and 40 epochs, between 90% and 98% of the test plates get a valid singularity configuration, at every hole size. Per singularity, precision and recall are above 98% everywhere. Diffusion helps most where it should: for the smallest holes, the share of valid plates goes from 60% to 90%. At ×0.6, the four corners of a hole sit close together, and their distance basins easily merge into one, so the network loses singularities. This is exactly the limitation the paper describes for closely spaced singularities. Telling them apart needs information from further away than a few rings of neighbours, and that is what diffusion provides. The 5-epoch model shows that training time matters just as much: it is decent at the training size (84%) but falls apart for small holes (42%).</p>
+<p>The index was always predicted correctly, but that is no achievement here: on these plates every singularity has index −1.</p>
+<p>What I find instructive is the gap between the per-singularity numbers and the per-plate number. A plate with three holes has 12 singularities, and all 12 must be right. Even at 99% per singularity, that happens for only about $\sqrt{0.99} ≈$ 89% of such plates. The pipeline is a chain, and the weakest link decides. The numbers by hole count confirm it: every single one-hole test plate is valid, at every radius factor, while at ×1.0 only 31 of 38 three-hole plates are. Of the 8 invalid plates at ×1.0, 7 have <em>too few</em> singularities and 1 has one too many. So the remaining failures are almost all merged singularities, typically between two holes that sit close together.</p>
+<p>The large radius factors look surprisingly good, but be careful: those test sets are small and dominated by one-hole plates, the easy case.</p>
+<figure><img src="../../images/learningSings/success.png" width="80%">
+</figure>
+
+<blockquote>
+<p><strong>Successful prediction:</strong> plate with three holes, predicted singularities on top of the true ones, and the cross field from trivial connections (polyscope).</p>
+</blockquote>
+<figure><img src="../../images/learningSings/failure.png" width="80%">
+</figure>
+
+<blockquote>
+<p><strong>Invalid prediction:</strong> for this example a three-hole plate the model does not predict properly a valid singularity configuration.</p>
+</blockquote>
+<h2 id="what-i-learned-and-what-comes-next">What I learned, and what comes next</h2>
+<p>For a first learning project, this was a lot of fun. With 500 synthetic plates and about half an hour of training on a laptop, the network learns a design rule for singularities and gets more than 90% of unseen plates completely right, including hole sizes it never saw.</p>
+<p>The remaining failures are merged singularities on plates with several holes. That gives a clear list for what comes next:</p>
+<ul>
+<li><strong>Data Diversity:</strong> Train on a wider range of hole sizes directly, rather than relying solely on zero-shot testing.</li>
+<li><strong>Alternative Annotations:</strong> Experiment with the paper&rsquo;s gear dataset, where applying two different annotation rules to identical shapes should yield distinct networks.</li>
+<li><strong>Real-World Integration:</strong> Incorporate real data using singularities read directly from existing quad meshes (which the C++ application already supports).</li>
+<li><strong>Full Pipeline Execution:</strong> Advance toward full quad mesh generation by feeding the cross field into a parameterization tool like MIQ for final quad extraction.</li>
+<li><strong>3D Prototyping:</strong> Explore a preliminary 3D prototype where training data can be generated using locally meshable frames and the AlgoHex pipeline.</li>
+</ul>
+</div>
+            </article>
+        </div>
+        
+    </main>
+
+    <footer id="site-footer" class="bg-dark text-white pb-4 pt-4">
+        <div class="container">
+            <div class="copyright text-center">
+                &copy;2024Theo Braune
+            </div>
+        </div>
+        
+    </footer>
+    <script src="../../js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
